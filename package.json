@@ -1,0 +1,15 @@
+{
+  "name": "halloween-english",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "description": "Un jeu d'Halloween pour découvrir dix mots anglais.",
+  "scripts": {
+    "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.worker.json",
+    "build": "tsc && tsc -p tsconfig.worker.json && node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "preview": "python3 -m http.server 4319 --bind 127.0.0.1 --directory docs"
+  },
+  "devDependencies": { "typescript": "5.9.3" }
+}
