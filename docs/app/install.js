@@ -50,7 +50,7 @@ update();
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').then(async () => {
         await navigator.serviceWorker.ready;
-        status.textContent = '✓ Le jeu et ses dix images sont prêts pour jouer hors ligne.';
+        status.textContent = '✓ Le jeu et toutes ses illustrations sont prêts pour jouer hors ligne.';
     }).catch(() => {
         status.textContent = 'Le jeu fonctionne en ligne. Rouvre-le avec une connexion pour préparer le mode hors ligne.';
     });

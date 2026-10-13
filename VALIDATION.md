@@ -20,3 +20,17 @@ Les dimensions mobiles et tablettes sont simulées dans le navigateur de test. L
 - Les cartes ont été retirées du bilan des défis ; score, record et boutons de relance sont conservés.
 - Compilation réussie et 14 tests automatisés toujours au vert, dont la mise en cache des dix nouvelles images.
 - Mode J’apprends ouvert et inspecté dans le navigateur ; rendu des dix cartes contrôlé. L’utilisateur a également vérifié le fonctionnement et demandé de terminer.
+
+## Collection progressive et Mémo magique — 13 octobre 2026
+
+- Trente illustrations inspectées dans la collection de test : silhouettes et expressions conservées entre original, couleur et artiste.
+- 23 tests automatisés réussis, incluant les seuils, sauvegardes, déblocages et la mise en cache des trente images.
+- Compteur par carte : une bonne réponse enregistrée, conservée après rechargement ; trois écoutes supplémentaires n’ont pas changé le compteur.
+- Collection : dix originaux et vingt emplacements verrouillés au départ ; aucune image couleur ou artiste dans les vignettes verrouillées.
+- Sauvegarde de test isolée : dix cartes à neuf réussites, puis partie parfaite à 10/10. Les dix couleurs ont été débloquées, Mémo magique est apparu, les dix versions artistes sont restées verrouillées et les dix choix actifs sont restés « Original ».
+- Mémo magique : image observée après déclenchement, retirée avant les trois mots ; trois propositions seulement ; aucun bouton de réécoute. Question suivante audio, déclencheur masqué après usage et trois images affichées. Après une tentative, les trois réponses sont désactivées.
+- À neuf réussites Mémo pour une carte, une bonne réponse a affiché la récompense artiste à 10/10. Tests moteur de dix parties normales suivies de dix parties Mémo : exactement vingt récompenses, sans changement automatique de version.
+- Zoom ouvert sur une version artiste sans modifier le choix ; sélection manuelle d’une couleur retrouvée dans J’apprends après rechargement.
+- Géométrie de téléphone 390 px : largeur de page et de contenu identiques ; rendu de la collection inspecté. Les tests utilisent un autre serveur et des sauvegardes temporaires, sans modifier la progression publique.
+
+Les règles finales remplacent le premier prototype : une version artiste exige dix réussites **dans Mémo magique**, et non vingt réussites dans les défis classiques.

@@ -1,8 +1,8 @@
 "use strict";
 const sw = self;
 const CACHE_PREFIX = 'boo-english-';
-const CACHE = CACHE_PREFIX + '6c3fcec4c6abb381';
-const PRECACHE = JSON.parse('["./","./app/game.js","./app/install.js","./app/main.js","./app/speech.js","./favicon.svg","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/maskable-512.png","./images/bat.png","./images/frog.png","./images/ghost.png","./images/monster.png","./images/pumpkin.png","./images/rat.png","./images/skeleton.png","./images/spider.png","./images/vampire.png","./images/witch.png","./index.html","./manifest.webmanifest","./style.css"]');
+const CACHE = CACHE_PREFIX + '604f135c48dbd055';
+const PRECACHE = JSON.parse('["./","./app/collection.js","./app/game.js","./app/install.js","./app/main.js","./app/progress.js","./app/speech.js","./favicon.svg","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/maskable-512.png","./images/art/bat.png","./images/art/frog.png","./images/art/ghost.png","./images/art/monster.png","./images/art/pumpkin.png","./images/art/rat.png","./images/art/skeleton.png","./images/art/spider.png","./images/art/vampire.png","./images/art/witch.png","./images/bat.png","./images/color/bat.png","./images/color/frog.png","./images/color/ghost.png","./images/color/monster.png","./images/color/pumpkin.png","./images/color/rat.png","./images/color/skeleton.png","./images/color/spider.png","./images/color/vampire.png","./images/color/witch.png","./images/frog.png","./images/ghost.png","./images/monster.png","./images/pumpkin.png","./images/rat.png","./images/skeleton.png","./images/spider.png","./images/vampire.png","./images/witch.png","./index.html","./manifest.webmanifest","./style.css"]');
 sw.addEventListener('install', event => {
     event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(PRECACHE.map(path => new Request(new URL(path, sw.registration.scope), { cache: 'reload' })))));
 });

@@ -19,12 +19,15 @@ export function shuffle(items, random = Math.random) {
     return result;
 }
 export function createSession(mode, count, random = Math.random) {
-    if (mode !== 'listen' && mode !== 'read')
+    if (!['listen', 'read', 'memory'].includes(mode))
         throw new Error('Invalid mode');
     if (![2, 3, 4].includes(count))
         throw new Error('Invalid choice count');
-    const questions = shuffle(WORDS, random).map(target => ({
+    if (mode === 'memory' && count !== 3)
+        throw new Error('Memory requires three choices');
+    const questions = shuffle(WORDS, random).map((target, index) => ({
         target,
+        cue: index % 2 === 0 ? 'flash' : 'once',
         choices: shuffle([target, ...shuffle(WORDS.filter(w => w.id !== target.id), random).slice(0, count - 1)], random),
     }));
     return { mode, count, questions, index: 0, score: 0, attempts: 0, solved: false, missed: [], rejected: [] };
@@ -38,6 +41,10 @@ export function answer(session, id) {
         session.rejected.push(id);
         if (!session.missed.includes(q.target.id))
             session.missed.push(q.target.id);
+        if (session.mode === 'memory') {
+            session.solved = true;
+            return 'incorrect';
+        }
         return 'retry';
     }
     session.solved = true;
