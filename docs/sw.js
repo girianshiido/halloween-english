@@ -1,7 +1,7 @@
 "use strict";
 const sw = self;
 const CACHE_PREFIX = 'boo-english-';
-const CACHE = CACHE_PREFIX + 'cd0082966e370b5b';
+const CACHE = CACHE_PREFIX + '6c3fcec4c6abb381';
 const PRECACHE = JSON.parse('["./","./app/game.js","./app/install.js","./app/main.js","./app/speech.js","./favicon.svg","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/maskable-512.png","./images/bat.png","./images/frog.png","./images/ghost.png","./images/monster.png","./images/pumpkin.png","./images/rat.png","./images/skeleton.png","./images/spider.png","./images/vampire.png","./images/witch.png","./index.html","./manifest.webmanifest","./style.css"]');
 sw.addEventListener('install', event => {
     event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(PRECACHE.map(path => new Request(new URL(path, sw.registration.scope), { cache: 'reload' })))));

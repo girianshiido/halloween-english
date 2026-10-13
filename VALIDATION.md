@@ -12,3 +12,11 @@
 ## Limites de vérification
 
 Les dimensions mobiles et tablettes sont simulées dans le navigateur de test. L’installation depuis les menus d’un véritable iPhone ou d’un téléphone Android n’a pas été effectuée. Le manifeste, les icônes, le service worker et le parcours d’aide à l’installation sont vérifiés. La disponibilité de la prononciation hors ligne dépend d’une voix anglaise présente sur l’appareil.
+
+## Mise à jour — illustrations et mode J’apprends
+
+- Dix illustrations retouchées avec image_gen : cadres et légendes imprimées retirés ; contours du fantôme et de la citrouille nettoyés. Les dessins complets sont affichés sans recadrage.
+- Nouveau mode « J’apprends » accessible depuis l’accueil, dix cartes avec prononciation au toucher. Le choix du nombre de réponses est masqué pour cette activité.
+- Les cartes ont été retirées du bilan des défis ; score, record et boutons de relance sont conservés.
+- Compilation réussie et 14 tests automatisés toujours au vert, dont la mise en cache des dix nouvelles images.
+- Mode J’apprends ouvert et inspecté dans le navigateur ; rendu des dix cartes contrôlé. L’utilisateur a également vérifié le fonctionnement et demandé de terminer.

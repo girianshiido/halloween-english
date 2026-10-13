@@ -5,8 +5,10 @@ import './install.js';
 const app = document.querySelector<HTMLElement>('#app')!;
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 5 9H2v6h3l6 5V4Zm5 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
 const eye = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
+const book = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6C9 3 5 3 2 4v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 2Zm0 0v15"/></svg>';
+type Activity = Mode | 'learn';
 const arrow = '<span aria-hidden="true">→</span>';
-let mode: Mode = 'listen';
+let mode: Activity = 'listen';
 let count: ChoiceCount = 3;
 let session: Session | null = null;
 let bests: Record<string, number> = {};
@@ -20,7 +22,7 @@ try {
 } catch { /* Play still works when browser storage is unavailable. */ }
 const bestKey = () => `${mode}-${count}`;
 function image(word: Word, alt: string, className = ''): string {
-  return `<span class="art-crop art-${word.id}"><img class="${className}" src="./images/${word.id}.png" alt="${alt}" draggable="false" width="1122" height="1402"></span>`;
+  return `<span class="art-crop art-${word.id}"><img class="${className}" src="./images/${word.id}.png" alt="${alt}" draggable="false" width="1024" height="1024"></span>`;
 }
 function audioStatus(message: string): void {
   const status = document.querySelector('#audio-status');
@@ -35,9 +37,9 @@ function home(): void {
   stopSpeech();
   session = null;
   app.innerHTML = `<section class="welcome"><div class="welcome-copy"><span class="eyebrow"><span aria-hidden="true">✦</span> LA PETITE AVENTURE D’HALLOWEEN</span><h1>Un peu de <em>boo!</em><br>Beaucoup d’<span class="underline">anglais.</span></h1><p class="intro">Dix drôles d’amis t’attendent.<br>Ouvre grand les oreilles… et à toi de jouer !</p><div class="little-tags"><span>10 mots à découvrir</span><span>À ton rythme</span></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✦</span><div class="paper-card back-card">${image(WORDS[2]!, '')}</div><div class="paper-card front-card">${image(WORDS[0]!, '')}</div><span class="art-caption">Même pas peur !</span></div></section>
-  <section class="setup" aria-label="Préparer ma partie"><div class="setup-main"><div class="step-title"><span>01</span><h2>Comment veux-tu jouer ?</h2></div><div class="mode-grid" role="group" aria-label="Mode de jeu"><button type="button" class="mode-card ${mode === 'listen' ? 'selected' : ''}" data-mode="listen" aria-pressed="${mode === 'listen'}"><span class="mode-icon peach">${speaker}</span><span><strong>J’écoute</strong><small>Un mot anglais → la bonne image</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'read' ? 'selected' : ''}" data-mode="read" aria-pressed="${mode === 'read'}"><span class="mode-icon lavender">${eye}</span><span><strong>Je regarde</strong><small>Une image → le bon mot anglais</small></span><span class="radio-mark" aria-hidden="true"></span></button></div></div><div class="setup-bottom"><div><div class="step-title"><span>02</span><h2>Combien de réponses ?</h2></div><div class="count-group" role="group" aria-label="Nombre de réponses">${([2, 3, 4] as const).map(n => `<button type="button" data-count="${n}" class="count-button ${count === n ? 'selected' : ''}" aria-pressed="${count === n}"><strong>${n}</strong><small>${n === 2 ? 'Tout doux' : n === 3 ? 'Un petit défi' : 'À l’aventure'}</small></button>`).join('')}</div></div><div class="start-block"><button type="button" class="primary start" id="start">C’est parti ! ${arrow}</button><p id="best-note">${bests[bestKey()] !== undefined ? `Ton record : ${bests[bestKey()]} étoiles sur 10 ✦` : 'Une partie · 10 questions · Plein de découvertes'}</p></div></div></section><p class="home-footnote">${speaker} Mets le son pour entendre les mots en anglais.</p>`;
+  <section class="setup" aria-label="Préparer ma partie"><div class="setup-main"><div class="step-title"><span>01</span><h2>Comment veux-tu jouer ?</h2></div><div class="mode-grid" role="group" aria-label="Mode de jeu"><button type="button" class="mode-card ${mode === 'learn' ? 'selected' : ''}" data-mode="learn" aria-pressed="${mode === 'learn'}"><span class="mode-icon mint">${book}</span><span><strong>J’apprends</strong><small>Dix cartes à écouter librement</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'listen' ? 'selected' : ''}" data-mode="listen" aria-pressed="${mode === 'listen'}"><span class="mode-icon peach">${speaker}</span><span><strong>J’écoute</strong><small>Un mot anglais → la bonne image</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'read' ? 'selected' : ''}" data-mode="read" aria-pressed="${mode === 'read'}"><span class="mode-icon lavender">${eye}</span><span><strong>Je regarde</strong><small>Une image → le bon mot anglais</small></span><span class="radio-mark" aria-hidden="true"></span></button></div></div><div class="setup-bottom"><div id="choice-settings"><div class="step-title"><span>02</span><h2>Combien de réponses ?</h2></div><div class="count-group" role="group" aria-label="Nombre de réponses">${([2, 3, 4] as const).map(n => `<button type="button" data-count="${n}" class="count-button ${count === n ? 'selected' : ''}" aria-pressed="${count === n}"><strong>${n}</strong><small>${n === 2 ? 'Tout doux' : n === 3 ? 'Un petit défi' : 'À l’aventure'}</small></button>`).join('')}</div></div><div class="start-block"><button type="button" class="primary start" id="start">C’est parti ! ${arrow}</button><p id="best-note">${bests[bestKey()] !== undefined ? `Ton record : ${bests[bestKey()]} étoiles sur 10 ✦` : 'Une partie · 10 questions · Plein de découvertes'}</p></div></div></section><p class="home-footnote">${speaker} Mets le son pour entendre les mots en anglais.</p>`;
   app.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.addEventListener('click', () => {
-    mode = button.dataset.mode as Mode;
+    mode = button.dataset.mode as Activity;
     updateSettings();
   }));
   app.querySelectorAll<HTMLButtonElement>('[data-count]').forEach(button => button.addEventListener('click', () => {
@@ -45,6 +47,7 @@ function home(): void {
     updateSettings();
   }));
   document.querySelector('#start')!.addEventListener('click', start);
+  updateSettings();
   window.scrollTo(0, 0);
 }
 function updateSettings(): void {
@@ -58,9 +61,14 @@ function updateSettings(): void {
     button.classList.toggle('selected', selected);
     button.setAttribute('aria-pressed', String(selected));
   });
-  document.querySelector('#best-note')!.textContent = bests[bestKey()] !== undefined ? `Ton record : ${bests[bestKey()]} étoiles sur 10 ✦` : 'Une partie · 10 questions · Plein de découvertes';
+  const learning = mode === 'learn';
+  document.querySelector<HTMLElement>('#choice-settings')!.hidden = learning;
+  document.querySelector('.setup-bottom')!.classList.toggle('learning', learning);
+  document.querySelector('#start')!.innerHTML = `${learning ? 'Découvrir les cartes' : 'C’est parti !'} ${arrow}`;
+  document.querySelector('#best-note')!.textContent = learning ? 'Écoute et recommence autant de fois que tu veux.' : bests[bestKey()] !== undefined ? `Ton record : ${bests[bestKey()]} étoiles sur 10 ✦` : 'Une partie · 10 questions · Plein de découvertes';
 }
 function start(): void {
+  if (mode === 'learn') { learn(); return; }
   session = createSession(mode, count);
   renderQuestion();
   if (mode === 'listen') sayTarget();
@@ -117,10 +125,22 @@ function results(): void {
   let saved = true;
   try { localStorage.setItem('boo-english-bests-v1', JSON.stringify(bests)); } catch { saved = false; }
   const mastered = 10 - session.missed.length;
-  app.innerHTML = `<section class="results"><span class="eyebrow">AVENTURE TERMINÉE</span><div class="trophy" aria-hidden="true">✦</div><h1 data-focus tabindex="-1">${session.score === 10 ? 'Un sans-faute magique !' : session.score >= 6 ? 'Bravo, petit explorateur !' : 'Dix mots de plus dans ta poche !'}</h1><p>Tu as retrouvé tous les amis d’Halloween.</p><div class="result-score"><strong>${session.score}<small> / 10</small></strong><span>étoiles gagnées</span></div><p class="result-detail">${mastered} mot${mastered > 1 ? 's' : ''} trouvé${mastered > 1 ? 's' : ''} du premier coup.${session.missed.length ? ' Continue, chaque essai te fait progresser !' : ' Tes oreilles et tes yeux ont des super-pouvoirs !'}</p><span class="record">${saved ? `Ton record pour ce défi : ${bests[bestKey()]} / 10` : 'Le record n’a pas pu être enregistré sur cet appareil.'}</span><div class="result-actions"><button type="button" class="primary" id="again">Rejouer ${arrow}</button><button type="button" class="secondary" id="change">Changer de défi</button></div><section class="vocabulary" aria-labelledby="vocab-title"><h2 id="vocab-title">Mes dix mots d’Halloween</h2><p>Touche une carte pour entendre le mot.</p><div class="vocab-grid">${WORDS.map(word => `<button type="button" class="vocab-card ${session!.missed.includes(word.id) ? 'to-review' : ''}" data-word="${word.id}" aria-label="Écouter ${word.english}">${image(word, '')}<strong lang="en">${word.english}</strong><small>${word.french}</small><span>${session!.missed.includes(word.id) ? 'À revoir' : '✦ Trouvé !'}</span></button>`).join('')}</div><p id="audio-status" role="status"></p></section></section>`;
+  app.innerHTML = `<section class="results"><span class="eyebrow">AVENTURE TERMINÉE</span><div class="trophy" aria-hidden="true">✦</div><h1 data-focus tabindex="-1">${session.score === 10 ? 'Un sans-faute magique !' : session.score >= 6 ? 'Bravo, petit explorateur !' : 'Dix mots de plus dans ta poche !'}</h1><p>Tu as retrouvé tous les amis d’Halloween.</p><div class="result-score"><strong>${session.score}<small> / 10</small></strong><span>étoiles gagnées</span></div><p class="result-detail">${mastered} mot${mastered > 1 ? 's' : ''} trouvé${mastered > 1 ? 's' : ''} du premier coup.${session.missed.length ? ' Continue, chaque essai te fait progresser !' : ' Tes oreilles et tes yeux ont des super-pouvoirs !'}</p><span class="record">${saved ? `Ton record pour ce défi : ${bests[bestKey()]} / 10` : 'Le record n’a pas pu être enregistré sur cet appareil.'}</span><div class="result-actions"><button type="button" class="primary" id="again">Rejouer ${arrow}</button><button type="button" class="secondary" id="change">Changer de défi</button></div></section>`;
   document.querySelector('#again')!.addEventListener('click', start);
   document.querySelector('#change')!.addEventListener('click', home);
-  app.querySelectorAll<HTMLButtonElement>('[data-word]').forEach(button => button.addEventListener('click', () => speak(WORDS.find(w => w.id === button.dataset.word)!.english, audioStatus)));
+  focusHeading();
+}
+function learn(): void {
+  stopSpeech();
+  session = null;
+  app.innerHTML = `<section class="learn-area"><div class="game-top"><button type="button" id="back" class="quiet">← Accueil</button><span class="mode-label">${book} J’apprends</span><span class="learn-pill">10 mots à découvrir</span></div><div class="question-head"><span class="eyebrow">À TON RYTHME</span><h1 data-focus tabindex="-1">Mes dix mots d’Halloween</h1><p>Touche une carte pour entendre le mot en anglais.</p></div><div class="vocab-grid" aria-label="Les dix cartes à écouter">${WORDS.map(word => `<button type="button" class="vocab-card" data-word="${word.id}" aria-label="Écouter ${word.english}">${image(word, '')}<strong lang="en">${word.english}</strong><small>${word.french}</small><span class="learn-listen">${speaker} Écouter</span></button>`).join('')}</div><p id="audio-status" role="status">Tu peux écouter chaque mot autant de fois que tu veux.</p><button type="button" class="primary" id="learn-back">Choisir un défi ${arrow}</button></section>`;
+  app.querySelectorAll<HTMLButtonElement>('[data-word]').forEach(button => button.addEventListener('click', () => {
+    app.querySelectorAll('.vocab-card').forEach(card => card.classList.remove('last-listened'));
+    button.classList.add('last-listened');
+    speak(WORDS.find(word => word.id === button.dataset.word)!.english, audioStatus);
+  }));
+  document.querySelector('#back')!.addEventListener('click', home);
+  document.querySelector('#learn-back')!.addEventListener('click', home);
   focusHeading();
 }
 const dialog = document.querySelector<HTMLDialogElement>('#help-dialog')!;

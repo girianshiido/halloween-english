@@ -1,0 +1,52 @@
+[
+  {
+    "asset": "public/images/ghost.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original ghost illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Carefully remove ALL scattered black dust, stippling, pixel speckles and rough raster noise around and inside the drawing. Reconstruct clean, continuous, smooth solid black outlines, retaining precisely the original shapes and facial expression. No grain or dot texture anywhere. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/pumpkin.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original pumpkin illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Carefully remove ALL scattered black dust, stippling, pixel speckles and rough raster noise around and inside the drawing. Reconstruct clean, continuous, smooth solid black outlines, retaining precisely the original shapes and facial expression. No grain or dot texture anywhere. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/vampire.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original vampire illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/monster.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original monster illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/witch.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original witch illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/bat.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original bat illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/skeleton.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original skeleton illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/spider.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original spider illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/rat.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original rat illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  },
+  {
+    "asset": "public/images/frog.png",
+    "tool": "image_gen (outil intégré)",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached original frog illustration for a children's English Halloween learning game. Remove the thick enclosing black rounded rectangular frame entirely, and remove the printed English caption beneath the character. Keep ONLY the exact same original character on a plain pure white background. Preserve its pose, expression, silhouette, distinctive details and black-and-white coloring-book style; do not invent a new character, do not add objects, color, shading or a new border. Center the complete character in a square image with comfortable even white margins, without cropping any part. Clean stray raster speckles while keeping the original important line details intact. Output: one square image, white background, black drawing, no frame, no text, no watermark."
+  }
+]

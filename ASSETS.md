@@ -1,16 +1,18 @@
-# Illustrations originales
+# Illustrations nettoyées
 
-Dix dernières images de la bibliothèque ChatGPT, téléchargées avec l’autorisation de l’utilisateur le 13 octobre 2026. Les fichiers sources sont conservés intégralement ; le cadrage à l’écran masque seulement la légende pendant les questions.
+Dix illustrations issues de la bibliothèque ChatGPT, retouchées à la demande de l’utilisateur : retrait des cadres et des légendes imprimées, nettoyage des poussières du fantôme et de la citrouille. Les images sont affichées en entier. Les originaux restent dans le commit initial 6ec0bc1.
+
+Outil : image_gen intégré. Consignes exactes : image-edits.json.
 
 | Fichier | SHA-256 |
 | --- | --- |
-| bat.png | `8bc5795ab532e6ecb09ccdf50b993fc823b526c060faccc02772d3aa324e9600` |
-| frog.png | `da146e1fa6fe8419623116b833bcda8e1e64af98876ca113ac494cf7877ce2cb` |
-| ghost.png | `3c644f75f844e2bd33e6381af876be6351208f2e31a96fdfb65ce3ffa1cc7875` |
-| monster.png | `a5642c6cda7caf80034ea2ec74132409f160b2d6e31291150d12149092780022` |
-| pumpkin.png | `b58875ddd15e3dfa69ff67c2ec029fda13c8576df556de52f30488cf5e9e327b` |
-| rat.png | `fe45053fc69cbec40e4af368f81d94a150e7fc9d8c345d59f3de95bca9adc071` |
-| skeleton.png | `677ac8d7c35e75e0f3a83b9f76daac9fe4418876b06f7e752b263bf3937ef70a` |
-| spider.png | `478ffb0d6025a716d1b889389330faa95d0d6d36242da19d3106f380435ba3f7` |
-| vampire.png | `aca8dc00575e0fa7bb405f0324d765e9ec7a12b7b9844e9be635a408d14ab98b` |
-| witch.png | `80fe274adcc827ff2a93344c9264abfefa803c51e6e18445de76a776d0b65552` |
+| bat.png | `6dd0c491548b9d436e6949bfb91a7c1b2df60b0fdca95c92b81662aa21f72521` |
+| frog.png | `eef6c1db8eacbee3925d66fef6eec62c71267d93ee3383b8c855d9bd2275f5f7` |
+| ghost.png | `bd52af8b16a341424b1e8f057da2e27602d42f01977d9d4dd876202c226dfada` |
+| monster.png | `a162bef41bfddb946b7b2434a5c86fbcee811d3342b9c8593318263200eaf32f` |
+| pumpkin.png | `98ae23c345d3903ba94a60e10bf441be9f9e0fb0b84d812acb8d27a0c2379f0e` |
+| rat.png | `5993b628738927c3c631e970cd225a3771b3a38b5b13624f50bfd51745e42809` |
+| skeleton.png | `6dbda4bed3dabafbeefa0a4ed57db67b9381c6a122ceb3abf60a3f364c4dd46a` |
+| spider.png | `372571b381f3f99b171cb2d4270b90176694ab55a28ccb1cb13d67f248c1bbb8` |
+| vampire.png | `4cc9946b8237ec5df6f7ade43ddba30ad99f7bf22c50dceb35286ba47a938b84` |
+| witch.png | `bc60fdff556b0de74a97be61fc1c1a9879b1ba679571512d70128fc2ed52d90e` |

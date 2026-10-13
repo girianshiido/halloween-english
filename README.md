@@ -1,6 +1,6 @@
 # Boo! English
 
-Jeu éducatif d’Halloween autonome en TypeScript. Dix illustrations originales en noir et blanc, deux modes (« J’écoute » et « Je regarde »), et 2, 3 ou 4 réponses au choix. Chaque partie présente les dix mots une fois, dans un ordre aléatoire.
+Jeu éducatif d’Halloween autonome en TypeScript. Dix illustrations en noir et blanc, trois modes (« J’apprends », « J’écoute » et « Je regarde »), et 2, 3 ou 4 réponses au choix dans les défis. Chaque partie présente les dix mots une fois, dans un ordre aléatoire.
 
 ## Jouer
 
@@ -8,7 +8,7 @@ https://girianshiido.github.io/halloween-english/
 
 Aucun compte, aucune installation. Compatible avec les navigateurs récents sur ordinateur, tablette et smartphone. Pour le mode écoute, activer le son. La prononciation utilise la synthèse vocale du navigateur avec une voix anglaise (britannique en priorité). Les mots sont prononcés à la suite d’une action tactile pour respecter les restrictions mobiles. La disponibilité et la qualité des voix dépendent de l’appareil et du navigateur. En cas d’échec, un message invite à vérifier le son ou à changer de navigateur.
 
-Une étoile est attribuée si la première réponse est correcte. Après une erreur, l’enfant peut réessayer sans limite de temps. Le bilan permet de réécouter les dix mots et identifie ceux à revoir. Le meilleur score est conservé séparément pour chaque mode et nombre de choix dans le stockage local, sans serveur ni collecte de données de jeu. Les polices Google Fonts sont facultatives : des polices système prennent le relais si elles ne sont pas accessibles.
+Une étoile est attribuée si la première réponse est correcte. Après une erreur, l’enfant peut réessayer sans limite de temps. Le bilan affiche les étoiles gagnées et les boutons pour rejouer ou changer de défi. Le mode « J’apprends », accessible directement depuis l’accueil, présente les dix cartes avec le mot anglais et sa traduction ; toucher une carte prononce le mot, sans score ni limite de temps. Le meilleur score est conservé séparément pour chaque mode et nombre de choix dans le stockage local, sans serveur ni collecte de données de jeu. Les polices Google Fonts sont facultatives : des polices système prennent le relais si elles ne sont pas accessibles.
 
 ## Installer comme application
 
@@ -30,7 +30,7 @@ pnpm test
 pnpm preview
 ```
 
-Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `main:/docs`. Les chemins des fichiers sont relatifs pour fonctionner sous le préfixe du dépôt. Aucun service ni clé API ne sont nécessaires. Les illustrations originales, téléchargées depuis la bibliothèque ChatGPT de l’utilisateur, sont dans `public/images/` et ne sont pas redessinées.
+Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `main:/docs`. Les chemins des fichiers sont relatifs pour fonctionner sous le préfixe du dépôt. Aucun service ni clé API ne sont nécessaires. Les illustrations sont dans `public/images/`. Les cadres et les légendes imprimées ont été retirés avec l’outil de retouche d’images ; le fantôme et la citrouille ont été débarrassés de leurs points parasites. Les originaux restent disponibles dans le premier commit du dépôt. Voir `IMAGE_EDITS.md` pour les consignes de retouche.
 
 ## Vocabulaire
 
