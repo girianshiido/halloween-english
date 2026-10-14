@@ -1,7 +1,7 @@
 import { WORDS, spokenWord, questionChoices, memoryPeek, createSession, answer, advance, type Mode, type ChoiceCount, type Session, type Word } from './game.js';
 import { speak, stopSpeech } from './speech.js';
 import './install.js';
-import { parseProgress, serializeProgress, PROGRESS_KEY, BESTS_KEY, clearLegacyProgress, recordAnswer, chooseVariant, variantPath, memoryAvailable, discoveredWords, isDiscovered, modeTargets, modeLevels, difficulty, isUnlocked, VARIANT_LABELS, type Variant } from './progress.js';
+import { parseProgress, serializeProgress, PROGRESS_KEY, BESTS_KEY, clearLegacyProgress, resetGameStorage, emptyProgress, recordAnswer, chooseVariant, variantPath, memoryAvailable, discoveredWords, isDiscovered, modeTargets, modeLevels, difficulty, isUnlocked, VARIANT_LABELS, type Variant } from './progress.js';
 import { collectionMarkup } from './collection.js';
 import { learningCardsMarkup } from './learning.js';
 
@@ -64,7 +64,7 @@ function home(): void {
   stopSpeech();
   clearFlash();
   session = null;
-  app.innerHTML = `<section class="welcome"><div class="welcome-copy"><span class="eyebrow"><span aria-hidden="true">✦</span> LA PETITE AVENTURE D’HALLOWEEN</span><h1>Un peu de <em>boo!</em><br>Beaucoup d’<span class="underline">anglais.</span></h1><p class="intro">Vingt drôles d’amis t’attendent.<br>Ouvre grand les oreilles… et à toi de jouer !</p><div class="little-tags"><span>20 mots à découvrir</span><span>À ton rythme</span></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✦</span><div class="paper-card back-card">${image(WORDS[2]!, '', '', 'original')}</div><div class="paper-card front-card">${image(WORDS[0]!, '', '', 'original')}</div><span class="art-caption">Même pas peur !</span></div></section>
+  app.innerHTML = `${progressNotice ? `<p class="save-notice" role="status">${progressNotice}</p>` : ''}<section class="welcome"><div class="welcome-copy"><span class="eyebrow"><span aria-hidden="true">✦</span> LA PETITE AVENTURE D’HALLOWEEN</span><h1>Un peu de <em>boo!</em><br>Beaucoup d’<span class="underline">anglais.</span></h1><p class="intro">Vingt drôles d’amis t’attendent.<br>Ouvre grand les oreilles… et à toi de jouer !</p><div class="little-tags"><span>20 mots à découvrir</span><span>À ton rythme</span></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✦</span><div class="paper-card back-card">${image(WORDS[2]!, '', '', 'original')}</div><div class="paper-card front-card">${image(WORDS[0]!, '', '', 'original')}</div><span class="art-caption">Même pas peur !</span></div></section>
   <section class="setup" aria-label="Préparer ma partie"><div class="setup-main"><div class="step-title"><span>01</span><h2>Comment veux-tu jouer ?</h2></div><div class="mode-grid" role="group" aria-label="Mode de jeu"><button type="button" class="mode-card ${mode === 'learn' ? 'selected' : ''}" data-mode="learn" aria-pressed="${mode === 'learn'}"><span class="mode-icon mint">${book}</span><span><strong>J’apprends</strong><small>Vingt cartes à découvrir peu à peu</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'listen' ? 'selected' : ''}" data-mode="listen" aria-pressed="${mode === 'listen'}"><span class="mode-icon peach">${speaker}</span><span><strong>J’écoute</strong><small>Un mot anglais → la bonne image</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'read' ? 'selected' : ''}" data-mode="read" aria-pressed="${mode === 'read'}"><span class="mode-icon lavender">${eye}</span><span><strong>Je regarde</strong><small>Une image → le bon mot anglais</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'collection' ? 'selected' : ''}" data-mode="collection" aria-pressed="${mode === 'collection'}"><span class="mode-icon gold">✦</span><span><strong>Ma collection</strong><small>Mes images et leurs trois versions</small></span><span class="radio-mark" aria-hidden="true"></span></button>${memoryAvailable(progress) ? `<button type="button" class="mode-card ${mode === 'memory' ? 'selected' : ''}" data-mode="memory" aria-pressed="${mode === 'memory'}"><span class="mode-icon magic">✧</span><span><strong>Mémo magique</strong><small>Une image éclair. Un mot, une seule fois.</small></span><span class="radio-mark" aria-hidden="true"></span></button>` : ''}</div><p class="reward-road">${memoryAvailable(progress) ? '✦ Mémo magique est débloqué !' : `Mémo magique s’ouvrira avec les dix premières couleurs : ${WORDS.slice(0, 10).filter(word => isUnlocked(progress, word.id, 'color')).length} / 10 débloquées.`}</p></div><div class="setup-bottom"><div id="choice-settings"><div class="step-title"><span>02</span><h2>Le défi grandit avec toi</h2></div><p class="difficulty-note" id="difficulty-note"></p></div><div class="start-block"><button type="button" class="primary start" id="start">C’est parti ! ${arrow}</button><p id="best-note">${bests[bestKey()] !== undefined ? `Ton record : ${bests[bestKey()]} étoiles sur 10 ✦` : 'Une partie · 10 questions · Plein de découvertes'}</p></div></div></section><p class="home-footnote">${speaker} Mets le son pour entendre les mots en anglais.</p>`;
   app.querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button => button.addEventListener('click', () => {
     mode = button.dataset.mode as Activity;
@@ -278,6 +278,29 @@ const dialog = document.querySelector<HTMLDialogElement>('#help-dialog')!;
 document.querySelector('#help')!.addEventListener('click', () => dialog.showModal());
 document.querySelector('#close-help')!.addEventListener('click', () => dialog.close());
 document.querySelector('#understood')!.addEventListener('click', () => dialog.close());
+const resetDialog = document.querySelector<HTMLDialogElement>('#reset-dialog')!;
+document.querySelector('#reset-open')!.addEventListener('click', () => {
+  dialog.close();
+  resetDialog.showModal();
+});
+document.querySelector('#reset-cancel')!.addEventListener('click', () => { resetDialog.close(); dialog.showModal(); });
+resetDialog.addEventListener('cancel', () => { window.setTimeout(() => dialog.showModal(), 0); });
+document.querySelector('#reset-confirm')!.addEventListener('click', () => {
+  progressNotice = '';
+  try { resetGameStorage(localStorage); }
+  catch { progressNotice = 'La remise à zéro vaut pour cette visite, mais cet appareil n’a pas permis d’effacer toute la sauvegarde.'; }
+  progress = emptyProgress();
+  bests = {};
+  sessionUnlocks = 0;
+  mode = 'listen';
+  count = 2;
+  articles = true;
+  resetDialog.close();
+  zoomDialog.close();
+  home();
+  updateArticles();
+});
+
 document.addEventListener('visibilitychange', () => { if (document.hidden) { stopSpeech(); finishFlash?.(); } });
 home();
 

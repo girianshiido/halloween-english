@@ -9,6 +9,10 @@ export function clearLegacyProgress(storage: Pick<Storage, 'removeItem'>): void 
   storage.removeItem('boo-english-progress-v1');
   storage.removeItem('boo-english-bests-v1');
 }
+export function resetGameStorage(storage: Pick<Storage, 'removeItem'>): void {
+  clearLegacyProgress(storage);
+  for (const key of [PROGRESS_KEY, BESTS_KEY, 'boo-english-articles']) storage.removeItem(key);
+}
 export const VARIANTS: readonly Variant[] = ['original', 'color', 'art'];
 export const THRESHOLDS: Record<Variant, number> = { original: 0, color: 6, art: 6 };
 export const VARIANT_LABELS: Record<Variant, string> = { original: 'Original', color: 'Couleur', art: 'Artiste' };

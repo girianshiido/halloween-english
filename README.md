@@ -49,6 +49,8 @@ Deux compteurs indépendants par carte : normal et mémo. À partir de cette mis
 
 Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les polices Google Fonts sont facultatives. Le verrouillage des illustrations est une règle locale de jeu, pas une protection de fichiers privés.
 
+Le bouton **Repartir de zéro**, en bas de l’aide (bouton « ? »), ouvre une confirmation avec **Annuler** sélectionné par défaut. Confirmer efface uniquement les données de ce jeu sur l’appareil : compteurs, records, récompenses, nouvelles cartes et préférence des articles. Le jeu revient à l’accueil, dix cartes initiales, deux choix et articles activés. Annuler conserve la partie et la progression.
+
 ## Installer comme application
 
 Le bouton **Installer** explique les étapes adaptées à l’appareil. Sur Android avec Chrome ou Edge, confirmer l’installation proposée par le navigateur. Sur iPhone et iPad, ouvrir le lien dans Safari puis **Partager → Sur l’écran d’accueil → Ajouter**. Le manifeste utilise le mode autonome et fournit des icônes classiques, adaptatives et Apple.

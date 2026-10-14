@@ -5,6 +5,11 @@ export function clearLegacyProgress(storage) {
     storage.removeItem('boo-english-progress-v1');
     storage.removeItem('boo-english-bests-v1');
 }
+export function resetGameStorage(storage) {
+    clearLegacyProgress(storage);
+    for (const key of [PROGRESS_KEY, BESTS_KEY, 'boo-english-articles'])
+        storage.removeItem(key);
+}
 export const VARIANTS = ['original', 'color', 'art'];
 export const THRESHOLDS = { original: 0, color: 6, art: 6 };
 export const VARIANT_LABELS = { original: 'Original', color: 'Couleur', art: 'Artiste' };

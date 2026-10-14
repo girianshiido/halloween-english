@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { WORDS, ORIGINAL_WORDS, createSession, answer, advance, spokenWord, progressiveCount, memoryPeek } from '../docs/app/game.js';
-import { emptyProgress, recordFound, recordAnswer, parseProgress, serializeProgress, isUnlocked, chooseVariant, discoveredWords, memoryAvailable, modeTargets, difficulty, modeLevels, clearLegacyProgress, PROGRESS_KEY, BESTS_KEY } from '../docs/app/progress.js';
+import { emptyProgress, recordFound, recordAnswer, parseProgress, serializeProgress, isUnlocked, chooseVariant, discoveredWords, memoryAvailable, modeTargets, difficulty, modeLevels, clearLegacyProgress, PROGRESS_KEY, BESTS_KEY, resetGameStorage } from '../docs/app/progress.js';
 import { collectionMarkup } from '../docs/app/collection.js';
 const colorAll = p => ORIGINAL_WORDS.forEach(w => { p[w.id].found = 6; });
 test('Six premières réussites débloquent la couleur, six mémo débloquent artiste et un seul nouvel ami', () => {
@@ -109,4 +109,13 @@ test('J’apprends présente dix originaux et dix cartes vides, puis remplace se
   colorAll(p);p.ghost.memory=6;html=learningCardsMarkup(p,'',true);
   assert.equal((html.match(/data-word=/g)||[]).length,11);assert.equal((html.match(/secret-card/g)||[]).length,9);
   assert.ok(html.includes('data-word="owl"'));assert.ok(html.includes('an owl'));assert.ok(!html.includes('data-word="snake"'));
+});
+
+test('Le reset efface uniquement les sauvegardes et préférences du jeu',()=>{
+  const keys=[PROGRESS_KEY,BESTS_KEY,'boo-english-progress-v1','boo-english-bests-v1','boo-english-articles'];
+  const store=new Map([...keys.map(key=>[key,'saved']),['other-project','preserved']]);
+  resetGameStorage({removeItem:key=>store.delete(key)});
+  assert.deepEqual([...store],[['other-project','preserved']]);
+  resetGameStorage({removeItem:key=>store.delete(key)});
+  assert.deepEqual([...store],[['other-project','preserved']]);
 });
