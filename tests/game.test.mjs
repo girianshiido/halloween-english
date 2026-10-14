@@ -69,6 +69,26 @@ test('Le mélange ne modifie pas le catalogue et varie les parties', () => {
 test('La sélection privilégie fortement les cartes faibles, sans dépasser deux occurrences',()=>{
   let seed=42;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
   const levels=Object.fromEntries(WORDS.map(w=>[w.id,30]));levels.ghost=0;
-  let low=0,other=0;for(let i=0;i<200;i++){const s=createSession('memory',2,random,WORDS.slice(0,10),levels);low+=s.questions.filter(q=>q.target.id==='ghost').length;other+=s.questions.filter(q=>q.target.id==='vampire').length;assert.equal(s.questions.filter(q=>q.cue==='flash').length,5);}
+  let low=0,other=0;for(let i=0;i<200;i++){const s=createSession('memory',2,random,WORDS,levels);low+=s.questions.filter(q=>q.target.id==='ghost').length;other+=s.questions.filter(q=>q.target.id==='vampire').length;assert.equal(s.questions.filter(q=>q.cue==='flash').length,5);}
   assert.ok(low>other*1.8);assert.ok(low<=400);
+});
+
+test('Un mot trouvé ne revient jamais dans la partie ; seuls les échecs reviennent, sans succession',()=>{
+  for(let seed=0;seed<100;seed++) {
+    const s=createSession('memory',3,randomSeed(seed));const found=new Set(), seen=[];
+    for(let i=0;i<10;i++) {
+      const q=s.questions[s.index];assert.ok(!found.has(q.target.id));assert.notEqual(q.target.id,seen.at(-1));seen.push(q.target.id);
+      const success=i%3!==0;
+      const result=answer(s,success?q.target.id:q.choices.find(w=>w.id!==q.target.id).id);
+      if(result==='correct')found.add(q.target.id);
+      advance(s);
+    }
+    for(const id of seen)assert.ok(seen.filter(w=>w===id).length<=2);
+  }
+});
+test('Une carte ratée revient deux questions plus tard, une carte corrigée au second essai reste acquise pour la partie',()=>{
+  const s=createSession('memory',2);const first=s.questions[0];answer(s,first.choices.find(w=>w.id!==first.target.id).id);advance(s);
+  assert.notEqual(s.questions[1].target.id,first.target.id);assert.equal(s.questions[2].target.id,first.target.id);
+  const read=createSession('read',2), q=read.questions[0];answer(read,q.choices.find(w=>w.id!==q.target.id).id);answer(read,q.target.id);advance(read);
+  assert.ok(read.questions.slice(1).every(next=>next.target.id!==q.target.id));
 });

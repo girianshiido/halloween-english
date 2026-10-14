@@ -39,7 +39,7 @@ Les cartes secrètes peuvent apparaître comme distracteurs mais ne deviennent j
 
 Deux propositions au départ. Trois dès qu’au moins la moitié des cartes éligibles atteint **deux réussites**, quatre dès que la moitié atteint **quatre réussites**. Le seuil est arrondi au supérieur pour un nombre impair de cartes. Les défis ordinaires utilisent les cartes découvertes et leur compteur normal ; le mémo utilise les cartes avec couleur et leur compteur mémo. La difficulté est recalculée à chaque question.
 
-Chaque partie comporte dix questions. Les cibles sont tirées avec une pondération inverse du carré de leur niveau augmenté de un : les cartes peu trouvées sont prioritaires. Une carte peut être demandée **deux fois au maximum** dans la même partie. La sélection reste aléatoire ; une partie ne garantit pas de présenter toutes les cartes.
+Chaque partie comporte dix questions. Les cibles sont tirées avec une pondération inverse du carré de leur niveau augmenté de un : les cartes peu trouvées sont prioritaires. Une carte trouvée ne revient jamais dans la même partie, même si elle a été corrigée après une erreur. Une carte ratée peut revenir une seule fois, après au moins une autre question. Deux mots identiques ne se suivent jamais. La sélection reste aléatoire ; une partie ne garantit pas de présenter toutes les cartes.
 
 Au niveau mémo **2**, un cache noir masque l’image, sauf un trou placé aléatoirement près du centre du dessin. Au niveau **4**, ce trou est plus petit. Dans les deux cas, l’image disparaît toujours après une seconde et les propositions apparaissent ensuite.
 

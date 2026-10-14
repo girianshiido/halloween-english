@@ -35,7 +35,7 @@ export interface Question { target: Word; choices: Word[]; cue: 'flash' | 'once'
 export interface Session {
   mode: Mode; count: ChoiceCount; questions: Question[];
   index: number; score: number; attempts: number; solved: boolean;
-  missed: string[]; rejected: string[];
+  missed: string[]; rejected: string[]; lastCorrect: boolean;
 }
 export const ORIGINAL_WORDS = WORDS.slice(0, 10);
 export function spokenWord(word: Word, articles = true): string {
@@ -48,15 +48,15 @@ export function progressiveCount(targets: readonly Word[], levels: Levels): Choi
   if (targets.filter(w => (levels[w.id] ?? 0) >= 2).length >= half) return 3;
   return 2;
 }
-// Weighted sampling favours low levels; a target may appear twice, never more.
+// Weighted sampling favours low levels without repeating a target initially.
 export function createSession(mode: Mode, count: ChoiceCount, random: () => number = Math.random, targets: readonly Word[] = ORIGINAL_WORDS, levels: Levels = {}): Session {
   if (!['listen', 'read', 'memory'].includes(mode)) throw new Error('Invalid mode');
   if (![2, 3, 4].includes(count)) throw new Error('Invalid choice count');
   if (!targets.length || targets.some(w => !WORDS.includes(w))) throw new Error('Invalid targets');
   const uses: Record<string, number> = {};
   const questions: Question[] = [];
-  for (let index = 0; index < Math.min(10, targets.length * 2); index++) {
-    const pool = targets.filter(w => (uses[w.id] ?? 0) < 2);
+  for (let index = 0; index < Math.min(10, targets.length); index++) {
+    const pool = targets.filter(w => (uses[w.id] ?? 0) === 0);
     const weights = pool.map(w => 1 / (1 + (levels[w.id] ?? 0) + (uses[w.id] ?? 0)) ** 2);
     let pick = random() * weights.reduce((a, b) => a + b, 0);
     let selected = pool.length - 1;
@@ -65,7 +65,7 @@ export function createSession(mode: Mode, count: ChoiceCount, random: () => numb
     uses[target.id] = (uses[target.id] ?? 0) + 1;
     questions.push({ target, cue: index % 2 === 0 ? 'flash' : 'once', choices: questionChoices(target, count, random) });
   }
-  return { mode, count, questions, index: 0, score: 0, attempts: 0, solved: false, missed: [], rejected: [] };
+  return { mode, count, questions, index: 0, score: 0, attempts: 0, solved: false, missed: [], rejected: [], lastCorrect: false };
 }
 export function questionChoices(target: Word, count: ChoiceCount, random: () => number = Math.random): Word[] {
   return shuffle([target, ...shuffle(WORDS.filter(w => w.id !== target.id), random).slice(0, count - 1)], random);
@@ -89,14 +89,27 @@ export function answer(session: Session, id: string): AnswerResult {
     return 'retry';
   }
   session.solved = true;
+  session.lastCorrect = true;
   if (session.attempts === 1) session.score++;
   return 'correct';
 }
 export function advance(session: Session): boolean {
   if (!session.solved) return false;
+  const question = session.questions[session.index];
+  if (!session.lastCorrect && question) {
+    // A missed target can return once, with at least one intervening question.
+    const retryIndex = session.index + 2;
+    const occurrences = session.questions.filter(q => q.target.id === question.target.id).length;
+    if (retryIndex < session.questions.length && occurrences < 2 &&
+        session.questions[retryIndex - 1]?.target.id !== question.target.id &&
+        session.questions[retryIndex + 1]?.target.id !== question.target.id) {
+      session.questions[retryIndex] = { target: question.target, cue: retryIndex % 2 === 0 ? 'flash' : 'once', choices: questionChoices(question.target, session.count) };
+    }
+  }
   session.index++;
   session.solved = false;
   session.attempts = 0;
+  session.lastCorrect = false;
   session.rejected = [];
   return session.index < session.questions.length;
 }
