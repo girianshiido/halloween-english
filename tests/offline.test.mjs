@@ -40,15 +40,15 @@ async function setup() {
   }
   return { stores, fetchEvent };
 }
-test('Le cache contient le jeu, les trente images, le manifeste et les icônes', async () => {
+test('Le cache contient le jeu, les soixante images, le manifeste et les icônes', async () => {
   assert.ok(!source.includes('__PRECACHE__') && !source.includes('__REVISION__'));
   const { stores } = await setup();
   assert.ok(stores.has('another-app-cache'));
   assert.ok(!stores.has('boo-english-obsolete'));
   const cache = [...stores.entries()].find(([name]) => name.startsWith('boo-english-'))[1];
-  assert.equal([...cache.keys()].filter(url => /images\/\w+\.png$/.test(url)).length, 10);
-  assert.equal([...cache.keys()].filter(url => /images\/color\/\w+\.png$/.test(url)).length, 10);
-  assert.equal([...cache.keys()].filter(url => /images\/art\/\w+\.png$/.test(url)).length, 10);
+  assert.equal([...cache.keys()].filter(url => /images\/\w+\.png$/.test(url)).length, 20);
+  assert.equal([...cache.keys()].filter(url => /images\/color\/\w+\.png$/.test(url)).length, 20);
+  assert.equal([...cache.keys()].filter(url => /images\/art\/\w+\.png$/.test(url)).length, 20);
   for (const file of ['index.html', 'style.css', 'app/main.js', 'app/game.js', 'app/speech.js', 'app/install.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png']) assert.ok(cache.has(scope + file));
 });
 test('Sans réseau, les pages et les images restent accessibles, même avec un paramètre URL', async () => {

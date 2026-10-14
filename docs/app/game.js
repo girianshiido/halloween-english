@@ -1,14 +1,24 @@
 export const WORDS = [
-    { id: 'ghost', english: 'ghost', french: 'fantôme' },
-    { id: 'vampire', english: 'vampire', french: 'vampire' },
-    { id: 'pumpkin', english: 'pumpkin', french: 'citrouille' },
-    { id: 'monster', english: 'monster', french: 'monstre' },
-    { id: 'witch', english: 'witch', french: 'sorcière' },
-    { id: 'bat', english: 'bat', french: 'chauve-souris' },
-    { id: 'skeleton', english: 'skeleton', french: 'squelette' },
-    { id: 'spider', english: 'spider', french: 'araignée' },
-    { id: 'rat', english: 'rat', french: 'rat' },
-    { id: 'frog', english: 'frog', french: 'grenouille' },
+    { id: 'ghost', unlocks: 'owl', english: 'ghost', french: 'fantôme' },
+    { id: 'vampire', unlocks: 'snake', english: 'vampire', french: 'vampire' },
+    { id: 'pumpkin', unlocks: 'crow', english: 'pumpkin', french: 'citrouille' },
+    { id: 'monster', unlocks: 'wolf', english: 'monster', french: 'monstre' },
+    { id: 'witch', unlocks: 'moon', english: 'witch', french: 'sorcière' },
+    { id: 'bat', unlocks: 'skull', english: 'bat', french: 'chauve-souris' },
+    { id: 'skeleton', unlocks: 'mask', english: 'skeleton', french: 'squelette' },
+    { id: 'spider', unlocks: 'candle', english: 'spider', french: 'araignée' },
+    { id: 'rat', unlocks: 'hat', english: 'rat', french: 'rat' },
+    { id: 'frog', unlocks: 'sweet', english: 'frog', french: 'grenouille' },
+    { id: 'owl', english: 'owl', french: 'hibou', article: 'an' },
+    { id: 'snake', english: 'snake', french: 'serpent' },
+    { id: 'crow', english: 'crow', french: 'corbeau' },
+    { id: 'wolf', english: 'wolf', french: 'loup' },
+    { id: 'moon', english: 'Moon', french: 'Lune', article: 'the' },
+    { id: 'skull', english: 'skull', french: 'crâne' },
+    { id: 'mask', english: 'mask', french: 'masque' },
+    { id: 'candle', english: 'candle', french: 'bougie' },
+    { id: 'hat', english: 'hat', french: 'chapeau' },
+    { id: 'sweet', english: 'sweet', french: 'bonbon' },
 ];
 export function shuffle(items, random = Math.random) {
     const result = [...items];
@@ -18,19 +28,55 @@ export function shuffle(items, random = Math.random) {
     }
     return result;
 }
-export function createSession(mode, count, random = Math.random) {
+export const ORIGINAL_WORDS = WORDS.slice(0, 10);
+export function spokenWord(word, articles = true) {
+    return articles ? `${word.article ?? 'a'} ${word.english}` : word.english;
+}
+export function progressiveCount(targets, levels) {
+    const half = Math.ceil(targets.length / 2);
+    if (targets.filter(w => (levels[w.id] ?? 0) >= 4).length >= half)
+        return 4;
+    if (targets.filter(w => (levels[w.id] ?? 0) >= 2).length >= half)
+        return 3;
+    return 2;
+}
+// Weighted sampling favours low levels; a target may appear twice, never more.
+export function createSession(mode, count, random = Math.random, targets = ORIGINAL_WORDS, levels = {}) {
     if (!['listen', 'read', 'memory'].includes(mode))
         throw new Error('Invalid mode');
     if (![2, 3, 4].includes(count))
         throw new Error('Invalid choice count');
-    if (mode === 'memory' && count !== 3)
-        throw new Error('Memory requires three choices');
-    const questions = shuffle(WORDS, random).map((target, index) => ({
-        target,
-        cue: index % 2 === 0 ? 'flash' : 'once',
-        choices: shuffle([target, ...shuffle(WORDS.filter(w => w.id !== target.id), random).slice(0, count - 1)], random),
-    }));
+    if (!targets.length || targets.some(w => !WORDS.includes(w)))
+        throw new Error('Invalid targets');
+    const uses = {};
+    const questions = [];
+    for (let index = 0; index < Math.min(10, targets.length * 2); index++) {
+        const pool = targets.filter(w => (uses[w.id] ?? 0) < 2);
+        const weights = pool.map(w => 1 / (1 + (levels[w.id] ?? 0) + (uses[w.id] ?? 0)) ** 2);
+        let pick = random() * weights.reduce((a, b) => a + b, 0);
+        let selected = pool.length - 1;
+        for (let i = 0; i < pool.length; i++) {
+            pick -= weights[i];
+            if (pick < 0) {
+                selected = i;
+                break;
+            }
+        }
+        const target = pool[selected];
+        uses[target.id] = (uses[target.id] ?? 0) + 1;
+        questions.push({ target, cue: index % 2 === 0 ? 'flash' : 'once', choices: questionChoices(target, count, random) });
+    }
     return { mode, count, questions, index: 0, score: 0, attempts: 0, solved: false, missed: [], rejected: [] };
+}
+export function questionChoices(target, count, random = Math.random) {
+    return shuffle([target, ...shuffle(WORDS.filter(w => w.id !== target.id), random).slice(0, count - 1)], random);
+}
+export function memoryPeek(level, random = Math.random) {
+    if (level < 2)
+        return null;
+    const radius = level >= 4 ? 18 : 30;
+    // The window stays near the subject, entirely inside the picture.
+    return { radius, x: 35 + random() * 30, y: 35 + random() * 30 };
 }
 export function answer(session, id) {
     const q = session.questions[session.index];
@@ -39,7 +85,7 @@ export function answer(session, id) {
     session.attempts++;
     if (id !== q.target.id) {
         session.rejected.push(id);
-        if (!session.missed.includes(q.target.id))
+        if (session.attempts === 1)
             session.missed.push(q.target.id);
         if (session.mode === 'memory') {
             session.solved = true;

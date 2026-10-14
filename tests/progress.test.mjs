@@ -1,15 +1,94 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { WORDS, createSession, answer, advance } from '../docs/app/game.js';
-import { emptyProgress, parseProgress, serializeProgress, recordFound, chooseVariant, isUnlocked, memoryAvailable } from '../docs/app/progress.js';
+import { WORDS, ORIGINAL_WORDS, createSession, answer, advance, spokenWord, progressiveCount, memoryPeek } from '../docs/app/game.js';
+import { emptyProgress, recordFound, recordAnswer, parseProgress, serializeProgress, isUnlocked, chooseVariant, discoveredWords, memoryAvailable, modeTargets, difficulty, modeLevels } from '../docs/app/progress.js';
 import { collectionMarkup } from '../docs/app/collection.js';
-function colored(){const p=emptyProgress();for(const w of WORDS)for(let i=0;i<10;i++)recordFound(p,w.id);return p;}
-test('Départ : dix originaux, aucune couleur, Mémo magique verrouillé',()=>{const p=emptyProgress();assert.ok(!memoryAvailable(p));for(const w of WORDS){assert.deepEqual(p[w.id],{found:0,memory:0,selected:'original'});assert.ok(isUnlocked(p,w.id,'original'));assert.ok(!isUnlocked(p,w.id,'color'));assert.ok(!isUnlocked(p,w.id,'art'));}});
-test('La couleur se débloque exactement à dix, les parties normales ne débloquent jamais l’art',()=>{const p=emptyProgress();for(let i=1;i<=40;i++){assert.equal(recordFound(p,'ghost'),i===10?'color':null);assert.equal(isUnlocked(p,'ghost','color'),i>=10);assert.ok(!isUnlocked(p,'ghost','art'));assert.equal(p.ghost.selected,'original');}assert.equal(p.pumpkin.found,0);assert.equal(recordFound(p,'ghost',true),null);assert.equal(p.ghost.memory,0);});
-test('Mémo magique attend les dix couleurs, pas neuf',()=>{const p=colored();p.frog.found=9;assert.ok(!memoryAvailable(p));assert.equal(recordFound(p,'ghost',true),null);recordFound(p,'frog');assert.ok(memoryAvailable(p));});
-test('Dix réussites dans Mémo magique débloquent définitivement l’artiste par carte',()=>{const p=colored();assert.ok(chooseVariant(p,'ghost','color'));for(let i=1;i<=12;i++){assert.equal(recordFound(p,'ghost',true),i===10?'art':null);assert.equal(p.ghost.memory,i);assert.equal(p.ghost.found,10+i);assert.equal(isUnlocked(p,'ghost','art'),i>=10);assert.equal(p.ghost.selected,'color');}assert.ok(!isUnlocked(p,'pumpkin','art'));assert.ok(chooseVariant(p,'ghost','art'));const restored=parseProgress(serializeProgress(p));assert.equal(restored.ghost.selected,'art');assert.ok(isUnlocked(restored,'ghost','art'));assert.equal(chooseVariant(restored,'frog','art'),false);});
-test('Une question Mémo magique a une seule tentative et ne rapporte rien après une erreur',()=>{const p=colored(),s=createSession('memory',3);const q=s.questions[0];const wrong=q.choices.find(w=>w.id!==q.target.id);const submit=id=>{const result=answer(s,id);if(result==='correct')recordFound(p,q.target.id,true);return result;};assert.equal(submit(wrong.id),'incorrect');assert.equal(submit(q.target.id),'ignored');assert.equal(p[q.target.id].memory,0);assert.equal(s.score,0);assert.ok(advance(s));const id=s.questions[1].target.id;assert.equal(answer(s,id),'correct');recordFound(p,id,true);assert.equal(answer(s,id),'ignored');assert.equal(p[id].memory,1);});
-test('Les sauvegardes v1 gardent les couleurs ; seuls les compteurs Mémo valides débloquent l’art',()=>{const p=parseProgress(JSON.stringify({version:1,words:{ghost:{found:30,selected:'art'},rat:{found:10,selected:'color'}}}));assert.deepEqual(p.ghost,{found:30,memory:0,selected:'original'});assert.equal(p.rat.selected,'color');assert.equal(p.rat.memory,0);const bad=parseProgress(JSON.stringify({version:2,words:{ghost:{found:9,memory:20,selected:'art'},bat:{found:-1,memory:10,selected:'color'},rat:{found:20,memory:10.5,selected:'art'}}}));assert.equal(bad.ghost.selected,'original');assert.equal(bad.bat.found,0);assert.equal(bad.rat.memory,0);for(const raw of [null,'','{','{}','{"version":3,"words":{}}'])assert.deepEqual(parseProgress(raw),emptyProgress());});
-test('La collection masque les versions verrouillées, propose le zoom et un choix séparé',()=>{const p=emptyProgress();let html=collectionMarkup(p,'','');assert.equal((html.match(/<article /g)??[]).length,10);assert.equal((html.match(/class="variant-tile locked"/g)??[]).length,20);assert.ok(!html.includes('src="./images/color/'));assert.equal((html.match(/data-zoom=/g)??[]).length,10);assert.equal((html.match(/data-choose=/g)??[]).length,10);const c=colored();for(let i=0;i<10;i++)recordFound(c,'ghost',true);html=collectionMarkup(c,'','');assert.ok(html.includes('src="./images/art/ghost.png"'));assert.ok(!html.includes('src="./images/art/frog.png"'));assert.equal((html.match(/class="variant-tile locked"/g)??[]).length,9);});
-test('Dix parties normales puis dix Mémo débloquent exactement vingt récompenses',()=>{let p=emptyProgress(),unlocks=0;for(let round=0;round<20;round++){const mode=round<10?(round%2?'read':'listen'):'memory';const s=createSession(mode,3);for(let i=0;i<10;i++){const id=s.questions[s.index].target.id;assert.equal(answer(s,id),'correct');if(recordFound(p,id,mode==='memory'))unlocks++;p=parseProgress(serializeProgress(p));advance(s);}if(round===8)assert.ok(!memoryAvailable(p));if(round===9)assert.ok(memoryAvailable(p));}assert.equal(unlocks,20);for(const w of WORDS){assert.deepEqual(p[w.id],{found:20,memory:10,selected:'original'});}});
-test('Mémo alterne cinq images éclair et cinq mots uniques, toujours trois choix',()=>{assert.throws(()=>createSession('memory',2));assert.throws(()=>createSession('memory',4));for(let i=0;i<100;i++){const s=createSession('memory',3);assert.equal(new Set(s.questions.map(q=>q.target.id)).size,10);assert.equal(s.questions.filter(q=>q.cue==='flash').length,5);assert.equal(s.questions.filter(q=>q.cue==='once').length,5);s.questions.forEach((q,n)=>{assert.equal(q.cue,n%2?'once':'flash');assert.equal(q.choices.length,3);assert.equal(new Set(q.choices.map(w=>w.id)).size,3);assert.ok(q.choices.some(w=>w.id===q.target.id));});}});
+const colorAll = p => ORIGINAL_WORDS.forEach(w => { p[w.id].found = 6; });
+test('Six premières réussites débloquent la couleur, six mémo débloquent artiste et un seul nouvel ami', () => {
+  const p = emptyProgress();
+  assert.equal(discoveredWords(p).length, 10);
+  for(let n=0;n<5;n++) assert.equal(recordFound(p,'ghost'),null);
+  assert.equal(isUnlocked(p,'ghost','color'),false);
+  assert.equal(recordFound(p,'ghost'),'color');
+  assert.equal(recordFound(p,'ghost',true),null);
+  colorAll(p); assert.equal(memoryAvailable(p),true);
+  for(let n=0;n<5;n++) assert.equal(recordFound(p,'ghost',true),null);
+  assert.equal(discoveredWords(p).length,10);
+  assert.equal(recordFound(p,'ghost',true),'art');
+  assert.equal(discoveredWords(p).length,11);
+  assert.ok(discoveredWords(p).some(w=>w.id==='owl'));
+  assert.equal(p.ghost.found,6); // Counters are independent.
+  assert.equal(p.ghost.selected,'original');
+  assert.equal(chooseVariant(p,'ghost','art'),true);
+  assert.equal(memoryAvailable(p),true); // New cards never relock the mode.
+  assert.equal(modeTargets(p,'memory').some(w=>w.id==='owl'),false);
+  for(let n=0;n<6;n++) recordFound(p,'owl');
+  assert.equal(modeTargets(p,'memory').some(w=>w.id==='owl'),true);
+  assert.equal(parseProgress(serializeProgress(p)).ghost.selected,'art');
+});
+test('Les dix chaînes révèlent exactement les dix nouvelles cartes, sans doublons ni progression secrète',()=>{
+  const p=emptyProgress(); colorAll(p);
+  assert.equal(recordFound(p,'owl'),null);assert.equal(p.owl.found,0);
+  for(const w of ORIGINAL_WORDS) for(let n=0;n<6;n++) recordFound(p,w.id,true);
+  assert.equal(discoveredWords(p).length,20);
+  assert.equal(new Set(ORIGINAL_WORDS.map(w=>w.unlocks)).size,10);
+  assert.equal(recordFound(p,'ghost',true),null);
+  assert.equal(discoveredWords(p).length,20);
+});
+test('Une correction au deuxième essai ne fait monter aucun compteur ; les doublons sont ignorés',()=>{
+  const p=emptyProgress(), s=createSession('read',2);
+  const q=s.questions[0], wrong=q.choices.find(w=>w.id!==q.target.id);
+  let r=answer(s,wrong.id); assert.equal(recordAnswer(p,s,r),null);
+  r=answer(s,q.target.id);assert.equal(r,'correct');recordAnswer(p,s,r);
+  assert.equal(p[q.target.id].found,0);assert.equal(s.score,0);
+  advance(s);const target=s.questions[1].target.id;
+  r=answer(s,target);recordAnswer(p,s,r);assert.equal(p[target].found,1);
+  r=answer(s,target);recordAnswer(p,s,r);assert.equal(p[target].found,1);
+});
+test('Deux choix puis trois à la moitié au niveau 2, quatre à la moitié au niveau 4, mémo indépendant',()=>{
+  const p=emptyProgress();assert.equal(difficulty(p,'read'),2);
+  ORIGINAL_WORDS.slice(0,4).forEach(w=>p[w.id].found=2);assert.equal(difficulty(p,'listen'),2);
+  p[ORIGINAL_WORDS[4].id].found=2;assert.equal(difficulty(p,'listen'),3);
+  ORIGINAL_WORDS.slice(0,5).forEach(w=>p[w.id].found=4);assert.equal(difficulty(p,'read'),4);
+  colorAll(p);assert.equal(difficulty(p,'memory'),2);
+  ORIGINAL_WORDS.slice(0,5).forEach(w=>p[w.id].memory=2);assert.equal(difficulty(p,'memory'),3);
+  ORIGINAL_WORDS.slice(0,5).forEach(w=>p[w.id].memory=4);assert.equal(difficulty(p,'memory'),4);
+  assert.equal(progressiveCount(WORDS.slice(0,11),Object.fromEntries(WORDS.slice(0,5).map(w=>[w.id,4]))),2);
+});
+test('Cache noir au niveau mémo 2 et trou plus petit au niveau 4, position bornée et aléatoire',()=>{
+  assert.equal(memoryPeek(1),null);
+  const medium=memoryPeek(2,()=>0), small=memoryPeek(4,()=>0.999);
+  assert.ok(small.radius<medium.radius);assert.equal(medium.x,35);assert.ok(small.x<65);
+  assert.notEqual(medium.x,small.x);assert.notEqual(medium.y,small.y);
+});
+test('Articles adaptés et désactivation',()=>{
+  assert.equal(spokenWord(WORDS[0]),'a ghost');
+  assert.equal(spokenWord(WORDS.find(w=>w.id==='owl')),'an owl');
+  assert.equal(spokenWord(WORDS.find(w=>w.id==='moon')),'the Moon');
+  assert.equal(spokenWord(WORDS[0],false),'ghost');
+});
+test('Migration conserve acquis et sélection, nouvelles cartes révélées selon les compteurs mémo sauvegardés',()=>{
+  for(const version of [2,3]) {
+    const p=parseProgress(JSON.stringify({version,words:{ghost:{found:10,memory:10,selected:'art'},vampire:{found:6,memory:0,selected:'color'}}}));
+    assert.equal(p.ghost.selected,'art');assert.equal(p.vampire.selected,'color');assert.equal(discoveredWords(p).length,11);
+  }
+  const p=parseProgress(JSON.stringify({version:1,words:{ghost:{found:12,selected:'color'}}}));
+  assert.equal(p.ghost.found,12);assert.equal(p.ghost.memory,0);assert.equal(p.ghost.selected,'color');
+  assert.deepEqual(parseProgress('{bad'),emptyProgress());
+  assert.deepEqual(parseProgress(JSON.stringify({version:3,words:{ghost:{found:-1,memory:Infinity}}})),emptyProgress());
+});
+test('Collection garde les cartes secrètes cachées, distingue agrandir et choisir',()=>{
+  const p=emptyProgress();let html=collectionMarkup(p,'','');
+  assert.equal((html.match(/<article /g)||[]).length,10);
+  assert.ok(!html.includes('data-zoom="owl"'));assert.ok(!html.includes('images/color/ghost.png'));
+  colorAll(p);p.ghost.memory=6;html=collectionMarkup(p,'','');
+  assert.equal((html.match(/<article /g)||[]).length,11);
+  assert.ok(html.includes('data-zoom="owl"'));assert.ok(html.includes('data-choose="ghost"'));
+});
+
+test('Les textes de collection suivent également la préférence des articles',()=>{
+  const p=emptyProgress();colorAll(p);p.ghost.memory=6;p.witch.memory=6;
+  const withArticles=collectionMarkup(p,'','',true), without=collectionMarkup(p,'','',false);
+  assert.match(withArticles,/>an owl</);assert.match(withArticles,/>the Moon</);assert.match(withArticles,/>a skeleton</);
+  assert.match(without,/>owl</);assert.match(without,/>Moon</);assert.ok(!without.includes('>an owl<'));
+});

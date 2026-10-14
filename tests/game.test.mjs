@@ -2,12 +2,13 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createSession, answer, advance, WORDS, shuffle } from '../docs/app/game.js';
 function randomSeed(seed) { return () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; }
-test('Chaque combinaison propose dix cibles uniques et des distracteurs sans doublons', () => {
+test('Chaque combinaison propose dix questions et des distracteurs sans doublons', () => {
   const positions = new Set();
   for (const mode of ['listen', 'read']) for (const count of [2, 3, 4]) for (let seed = 0; seed < 100; seed++) {
     const s = createSession(mode, count, randomSeed(seed));
     assert.equal(s.questions.length, 10);
-    assert.equal(new Set(s.questions.map(q => q.target.id)).size, 10);
+    assert.ok(s.questions.every(q => WORDS.slice(0, 10).includes(q.target)));
+    for(const word of WORDS) assert.ok(s.questions.filter(q=>q.target.id===word.id).length<=2);
     for (const q of s.questions) {
       assert.equal(q.choices.length, count);
       assert.equal(new Set(q.choices.map(w => w.id)).size, count);
@@ -63,4 +64,11 @@ test('Le mélange ne modifie pas le catalogue et varie les parties', () => {
   shuffle(WORDS, randomSeed(1));
   assert.deepEqual(WORDS, before);
   assert.notDeepEqual(createSession('read', 3, randomSeed(1)).questions, createSession('read', 3, randomSeed(2)).questions);
+});
+
+test('La sélection privilégie fortement les cartes faibles, sans dépasser deux occurrences',()=>{
+  let seed=42;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
+  const levels=Object.fromEntries(WORDS.map(w=>[w.id,30]));levels.ghost=0;
+  let low=0,other=0;for(let i=0;i<200;i++){const s=createSession('memory',2,random,WORDS.slice(0,10),levels);low+=s.questions.filter(q=>q.target.id==='ghost').length;other+=s.questions.filter(q=>q.target.id==='vampire').length;assert.equal(s.questions.filter(q=>q.cue==='flash').length,5);}
+  assert.ok(low>other*1.8);assert.ok(low<=400);
 });

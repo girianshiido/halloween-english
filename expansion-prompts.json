@@ -1,0 +1,192 @@
+[
+  {
+    "id": "owl",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference image is style reference only, replace its subject entirely. Draw a friendly owl with big round eyes and small ear tufts. Pure black-and-white coloring-book illustration, clean thick rounded black contours, large simple white inner shapes, charming slightly quirky hand-drawn children’s worksheet style matching the reference. Single isolated subject centered with generous white margin on plain white background. Full silhouette visible. No text, no frame, no scenery, no gray shading, no color, no dust pixels, no scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/owl.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white owl vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: warm brown feathers, cream face and belly, amber beak and feet. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/owl.png",
+      "file": "public/images/color/owl.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white owl vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: warm brown feathers, cream face and belly, amber beak and feet. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/owl.png",
+      "file": "public/images/art/owl.png"
+    }
+  },
+  {
+    "id": "snake",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference image is style reference only, replace its subject entirely. Draw a friendly curled snake with a tiny forked tongue. Pure black-and-white coloring-book illustration, clean thick rounded black contours, large simple white inner shapes, charming slightly quirky hand-drawn children’s worksheet style matching the reference. Single isolated subject centered with generous white margin on plain white background. Full silhouette visible. No text, no frame, no scenery, no gray shading, no color, no dust pixels, no scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/snake.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white snake vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: bright leaf green body, pale yellow belly, pink tongue. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/snake.png",
+      "file": "public/images/color/snake.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white snake vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: bright leaf green body, pale yellow belly, pink tongue. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/snake.png",
+      "file": "public/images/art/snake.png"
+    }
+  },
+  {
+    "id": "crow",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference image is style reference only, replace its subject entirely. Draw a friendly crow with a recognizable beak and folded wings. Pure black-and-white coloring-book illustration, clean thick rounded black contours, large simple white inner shapes, charming slightly quirky hand-drawn children’s worksheet style matching the reference. Single isolated subject centered with generous white margin on plain white background. Full silhouette visible. No text, no frame, no scenery, no gray shading, no color, no dust pixels, no scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/crow.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white crow vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: deep charcoal purple feathers, slate blue highlights, golden beak and feet. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/crow.png",
+      "file": "public/images/color/crow.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white crow vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: deep charcoal purple feathers, slate blue highlights, golden beak and feet. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/crow.png",
+      "file": "public/images/art/crow.png"
+    }
+  },
+  {
+    "id": "wolf",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw a friendly seated wolf with pointed ears and a fluffy tail. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/wolf.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white wolf vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: silver gray fur, cream muzzle and belly, blue-gray accents. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/wolf.png",
+      "file": "public/images/color/wolf.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white wolf vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: silver gray fur, cream muzzle and belly, blue-gray accents. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/wolf.png",
+      "file": "public/images/art/wolf.png"
+    }
+  },
+  {
+    "id": "moon",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw a crescent Moon with a kind smiling face. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/moon.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white moon vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: warm golden yellow crescent, pale buttery highlights. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/moon.png",
+      "file": "public/images/color/moon.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white moon vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: warm golden yellow crescent, pale buttery highlights. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/moon.png",
+      "file": "public/images/art/moon.png"
+    }
+  },
+  {
+    "id": "skull",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw a cute Halloween skull with rounded eye sockets and a simple toothy smile. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/skull.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white skull vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: warm ivory bone, soft violet eye sockets. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/skull.png",
+      "file": "public/images/color/skull.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white skull vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: warm ivory bone, soft violet eye sockets. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/skull.png",
+      "file": "public/images/art/skull.png"
+    }
+  },
+  {
+    "id": "mask",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw a Halloween masquerade eye mask with a simple ribbon. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/mask.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white mask vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: orange and purple mask, purple ribbon, golden accents. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/mask.png",
+      "file": "public/images/color/mask.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white mask vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: orange and purple mask, purple ribbon, golden accents. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/mask.png",
+      "file": "public/images/art/mask.png"
+    }
+  },
+  {
+    "id": "candle",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw a single chunky candle with wax drips, a small flame and a simple holder. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/candle.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white candle vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: warm ivory wax, orange-yellow flame, violet holder. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/candle.png",
+      "file": "public/images/color/candle.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white candle vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: warm ivory wax, orange-yellow flame, violet holder. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/candle.png",
+      "file": "public/images/art/candle.png"
+    }
+  },
+  {
+    "id": "hat",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw a crooked pointed Halloween witch hat with a buckle and wide brim. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/hat.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white hat vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: deep purple hat, orange band, golden buckle. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/hat.png",
+      "file": "public/images/color/hat.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white hat vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: deep purple hat, orange band, golden buckle. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/hat.png",
+      "file": "public/images/art/hat.png"
+    }
+  },
+  {
+    "id": "sweet",
+    "tool": "image_gen intégré",
+    "original": {
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference is style reference only, replace subject entirely. Draw one wrapped sweet with twisted wrapper ends. Pure black-and-white coloring-book illustration, clean thick rounded black contours, simple large white inner shapes, charming slightly quirky children’s worksheet style matching reference. Single isolated subject centered with generous white margin on plain white background, full silhouette visible. No text, frame, scenery, gray shading, color, dust pixels, scary or violent details.",
+      "reference": "public/images/bat.png",
+      "file": "public/images/sweet.png"
+    },
+    "color": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white sweet vocabulary illustration. Create the flat color version: fill clean solid colors, no gradients, keep bold outlines and simple coloring-book appearance. Palette: orange and violet wrapper, pink candy accents. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/sweet.png",
+      "file": "public/images/color/sweet.png"
+    },
+    "art": {
+      "prompt": "Use case: style-transfer. Edit target: reference black-and-white sweet vocabulary illustration. Create the premium artist color reward: polished children’s book illustration with elegant smooth shading, beautiful soft lighting, subtle material texture, crisp professional contours, richness and depth. Palette: orange and violet wrapper, pink candy accents. Preserve EXACT subject identity, pose, composition, silhouette, facial expression and all details. Plain white background, same full subject and generous margins. No added objects, text, border, dust or scenery. Keep friendly Halloween mood.",
+      "reference": "public/images/sweet.png",
+      "file": "public/images/art/sweet.png"
+    }
+  }
+]

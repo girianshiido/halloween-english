@@ -1,37 +1,57 @@
 # Boo! English
 
-Jeu éducatif d’Halloween autonome en TypeScript. Dix illustrations en noir et blanc, quatre modes (« J’apprends », « J’écoute », « Je regarde » et « Ma collection »), et 2, 3 ou 4 réponses au choix dans les défis. Chaque partie présente les dix mots une fois, dans un ordre aléatoire.
+Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun avec trois illustrations (original, couleur, artiste). Dix amis sont disponibles au départ, dix autres se découvrent progressivement. Aucun compte requis.
 
-## Jouer
+[Jouer directement](https://girianshiido.github.io/halloween-english/)
 
-https://girianshiido.github.io/halloween-english/
+## Les activités
 
-Aucun compte, aucune installation. Compatible avec les navigateurs récents sur ordinateur, tablette et smartphone. Pour le mode écoute, activer le son. La prononciation utilise la synthèse vocale du navigateur avec une voix anglaise (britannique en priorité). Les mots sont prononcés à la suite d’une action tactile pour respecter les restrictions mobiles. La disponibilité et la qualité des voix dépendent de l’appareil et du navigateur. En cas d’échec, un message invite à vérifier le son ou à changer de navigateur.
+- **J’apprends** : toutes les cartes déjà découvertes, à écouter librement.
+- **J’écoute** : entendre un mot et choisir l’image.
+- **Je regarde** : regarder une image et choisir le mot ; chaque réponse touchée est prononcée.
+- **Ma collection** : compteurs, trois versions, zoom au toucher et choix manuel de la version utilisée.
+- **Mémo magique**, une fois les dix premières couleurs débloquées : cinq images montrées une seconde puis cachées et cinq mots entendus une seule fois. Une seule tentative, aucune réécoute audio.
 
-Une étoile est attribuée si la première réponse est correcte. Après une erreur, l’enfant peut réessayer sans limite de temps. Le bilan affiche les étoiles gagnées et les boutons pour rejouer ou changer de défi. Le mode « J’apprends », accessible directement depuis l’accueil, présente les dix cartes avec le mot anglais et sa traduction ; toucher une carte prononce le mot, sans score ni limite de temps. Le meilleur score est conservé séparément pour chaque mode et nombre de choix dans le stockage local, sans serveur ni collecte de données de jeu. Les polices Google Fonts sont facultatives : des polices système prennent le relais si elles ne sont pas accessibles.
+La touche **a / an / the** active les articles dans les prononciations et les textes anglais, par défaut : « a ghost », « an owl », « the Moon ». Le réglage persiste sur l’appareil et actualise les propositions même pendant une question.
 
-## Collection et récompenses
+## Progression
 
-Chaque bonne identification dans « J’écoute » ou « Je regarde » ajoute **une réussite au compteur de l’image cible**, même après un nouvel essai. Les doubles réponses et les clics d’écoute ne comptent pas. À **10 réussites par carte**, sa version couleur fidèle est débloquée. Elle n’est jamais sélectionnée automatiquement.
+Seule une **bonne réponse du premier coup** gagne une étoile et augmente le compteur. Les défis ordinaires permettent de corriger une erreur pour apprendre, sans faire monter la carte. Écouter une carte, cliquer deux fois ou répondre à un distracteur ne donne aucun progrès.
 
-Quand les **dix versions couleur sont débloquées**, un cinquième mode apparaît : **Mémo magique**. Ce défi alterne cinq questions de chaque type :
+**Six réussites normales** débloquent la couleur. Les dix premières couleurs ouvrent définitivement l’accès à Mémo magique. Les cartes découvertes rejoignent ce mode quand leur couleur est débloquée. **Six réussites mémo** débloquent la version artiste, et pour chaque carte officielle une nouvelle carte :
 
-- **Image éclair** : après « Regarder 1 seconde », l’image préchargée apparaît pendant 1 000 ms, puis est retirée. Les trois mots apparaissent ensuite. Il n’est pas possible de revoir l’image.
-- **Mot secret** : après « Écouter une seule fois », le mot anglais est prononcé et les trois images apparaissent. Aucun bouton de réécoute n’est proposé.
+| Ami officiel | Nouvelle carte |
+| --- | --- |
+| ghost | owl |
+| vampire | snake |
+| pumpkin | crow |
+| monster | wolf |
+| witch | Moon |
+| bat | skull |
+| skeleton | mask |
+| spider | candle |
+| rat | hat |
+| frog | sweet |
 
-Une seule tentative par question. Une erreur affiche la correction et permet de continuer, sans réussite supplémentaire. Une réussite dans Mémo magique ajoute un point au compteur Mémo de la carte cible, ainsi qu’à son total de bonnes identifications. **10 réussites Mémo par carte** débloquent définitivement sa version artiste. Les défis classiques ne font jamais progresser ce second compteur. En cas d’erreur audio, la question peut être passée sans point.
+Les cartes secrètes peuvent apparaître comme distracteurs mais ne deviennent jamais des cibles avant leur découverte. Elles restent absentes des galeries jusque-là. Une récompense ne change jamais automatiquement la version choisie.
 
-« Ma collection » présente les trois emplacements de chaque personnage avec son compteur. Les versions encore verrouillées ne sont pas affichées. Toucher une image débloquée l’ouvre dans un **zoom** ; un bouton séparé permet de sélectionner la version utilisée dans « J’apprends » et les défis. Le dessin original reste disponible. Les images décoratives de l’accueil restent en noir et blanc.
+## Difficulté progressive et révisions
 
-Compteurs et choix sont enregistrés sur cet appareil et dans ce navigateur, sans compte, séparément des anciens meilleurs scores. Les parties antérieures à cette fonction ne sont pas reconstituées à partir d’un score global. Si le stockage est indisponible, un message l’indique et le jeu reste utilisable pendant la visite.
+Deux propositions au départ. Trois dès qu’au moins la moitié des cartes éligibles atteint **deux réussites**, quatre dès que la moitié atteint **quatre réussites**. Le seuil est arrondi au supérieur pour un nombre impair de cartes. Les défis ordinaires utilisent les cartes découvertes et leur compteur normal ; le mémo utilise les cartes avec couleur et leur compteur mémo. La difficulté est recalculée à chaque question.
 
-Les trente images sont mises en cache pour rester accessibles hors ligne, y compris les récompenses une fois débloquées. Les verrouillages constituent une mécanique de jeu locale, pas un contrôle d’accès à des fichiers privés.
+Chaque partie comporte dix questions. Les cibles sont tirées avec une pondération inverse du carré de leur niveau augmenté de un : les cartes peu trouvées sont prioritaires. Une carte peut être demandée **deux fois au maximum** dans la même partie. La sélection reste aléatoire ; une partie ne garantit pas de présenter toutes les cartes.
+
+Au niveau mémo **2**, un cache noir masque l’image, sauf un trou placé aléatoirement près du centre du dessin. Au niveau **4**, ce trou est plus petit. Dans les deux cas, l’image disparaît toujours après une seconde et les propositions apparaissent ensuite.
+
+## Sauvegardes et confidentialité
+
+Deux compteurs indépendants par carte : normal et mémo. Les anciens acquis et choix sont conservés lors de la migration vers le format 3 ; les anciennes sauvegardes ne permettent pas de reconstituer rétrospectivement les réponses du premier coup. Les nouvelles cartes se révèlent selon les acquis mémo conservés. Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les polices Google Fonts sont facultatives. Le verrouillage des illustrations est une règle locale de jeu, pas une protection de fichiers privés.
 
 ## Installer comme application
 
 Le bouton **Installer** explique les étapes adaptées à l’appareil. Sur Android avec Chrome ou Edge, confirmer l’installation proposée par le navigateur. Sur iPhone et iPad, ouvrir le lien dans Safari puis **Partager → Sur l’écran d’accueil → Ajouter**. Le manifeste utilise le mode autonome et fournit des icônes classiques, adaptatives et Apple.
 
-Après la première ouverture connectée, le jeu, ses trente images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
+Après la première ouverture connectée, le jeu, ses soixante images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
 
 Le cache et le service worker restent limités au chemin de ce dépôt. Une nouvelle version attend la fermeture des anciennes fenêtres du jeu pour remplacer la précédente sans interrompre une partie.
 
@@ -51,11 +71,11 @@ Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `mai
 
 ## Vocabulaire
 
-ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog.
+ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet.
 
 ## Vérifications
 
-Tests automatisés du moteur : 600 parties couvrant les deux modes et les trois difficultés, unicité des questions, présence de la bonne réponse, diversité des positions, scores, erreurs, doubles réponses et fin de partie. Les vérifications de rendu et de parcours sont consignées dans `VALIDATION.md`.
+Tests automatisés du moteur : 600 parties couvrant les deux modes et les trois difficultés, cibles découvertes, répétition limitée à deux et priorité aux cartes faibles, présence de la bonne réponse, diversité des positions, scores, erreurs, doubles réponses et fin de partie. Les vérifications de rendu et de parcours sont consignées dans `VALIDATION.md`.
 
 ## Voix anglaise
 

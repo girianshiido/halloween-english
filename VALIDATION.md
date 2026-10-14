@@ -1,3 +1,28 @@
+# Vérifications — version du 14 octobre 2026
+
+Les règles et résultats ci-dessous remplacent les seuils des versions historiques conservées plus bas.
+
+- Catalogue de vingt mots ; dix cibles officielles au départ, dix nouvelles cartes en distracteurs seulement avant leur découverte.
+- 24 tests automatisés réussis, dont la mise en cache des soixante illustrations.
+- Les trente nouvelles illustrations inspectées ensemble : identité, contours, marges blanches et distinction entre aplats et rendu artiste.
+- Collection complète : vingt cartes et soixante images chargées. Zoom de la version artiste du hibou, sélection manuelle puis image artiste retrouvée dans J’apprends ; voix confirmée « an owl ».
+- TypeScript strict : compilation de l’application et du service worker réussie.
+- Règles testées : seuil couleur 6, seuil artiste/mémo 6, dix chaînes de découverte, sauvegardes et migration des acquis, une réponse corrigée après erreur sans progrès, doubles clics ignorés.
+- Difficulté : deux choix au départ, trois à la moitié des cartes au niveau 2, quatre au niveau 4 ; compteurs ordinaires et mémo indépendants. Moitié arrondie au supérieur.
+- Sélection : priorité statistique aux cartes faibles et au maximum deux apparitions d’une même cible dans dix questions, 600 sessions et 200 tirages de contrôle de pondération.
+- Navigateur, sauvegardes temporaires sur une origine locale séparée : erreur sur « skeleton », correction ensuite et compteur resté à zéro ; réussite « a frog » du premier coup, compteur 2 → 3 et prononciation exacte confirmée.
+- Articles : propositions « a ghost », « a spider », « a candle » ; désactivation pendant la question retire les articles immédiatement, réactivation les rétablit. La voix reçoit « a spider » et « a vampire ».
+- Mémo au niveau 2 : trois choix ; masque noir avec trou aléatoire de rayon 30 %, image et masque retirés après une seconde avant de révéler les mots.
+- Mémo au niveau 4 : quatre choix et petit trou de rayon 18 %. Inspection visuelle sur 390 × 844 : aucun débordement horizontal (largeur page = fenêtre = 390 px).
+- Alternance mémo : mot prononcé une fois, trois images, bouton initial masqué et zéro bouton de réécoute.
+- À cinq points mémo : succès « monster » → six points, récompense artiste et découverte de « wolf ». Onze cartes visibles dans J’apprends, « owl » encore absente. Nouvelle carte conservée après rechargement.
+
+## Limites
+
+Les formats mobiles sont simulés dans le navigateur. Aucun nouvel essai d’installation sur téléphone physique n’a été réalisé. La voix hors ligne dépend des voix anglaises installées sur l’appareil. Les anciens compteurs sont conservés ; leur historique ne permet pas d’identifier rétroactivement les réponses obtenues du premier coup.
+
+## Historique des versions précédentes
+
 # Vérifications — 13 octobre 2026
 
 - Compilation TypeScript stricte de l’application et du service worker.
