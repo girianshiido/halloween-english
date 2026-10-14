@@ -1,5 +1,7 @@
 # Vérifications — version du 14 octobre 2026
 
+Dernière correction : 26 tests passent. L’ancienne progression (formats 1 à 3) et les anciens scores sont effacés ; les nouvelles sauvegardes restent intactes après plusieurs ouvertures. Mémo reste fermé si une seule des dix cartes originales n’a que cinq réussites, indépendamment des autres cartes. J’apprends affiche dix cartes originales et dix emplacements anonymes, puis onze cartes et neuf emplacements après une découverte.
+
 Les règles et résultats ci-dessous remplacent les seuils des versions historiques conservées plus bas.
 
 - Catalogue de vingt mots ; dix cibles officielles au départ, dix nouvelles cartes en distracteurs seulement avant leur découverte.

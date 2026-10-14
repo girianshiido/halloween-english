@@ -45,7 +45,9 @@ Au niveau mémo **2**, un cache noir masque l’image, sauf un trou placé aléa
 
 ## Sauvegardes et confidentialité
 
-Deux compteurs indépendants par carte : normal et mémo. Les anciens acquis et choix sont conservés lors de la migration vers le format 3 ; les anciennes sauvegardes ne permettent pas de reconstituer rétrospectivement les réponses du premier coup. Les nouvelles cartes se révèlent selon les acquis mémo conservés. Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les polices Google Fonts sont facultatives. Le verrouillage des illustrations est une règle locale de jeu, pas une protection de fichiers privés.
+Deux compteurs indépendants par carte : normal et mémo. À partir de cette mise à jour, **l’ancienne progression et les anciens scores sont effacés**. Le nouveau jeu utilise des clés dédiées (progression format 4 et scores v2), sans migration des anciens compteurs. La remise à zéro n’efface jamais les acquis enregistrés ensuite, les préférences d’articles ou les données d’autres jeux. J’apprends affiche les dix cartes originales et des emplacements anonymes pour les dix nouvelles cartes ; chaque emplacement devient une carte jouable uniquement après son déblocage.
+
+Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les polices Google Fonts sont facultatives. Le verrouillage des illustrations est une règle locale de jeu, pas une protection de fichiers privés.
 
 ## Installer comme application
 

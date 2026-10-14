@@ -1,5 +1,10 @@
 import { WORDS, ORIGINAL_WORDS, progressiveCount } from './game.js';
-export const PROGRESS_KEY = 'boo-english-progress-v1';
+export const PROGRESS_KEY = 'boo-english-progress-v4';
+export const BESTS_KEY = 'boo-english-bests-v2';
+export function clearLegacyProgress(storage) {
+    storage.removeItem('boo-english-progress-v1');
+    storage.removeItem('boo-english-bests-v1');
+}
 export const VARIANTS = ['original', 'color', 'art'];
 export const THRESHOLDS = { original: 0, color: 6, art: 6 };
 export const VARIANT_LABELS = { original: 'Original', color: 'Couleur', art: 'Artiste' };
@@ -10,7 +15,7 @@ export function parseProgress(text) {
     const progress = emptyProgress();
     try {
         const raw = JSON.parse(text ?? 'null');
-        if (!raw || typeof raw !== 'object' || !('version' in raw) || ![1, 2, 3].includes(raw.version) || !('words' in raw) || !raw.words || typeof raw.words !== 'object')
+        if (!raw || typeof raw !== 'object' || !('version' in raw) || raw.version !== 4 || !('words' in raw) || !raw.words || typeof raw.words !== 'object')
             return progress;
         const words = raw.words;
         for (const word of WORDS) {
@@ -18,7 +23,7 @@ export function parseProgress(text) {
             if (!entry || typeof entry !== 'object' || !('found' in entry) || typeof entry.found !== 'number' || !Number.isSafeInteger(entry.found) || entry.found < 0)
                 continue;
             const found = entry.found;
-            const memory = raw.version !== 1 && 'memory' in entry && typeof entry.memory === 'number' && Number.isSafeInteger(entry.memory) && entry.memory >= 0 ? entry.memory : 0;
+            const memory = 'memory' in entry && typeof entry.memory === 'number' && Number.isSafeInteger(entry.memory) && entry.memory >= 0 ? entry.memory : 0;
             progress[word.id] = { found, memory, selected: 'original' };
             if ('selected' in entry && VARIANTS.includes(entry.selected) && (entry.selected === 'original' || entry.selected === 'color' && found >= 6 || entry.selected === 'art' && found >= 6 && memory >= 6))
                 progress[word.id].selected = entry.selected;
@@ -28,7 +33,7 @@ export function parseProgress(text) {
     return progress;
 }
 export function serializeProgress(progress) {
-    return JSON.stringify({ version: 3, words: progress });
+    return JSON.stringify({ version: 4, words: progress });
 }
 export function memoryAvailable(progress) { return ORIGINAL_WORDS.every(word => (progress[word.id]?.found ?? 0) >= 6); }
 export function isUnlocked(progress, id, variant) {

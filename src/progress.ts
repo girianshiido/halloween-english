@@ -3,7 +3,12 @@ import { WORDS, ORIGINAL_WORDS, progressiveCount, type Mode, type Word, type Lev
 export type Variant = 'original' | 'color' | 'art';
 export interface WordProgress { found: number; memory: number; selected: Variant; }
 export type Progress = Record<string, WordProgress>;
-export const PROGRESS_KEY = 'boo-english-progress-v1';
+export const PROGRESS_KEY = 'boo-english-progress-v4';
+export const BESTS_KEY = 'boo-english-bests-v2';
+export function clearLegacyProgress(storage: Pick<Storage, 'removeItem'>): void {
+  storage.removeItem('boo-english-progress-v1');
+  storage.removeItem('boo-english-bests-v1');
+}
 export const VARIANTS: readonly Variant[] = ['original', 'color', 'art'];
 export const THRESHOLDS: Record<Variant, number> = { original: 0, color: 6, art: 6 };
 export const VARIANT_LABELS: Record<Variant, string> = { original: 'Original', color: 'Couleur', art: 'Artiste' };
@@ -14,13 +19,13 @@ export function parseProgress(text: string | null): Progress {
   const progress = emptyProgress();
   try {
     const raw: unknown = JSON.parse(text ?? 'null');
-    if (!raw || typeof raw !== 'object' || !('version' in raw) || ![1, 2, 3].includes(raw.version as number) || !('words' in raw) || !raw.words || typeof raw.words !== 'object') return progress;
+    if (!raw || typeof raw !== 'object' || !('version' in raw) || raw.version !== 4 || !('words' in raw) || !raw.words || typeof raw.words !== 'object') return progress;
     const words = raw.words as Record<string, unknown>;
     for (const word of WORDS) {
       const entry = words[word.id];
       if (!entry || typeof entry !== 'object' || !('found' in entry) || typeof entry.found !== 'number' || !Number.isSafeInteger(entry.found) || entry.found < 0) continue;
       const found = entry.found;
-      const memory = raw.version !== 1 && 'memory' in entry && typeof entry.memory === 'number' && Number.isSafeInteger(entry.memory) && entry.memory >= 0 ? entry.memory : 0;
+      const memory = 'memory' in entry && typeof entry.memory === 'number' && Number.isSafeInteger(entry.memory) && entry.memory >= 0 ? entry.memory : 0;
       progress[word.id] = { found, memory, selected: 'original' };
       if ('selected' in entry && VARIANTS.includes(entry.selected as Variant) && (entry.selected === 'original' || entry.selected === 'color' && found >= 6 || entry.selected === 'art' && found >= 6 && memory >= 6)) progress[word.id]!.selected = entry.selected as Variant;
     }
@@ -28,7 +33,7 @@ export function parseProgress(text: string | null): Progress {
   return progress;
 }
 export function serializeProgress(progress: Progress): string {
-  return JSON.stringify({ version: 3, words: progress });
+  return JSON.stringify({ version: 4, words: progress });
 }
 export function memoryAvailable(progress: Progress): boolean { return ORIGINAL_WORDS.every(word => (progress[word.id]?.found ?? 0) >= 6); }
 export function isUnlocked(progress: Progress, id: string, variant: Variant): boolean {

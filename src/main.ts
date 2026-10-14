@@ -1,8 +1,9 @@
 import { WORDS, spokenWord, questionChoices, memoryPeek, createSession, answer, advance, type Mode, type ChoiceCount, type Session, type Word } from './game.js';
 import { speak, stopSpeech } from './speech.js';
 import './install.js';
-import { parseProgress, serializeProgress, PROGRESS_KEY, recordAnswer, chooseVariant, variantPath, memoryAvailable, discoveredWords, isDiscovered, modeTargets, modeLevels, difficulty, isUnlocked, VARIANT_LABELS, type Variant } from './progress.js';
+import { parseProgress, serializeProgress, PROGRESS_KEY, BESTS_KEY, clearLegacyProgress, recordAnswer, chooseVariant, variantPath, memoryAvailable, discoveredWords, isDiscovered, modeTargets, modeLevels, difficulty, isUnlocked, VARIANT_LABELS, type Variant } from './progress.js';
 import { collectionMarkup } from './collection.js';
+import { learningCardsMarkup } from './learning.js';
 
 const app = document.querySelector<HTMLElement>('#app')!;
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 5 9H2v6h3l6 5V4Zm5 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
@@ -25,7 +26,7 @@ let flashTimer: number | undefined;
 let finishFlash: (() => void) | null = null;
 function clearFlash(): void { window.clearTimeout(flashTimer); finishFlash = null; }
 
-try { progress = parseProgress(localStorage.getItem(PROGRESS_KEY)); }
+try { clearLegacyProgress(localStorage); progress = parseProgress(localStorage.getItem(PROGRESS_KEY)); }
 catch { progressNotice = 'La progression reste disponible pendant cette visite, mais cet appareil ne permet pas de l’enregistrer.'; }
 function saveProgress(): void {
   try { localStorage.setItem(PROGRESS_KEY, serializeProgress(progress)); progressNotice = ''; }
@@ -39,7 +40,7 @@ function foundLabel(id: string): string {
 function counter(word: Word): string { return `<span class="found-counter" data-counter="${word.id}">${foundLabel(word.id)}</span>`; }
 
 try {
-  const stored: unknown = JSON.parse(localStorage.getItem('boo-english-bests-v1') ?? '{}');
+  const stored: unknown = JSON.parse(localStorage.getItem(BESTS_KEY) ?? '{}');
   if (stored && typeof stored === 'object') {
     for (const [key, value] of Object.entries(stored)) {
       if (/^(listen|read|memory)-[234]$/.test(key) && typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 10) bests[key] = value;
@@ -219,7 +220,7 @@ function results(): void {
   const previous = bests[bestKey()] ?? 0;
   bests[bestKey()] = Math.max(previous, session.score);
   let saved = true;
-  try { localStorage.setItem('boo-english-bests-v1', JSON.stringify(bests)); } catch { saved = false; }
+  try { localStorage.setItem(BESTS_KEY, JSON.stringify(bests)); } catch { saved = false; }
   const mastered = session.score;
   app.innerHTML = `<section class="results"><span class="eyebrow">AVENTURE TERMINÉE</span><div class="trophy" aria-hidden="true">✦</div><h1 data-focus tabindex="-1">${session.score === 10 ? 'Un sans-faute magique !' : session.score >= 6 ? 'Bravo, petit explorateur !' : 'Bravo pour cette aventure !'}</h1><p>${session.mode === 'memory' ? 'Tu as terminé le défi. Ta mémoire grandit à chaque partie !' : 'Tu as terminé cette aventure d’Halloween.'}</p><div class="result-score"><strong>${session.score}<small> / 10</small></strong><span>étoiles gagnées</span></div><p class="result-detail">${mastered} réponse${mastered > 1 ? 's' : ''} correcte${mastered > 1 ? 's' : ''} du premier coup.${session.missed.length ? ' Continue, chaque essai te fait progresser !' : ' Tes oreilles et tes yeux ont des super-pouvoirs !'}</p><span class="record">${saved ? `Ton record pour ce défi : ${bests[bestKey()]} / 10` : 'Le record n’a pas pu être enregistré sur cet appareil.'}</span><div class="result-actions"><button type="button" class="primary" id="again">Rejouer ${arrow}</button><button type="button" class="secondary" id="change">Changer de défi</button></div>${sessionUnlocks ? `<p class="unlock-summary">✦ ${sessionUnlocks} nouvelle${sessionUnlocks > 1 ? 's' : ''} version${sessionUnlocks > 1 ? 's' : ''} débloquée${sessionUnlocks > 1 ? 's' : ''} !</p>` : ''}<button type="button" class="quiet" id="view-collection">Voir ma collection →</button></section>`;
   document.querySelector('#again')!.addEventListener('click', start);
@@ -231,7 +232,7 @@ function learn(): void {
   stopSpeech();
   clearFlash();
   session = null;
-  app.innerHTML = `<section class="learn-area"><div class="game-top"><button type="button" id="back" class="quiet">← Accueil</button><span class="mode-label">${book} J’apprends</span><span class="learn-pill">20 mots à découvrir</span></div><div class="question-head"><span class="eyebrow">À TON RYTHME</span><h1 data-focus tabindex="-1">Mes vingt mots d’Halloween</h1><p>${discoveredWords(progress).length} cartes découvertes sur 20. Touche une carte pour entendre le mot en anglais.</p></div><div class="vocab-grid" aria-label="Les vingt cartes à découvrir">${discoveredWords(progress).map(word => `<button type="button" class="vocab-card" data-word="${word.id}" aria-label="Écouter ${word.english}">${image(word, '')}<strong lang="en" data-label="${word.id}">${wordLabel(word)}</strong><small>${word.french}</small>${counter(word)}<span class="learn-listen">${speaker} Écouter</span></button>`).join('')}</div><p id="audio-status" role="status">Tu peux écouter chaque mot autant de fois que tu veux.</p><button type="button" class="primary" id="learn-back">Choisir un défi ${arrow}</button></section>`;
+  app.innerHTML = `<section class="learn-area"><div class="game-top"><button type="button" id="back" class="quiet">← Accueil</button><span class="mode-label">${book} J’apprends</span><span class="learn-pill">20 mots à découvrir</span></div><div class="question-head"><span class="eyebrow">À TON RYTHME</span><h1 data-focus tabindex="-1">Mes vingt mots d’Halloween</h1><p>${discoveredWords(progress).length} cartes découvertes sur 20. Touche une carte pour entendre le mot en anglais.</p></div><div class="vocab-grid" aria-label="Les vingt cartes à découvrir">${learningCardsMarkup(progress, speaker, articles)}</div><p id="audio-status" role="status">Tu peux écouter chaque mot autant de fois que tu veux.</p><button type="button" class="primary" id="learn-back">Choisir un défi ${arrow}</button></section>`;
   app.querySelectorAll<HTMLButtonElement>('[data-word]').forEach(button => button.addEventListener('click', () => {
     app.querySelectorAll('.vocab-card').forEach(card => card.classList.remove('last-listened'));
     button.classList.add('last-listened');

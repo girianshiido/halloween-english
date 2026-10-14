@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { WORDS, ORIGINAL_WORDS, createSession, answer, advance, spokenWord, progressiveCount, memoryPeek } from '../docs/app/game.js';
-import { emptyProgress, recordFound, recordAnswer, parseProgress, serializeProgress, isUnlocked, chooseVariant, discoveredWords, memoryAvailable, modeTargets, difficulty, modeLevels } from '../docs/app/progress.js';
+import { emptyProgress, recordFound, recordAnswer, parseProgress, serializeProgress, isUnlocked, chooseVariant, discoveredWords, memoryAvailable, modeTargets, difficulty, modeLevels, clearLegacyProgress, PROGRESS_KEY, BESTS_KEY } from '../docs/app/progress.js';
 import { collectionMarkup } from '../docs/app/collection.js';
 const colorAll = p => ORIGINAL_WORDS.forEach(w => { p[w.id].found = 6; });
 test('Six premières réussites débloquent la couleur, six mémo débloquent artiste et un seul nouvel ami', () => {
@@ -67,15 +67,23 @@ test('Articles adaptés et désactivation',()=>{
   assert.equal(spokenWord(WORDS.find(w=>w.id==='moon')),'the Moon');
   assert.equal(spokenWord(WORDS[0],false),'ghost');
 });
-test('Migration conserve acquis et sélection, nouvelles cartes révélées selon les compteurs mémo sauvegardés',()=>{
-  for(const version of [2,3]) {
-    const p=parseProgress(JSON.stringify({version,words:{ghost:{found:10,memory:10,selected:'art'},vampire:{found:6,memory:0,selected:'color'}}}));
-    assert.equal(p.ghost.selected,'art');assert.equal(p.vampire.selected,'color');assert.equal(discoveredWords(p).length,11);
-  }
-  const p=parseProgress(JSON.stringify({version:1,words:{ghost:{found:12,selected:'color'}}}));
-  assert.equal(p.ghost.found,12);assert.equal(p.ghost.memory,0);assert.equal(p.ghost.selected,'color');
+test('L’ancienne progression est effacée sans supprimer les nouveaux acquis ni les préférences',()=>{
+  const fresh=emptyProgress();fresh.ghost.found=2;
+  const store=new Map([['boo-english-progress-v1',JSON.stringify({version:3,words:{ghost:{found:99,memory:99,selected:'art'}}})],['boo-english-bests-v1','{"read-4":10}'],[PROGRESS_KEY,serializeProgress(fresh)],[BESTS_KEY,'{"read-2":1}'],['boo-english-articles','off'],['other-project','keep']]);
+  const storage={removeItem:key=>store.delete(key)};
+  clearLegacyProgress(storage);
+  assert.equal(store.has('boo-english-progress-v1'),false);assert.equal(store.has('boo-english-bests-v1'),false);
+  assert.equal(parseProgress(store.get(PROGRESS_KEY)).ghost.found,2);
+  assert.equal(store.get(BESTS_KEY),'{"read-2":1}');assert.equal(store.get('boo-english-articles'),'off');assert.equal(store.get('other-project'),'keep');
+  clearLegacyProgress(storage);assert.equal(parseProgress(store.get(PROGRESS_KEY)).ghost.found,2);
+  for(const version of [1,2,3]) assert.deepEqual(parseProgress(JSON.stringify({version,words:{ghost:{found:99,memory:99,selected:'art'}}})),emptyProgress());
   assert.deepEqual(parseProgress('{bad'),emptyProgress());
-  assert.deepEqual(parseProgress(JSON.stringify({version:3,words:{ghost:{found:-1,memory:Infinity}}})),emptyProgress());
+});
+test('Mémo reste caché si une seule des dix originales n’a que cinq réussites',()=>{
+  const p=emptyProgress();colorAll(p);p.frog.found=5;
+  WORDS.slice(10).forEach(w=>p[w.id].found=99);
+  assert.equal(memoryAvailable(p),false);
+  recordFound(p,'frog');assert.equal(memoryAvailable(p),true);
 });
 test('Collection garde les cartes secrètes cachées, distingue agrandir et choisir',()=>{
   const p=emptyProgress();let html=collectionMarkup(p,'','');
@@ -91,4 +99,14 @@ test('Les textes de collection suivent également la préférence des articles',
   const withArticles=collectionMarkup(p,'','',true), without=collectionMarkup(p,'','',false);
   assert.match(withArticles,/>an owl</);assert.match(withArticles,/>the Moon</);assert.match(withArticles,/>a skeleton</);
   assert.match(without,/>owl</);assert.match(without,/>Moon</);assert.ok(!without.includes('>an owl<'));
+});
+
+import { learningCardsMarkup } from '../docs/app/learning.js';
+test('J’apprends présente dix originaux et dix cartes vides, puis remplace seulement la carte révélée',()=>{
+  const p=emptyProgress();let html=learningCardsMarkup(p,'',true);
+  assert.equal((html.match(/data-word=/g)||[]).length,10);assert.equal((html.match(/secret-card/g)||[]).length,10);
+  assert.ok(!html.includes('owl'));assert.ok(!html.includes('images/moon.png'));
+  colorAll(p);p.ghost.memory=6;html=learningCardsMarkup(p,'',true);
+  assert.equal((html.match(/data-word=/g)||[]).length,11);assert.equal((html.match(/secret-card/g)||[]).length,9);
+  assert.ok(html.includes('data-word="owl"'));assert.ok(html.includes('an owl'));assert.ok(!html.includes('data-word="snake"'));
 });
