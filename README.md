@@ -1,6 +1,6 @@
 # Boo! English
 
-Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun avec trois illustrations (original, couleur, artiste). Dix amis sont disponibles au départ, dix autres se découvrent progressivement. Aucun compte requis.
+Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun avec trois illustrations (original, couleur, artiste). Dix cartes sont disponibles au départ, dix autres se découvrent progressivement. Aucun compte requis.
 
 [Jouer directement](https://girianshiido.github.io/halloween-english/)
 
@@ -20,7 +20,7 @@ Seule une **bonne réponse du premier coup** gagne une étoile et augmente le co
 
 **Six réussites normales** débloquent la couleur. Les dix premières couleurs ouvrent définitivement l’accès à Mémo magique. Les cartes découvertes rejoignent ce mode quand leur couleur est débloquée. **Six réussites mémo** débloquent la version artiste, et pour chaque carte officielle une nouvelle carte :
 
-| Ami officiel | Nouvelle carte |
+| Carte de départ | Nouvelle carte |
 | --- | --- |
 | ghost | owl |
 | vampire | snake |
