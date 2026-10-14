@@ -77,6 +77,12 @@ Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `mai
 
 ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet.
 
+## Harmonisation graphique
+
+Les dix cartes de départ ont été redessinées avec image_gen intégré dans le style des dix cartes suivantes : contours noirs lisses, formes arrondies, grands yeux expressifs et présentation enfantine. Leurs versions couleur et artiste suivent le nouveau dessin. Les trente anciennes images sont conservées localement dans `backups/illustrations-2026-10-14-before-style-refresh/`, avec un manifeste d’empreintes ; ce dossier est exclu du site et de Git. Les consignes exactes sont dans `style-refresh-prompts.json`.
+
+L’accueil présente désormais trois cartes (fantôme, chauve-souris et citrouille). Fonds très discrets, ombres légères, boutons et contrastes sont harmonisés en CSS, sans nouvelle bibliothèque, police ou animation permanente. Les cartes restent lisibles de 320 px à la tablette. La progression actuelle et les choix de versions sont conservés.
+
 ## Vérifications
 
 Tests automatisés du moteur : 600 parties couvrant les deux modes et les trois difficultés, cibles découvertes, répétition limitée à deux et priorité aux cartes faibles, présence de la bonne réponse, diversité des positions, scores, erreurs, doubles réponses et fin de partie. Les vérifications de rendu et de parcours sont consignées dans `VALIDATION.md`.

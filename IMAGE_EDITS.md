@@ -17,3 +17,9 @@ Fichiers livrés : `public/images/color/` et `public/images/art/`, chacun avec g
 Trente nouvelles images produites avec **image_gen intégré** : dix dessins noir et blanc, dix mises en couleur fidèles et dix versions artiste. Les consignes exactes, références et chemins sont dans [expansion-prompts.json](expansion-prompts.json).
 
 Fichiers finaux : `public/images/{owl,snake,crow,wolf,moon,skull,mask,candle,hat,sweet}.png`, et les mêmes noms dans `public/images/color/` et `public/images/art/`. Générations conservées dans le dossier d’images de Codex et copies finales enregistrées dans ce dépôt. Aucun ancien dessin remplacé.
+
+## Harmonisation des dix cartes de départ — 14 octobre 2026
+
+Trente images recréées avec **image_gen intégré**. Les dix dessins noir et blanc utilisent `owl.png` et `snake.png` comme références de style. Chaque nouveau dessin sert ensuite de cible pour ses variantes couleur et artiste, avec la version correspondante du hibou comme référence de finition. Les sujets restent ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat et frog.
+
+Fichiers finaux : mêmes noms dans `public/images/`, `public/images/color/` et `public/images/art/`. Les anciennes trente images ont été copiées et vérifiées à l’octet près contre le dépôt avant remplacement dans `backups/illustrations-2026-10-14-before-style-refresh/` (copie locale hors du site). Consignes exactes dans [style-refresh-prompts.json](style-refresh-prompts.json).

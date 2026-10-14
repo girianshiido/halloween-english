@@ -31,3 +31,32 @@
 .secret-card{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f6f1f8;border-style:dashed!important;box-shadow:none!important;color:#a594af;cursor:default}.secret-card:hover{transform:none!important;background:#f6f1f8!important}.secret-picture{display:grid;place-items:center;width:100%;aspect-ratio:1;border-radius:8px;background:#eee7f3;color:#c2b1ce;font:60px var(--heading);margin-bottom:12px}.secret-card strong{color:#a594af!important}.secret-card small{color:#a594af!important;text-align:center;line-height:1.6}
 
 .reset-section{border-top:1px dashed #dcd2e3;margin-top:26px;padding-top:20px}.reset-section p{font-size:12px!important;margin-bottom:10px}.reset-button{background:#fff2ed;color:#963e32;border:1px solid #dfb0a5;border-radius:10px;min-height:48px;padding:12px 18px;font-weight:600;font-size:14px}.reset-button:hover{background:#ffe5dc}.reset-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.reset-actions>button{flex:1;min-width:130px}#reset-dialog{max-width:510px}#reset-dialog h2{margin-top:12px}
+
+/* A light visual polish: three real vocabulary cards and calm tactile surfaces. */
+:root{--muted:#716177}
+body{background:radial-gradient(ellipse at 85% 8%,#f1e7fa70 0,transparent 38%),radial-gradient(ellipse at 8% 28%,#fff0dc70 0,transparent 34%),#faf7f1}
+.setup{border-color:#e4d8eb;box-shadow:0 6px 0 #e8dfed65,0 16px 38px #4b326c08}
+.setup-main{background:linear-gradient(150deg,#fff 65%,#fdf8ff)}
+.mode-card{box-shadow:0 3px 0 #eee7f180;transition:background .15s,border-color .15s,transform .15s,box-shadow .15s}
+.mode-card:hover{transform:translateY(-2px);box-shadow:0 5px 0 #eee7f1}
+.mode-card.selected{border-color:#8f69a7;background:linear-gradient(125deg,#faf4ff,#fff);box-shadow:0 3px 0 #ddcce980}
+.mode-icon{box-shadow:inset 0 1px 0 #ffffffb0}
+.step-title>span{background:#eee3f5;color:#79528f;font-weight:700}
+.hero-art{height:292px;isolation:isolate}
+.hero-art .paper-card{width:148px;height:197px;padding:12px 12px 9px;display:grid;grid-template-rows:1fr auto;gap:8px;border-radius:15px;border:1px solid #e2d8e9;box-shadow:0 7px 0 #e6dce950,0 14px 27px #4b326c15}
+.hero-art .paper-card .art-crop{align-self:center}
+.hero-art .back-card{right:1px;top:35px;transform:rotate(13deg);z-index:1}
+.hero-art .middle-card{left:calc(50% - 74px);top:1px;transform:rotate(1deg);z-index:2}
+.hero-art .front-card{left:1px;top:67px;transform:rotate(-13deg);z-index:3}
+.paper-label{font-family:var(--heading);font-size:17px;text-align:center;color:#735385;line-height:1.1;background:#f7f0fb;border-radius:7px;padding:6px 4px}
+.back-card .paper-label{background:#fff0dc;color:#a46b31}.middle-card .paper-label{background:#f0e8fb;color:#80609f}
+.hero-art .art-star{right:12px;top:-24px;font-size:33px}.hero-art .art-caption{right:8px;bottom:-5px;font-size:18px}
+.little-tags span{background:#f2e9f8;border-color:#e4d6ed}.little-tags span:last-child{background:#fff0dc;border-color:#efdfc8}
+.progress{height:8px;background:#eae1ef}.progress>span{background:linear-gradient(90deg,#a588bd,#775091)}
+.vocab-card,.collection-card{box-shadow:0 4px 0 #e8dfed70,0 9px 20px #4b326c06}.vocab-card:hover{border-color:#b99bcb}
+.found-counter{color:#7e5e92!important}.collection-head .found-counter{background:#f0e6f7}
+.vocab-card.secret-card .secret-picture{font:52px var(--heading);color:#c7b5d2}.secret-card{background:#f7f2fa}.secret-card small{font-size:10px;line-height:1.7}
+@media(min-width:601px) and (max-width:900px){.hero-art .paper-card{width:126px;height:172px;padding:10px;gap:6px}.hero-art .middle-card{left:calc(50% - 63px)}.hero-art .front-card{top:82px}.hero-art .back-card{top:44px}.paper-label{font-size:15px}.hero-art{height:285px}}
+@media(max-width:600px){.welcome{gap:10px;padding-bottom:28px}.hero-art{height:270px;margin-left:0;align-self:center}.hero-art .paper-card{width:88px;height:116px;padding:7px 7px 6px;gap:3px;border-radius:10px;box-shadow:0 4px 0 #e8deee80,0 6px 13px #4b326c12}.hero-art .back-card{right:2px;top:4px;transform:rotate(12deg)}.hero-art .middle-card{left:calc(50% - 44px);top:77px;transform:rotate(2deg)}.hero-art .front-card{left:0;top:150px;transform:rotate(-12deg)}.paper-label{font-size:11px;padding:4px 2px;border-radius:5px}.hero-art .art-star{right:8px;top:-25px;font-size:24px}.mode-card{box-shadow:0 2px 0 #eee7f180}.vocab-card.secret-card .secret-picture{font-size:42px}.setup-main{padding-top:23px}.welcome h1{margin-right:-10px}.intro{margin-right:-10px}.hero-art .art-caption{display:none}}
+@media(max-width:360px){.welcome{gap:6px}.hero-art{height:247px}.hero-art .paper-card{width:76px;height:104px;padding:6px;gap:3px}.hero-art .middle-card{left:calc(50% - 38px);top:68px}.hero-art .front-card{top:137px}.paper-label{font-size:10px}.intro{font-size:11px}.little-tags{gap:5px}}
+@media(prefers-reduced-motion:reduce){.mode-card{transition:none}.mode-card:hover{transform:none}}

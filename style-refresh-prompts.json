@@ -1,0 +1,362 @@
+[
+  {
+    "id": "ghost",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute floating ghost with a flowing sheet body, two small rounded raised arms, large friendly eyes and a cheerful small smile. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/ghost.png",
+    "generatedFile": "exec-de92a5bc-7094-4949-8aa6-a9fa880dd9ba.png"
+  },
+  {
+    "id": "ghost",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new ghost black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the ghost: soft white and pale lavender ghost, gentle blush cheeks. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/ghost.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/ghost.png",
+    "generatedFile": "exec-b34d5dfc-6ee8-4788-805c-607001549231.png"
+  },
+  {
+    "id": "ghost",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new ghost black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the ghost: soft white and pale lavender ghost, gentle blush cheeks. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/ghost.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/ghost.png",
+    "generatedFile": "exec-c2308e21-1ce8-40c6-96c6-51f93a215974.png"
+  },
+  {
+    "id": "vampire",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute small vampire boy, full body, tidy short hair, pointed ears, two tiny fangs, bow tie and a classic high-collared cape, smiling and waving. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/vampire.png",
+    "generatedFile": "exec-fdc20da0-5ef8-4e85-b6e1-30fd7ab07c11.png"
+  },
+  {
+    "id": "vampire",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new vampire black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the vampire: deep purple cape with red lining, charcoal outfit, cream face, golden accents. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/vampire.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/vampire.png",
+    "generatedFile": "exec-b6662741-912b-4c2d-ae55-70cfad1b3ab8.png"
+  },
+  {
+    "id": "vampire",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new vampire black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the vampire: deep purple cape with red lining, charcoal outfit, cream face, golden accents. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/vampire.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/vampire.png",
+    "generatedFile": "exec-048125e8-ef49-4629-ab5b-ab0a7dcc2df6.png"
+  },
+  {
+    "id": "pumpkin",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a round Halloween jack-o-lantern pumpkin with a short curved stalk, broad friendly carved eyes and a cheerful toothy smile. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/pumpkin.png",
+    "generatedFile": "exec-8a2cd7d0-debd-4f44-9fc0-e9337c994d92.png"
+  },
+  {
+    "id": "pumpkin",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new pumpkin black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the pumpkin: warm pumpkin orange, green stalk, golden yellow carved openings. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/pumpkin.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/pumpkin.png",
+    "generatedFile": "exec-a1b0d358-c0aa-49c7-bd0b-2a76ad17256e.png"
+  },
+  {
+    "id": "pumpkin",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new pumpkin black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the pumpkin: warm pumpkin orange, green stalk, golden yellow carved openings. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/pumpkin.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/pumpkin.png",
+    "generatedFile": "exec-4a274dca-d228-4c6e-a1b0-a89c997b501c.png"
+  },
+  {
+    "id": "monster",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute small friendly Frankenstein-style monster, full body, square rounded head, tiny neck bolts, simple jacket, boots, smiling and waving. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/monster.png",
+    "generatedFile": "exec-08c7baa0-0a3b-4fca-b350-f74818f08579.png"
+  },
+  {
+    "id": "monster",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new monster black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the monster: mint green skin, purple jacket, charcoal hair and boots, orange shirt. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/monster.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/monster.png",
+    "generatedFile": "exec-d44f531b-f52e-440c-b1c3-ab09b759356b.png"
+  },
+  {
+    "id": "monster",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new monster black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the monster: mint green skin, purple jacket, charcoal hair and boots, orange shirt. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/monster.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/monster.png",
+    "generatedFile": "exec-a8a0627d-cc44-4c90-a81e-3ded43f22035.png"
+  },
+  {
+    "id": "witch",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute friendly little witch, full body, pointed crooked hat, simple dress, holding a broom, smiling; readable single character. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/witch.png",
+    "generatedFile": "exec-64474965-2c8e-49c7-a964-bb5b872b5fe1.png"
+  },
+  {
+    "id": "witch",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new witch black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the witch: deep purple hat and dress, orange hat band, warm cream face, golden broom bristles, brown broom handle. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/witch.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/witch.png",
+    "generatedFile": "exec-f6fdc117-a7b1-47fc-afc0-50be2991633d.png"
+  },
+  {
+    "id": "witch",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new witch black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the witch: deep purple hat and dress, orange hat band, warm cream face, golden broom bristles, brown broom handle. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/witch.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/witch.png",
+    "generatedFile": "exec-15cc3e92-402e-4c70-a07b-6c4797a3996e.png"
+  },
+  {
+    "id": "bat",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute friendly bat facing forward with two wide open scalloped wings, pointed ears, big friendly eyes, a tiny smiling mouth and small feet. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/bat.png",
+    "generatedFile": "exec-e4db5921-4f6f-49dc-9463-fe2d2a8b4582.png"
+  },
+  {
+    "id": "bat",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new bat black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the bat: soft purple body and wings, pale lavender inner wings, pink ear centers. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/bat.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/bat.png",
+    "generatedFile": "exec-251f6187-a3a7-424a-9344-a688090cbdbd.png"
+  },
+  {
+    "id": "bat",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new bat black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the bat: soft purple body and wings, pale lavender inner wings, pink ear centers. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/bat.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/bat.png",
+    "generatedFile": "exec-7d494ef0-b740-4d38-a140-8daf30582c22.png"
+  },
+  {
+    "id": "skeleton",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute friendly full-body skeleton standing and waving, big rounded skull, large kind eye sockets, clear simple rib cage, arms and legs; no clothes. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/skeleton.png",
+    "generatedFile": "exec-5ad2b780-7733-40c4-81e5-f1930b751650.png"
+  },
+  {
+    "id": "skeleton",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new skeleton black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the skeleton: warm ivory bones, lavender-gray eye sockets, subtle cream accents. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/skeleton.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/skeleton.png",
+    "generatedFile": "exec-3e1ee13a-f102-482f-9064-e70a7ce3601b.png"
+  },
+  {
+    "id": "skeleton",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new skeleton black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the skeleton: warm ivory bones, lavender-gray eye sockets, subtle cream accents. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/skeleton.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/skeleton.png",
+    "generatedFile": "exec-7977e70c-3bc4-4efe-b4ee-a5d7d27604d1.png"
+  },
+  {
+    "id": "spider",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute friendly spider facing forward, eight clearly countable curved legs, round body, large friendly eyes and a tiny smile, no web. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/spider.png",
+    "generatedFile": "exec-6399c0de-aa8a-482b-a150-27035f37b80b.png"
+  },
+  {
+    "id": "spider",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new spider black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the spider: deep purple body, lavender legs, warm gentle highlights. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/spider.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/spider.png",
+    "generatedFile": "exec-f97289fb-a325-407f-b21c-612be469aee8.png"
+  },
+  {
+    "id": "spider",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new spider black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the spider: deep purple body, lavender legs, warm gentle highlights. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/spider.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/spider.png",
+    "generatedFile": "exec-004e2cf2-84de-4610-8e0d-d8a783844596.png"
+  },
+  {
+    "id": "rat",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute friendly rat sitting in three-quarter view, round ears, large kind eyes, pointed snout, two small front paws, and one long curled thin tail. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/rat.png",
+    "generatedFile": "exec-4addb189-c092-4f14-bf99-277bd28e8594.png"
+  },
+  {
+    "id": "rat",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new rat black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the rat: soft gray fur, cream belly, pink ears nose and tail. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/rat.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/rat.png",
+    "generatedFile": "exec-3b696ad6-f96e-4086-a0e0-62d37e47690b.png"
+  },
+  {
+    "id": "rat",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new rat black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the rat: soft gray fur, cream belly, pink ears nose and tail. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/rat.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/rat.png",
+    "generatedFile": "exec-6067564d-270e-40ce-b7c3-9bd1dbd64958.png"
+  },
+  {
+    "id": "frog",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational card game, coherent with the attached newer cards. Input images 1 (owl) and 2 (snake) are STYLE REFERENCES ONLY, not subjects to include. Draw a cute friendly seated frog, big round eyes, broad smile, two small front legs and two large folded hind legs with webbed feet. Match their charming rounded cartoon design: bold smooth continuous black contours with uniform line weight, large friendly expressive eyes, balanced simple clean shapes, no scratchy hand-drawn marks, no microscopic detail. Pure black-and-white coloring-book art with white interior fills and black outlines. Full subject isolated and centered, occupying about 75-80% of a square white canvas with generous unbroken white margins. No color, gray, shading, frame, words, printed caption, extra objects, scenery, speckles or dust. Child-friendly Halloween, playful and reassuring, not frightening.",
+    "inputImages": [
+      "public/images/owl.png",
+      "public/images/snake.png"
+    ],
+    "outputFile": "public/images/frog.png",
+    "generatedFile": "exec-4cb2c589-a234-4da7-bf94-a2807f9cd1e0.png"
+  },
+  {
+    "id": "frog",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: color reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new frog black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Color the target with clean flat fills, bold smooth black outlines and simple rounded cartoon appearance, matching the reference flat-color card. Keep it clearly simpler than the artist reward; no added shading or gradients. Palette for the frog: bright leaf green skin, pale yellow belly, warm gentle highlights. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/frog.png",
+      "public/images/color/owl.png"
+    ],
+    "outputFile": "public/images/color/frog.png",
+    "generatedFile": "exec-75376ee8-e7d5-4a83-ab49-4e20dfea5603.png"
+  },
+  {
+    "id": "frog",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: art reward variant of a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new frog black-and-white illustration. Image 2 (owl) is a STYLE REFERENCE ONLY; never include an owl in the output. Transform the target into a premium, beautifully polished children’s book color illustration matching the reference artist owl: elegant soft volume shading, clean material details, warm luminous highlights, beautifully rendered expressive eyes and professional smooth contours. Preserve the cartoon silhouette rather than making it photographic. Palette for the frog: bright leaf green skin, pale yellow belly, warm gentle highlights. Preserve the target’s exact pose, face, expression, proportions, all appendages, silhouette and composition. Same full subject alone, entirely visible on plain white background with generous margins. Do not add text, frames, scenery, extra subjects, dust, random marks or scary details.",
+    "inputImages": [
+      "public/images/frog.png",
+      "public/images/art/owl.png"
+    ],
+    "outputFile": "public/images/art/frog.png",
+    "generatedFile": "exec-9e85f4c2-1efd-4a4f-a9fa-4b9af5247006.png"
+  }
+]

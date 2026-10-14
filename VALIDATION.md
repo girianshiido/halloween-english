@@ -1,5 +1,17 @@
 # Vérifications — version du 14 octobre 2026
 
+## Harmonisation visuelle — 14 octobre 2026
+
+- Trois cartes décoratives réelles à l’accueil : ghost, bat et pumpkin. Leurs libellés suivent le réglage des articles.
+- Fonds CSS très discrets, ombres et contrastes harmonisés, sans bibliothèque, police ou animation permanente supplémentaire.
+- Rendu de l’accueil inspecté à 320 × 568 et 390 × 844. Largeur de contenu égale à la fenêtre à 320, 360, 390, 768 et 1024 px ; trois cartes présentes dans chaque format.
+- Les vingt dessins noir et blanc comparés dans une planche de contrôle : les dix premiers ont été recréés pour correspondre au style des dix suivants.
+- Trente nouvelles images inspectées en parallèle original/couleur/artiste avec le hibou de référence : poses et identités conservées, versions couleur à aplats et artiste avec volume et textures propres.
+- Les dix originaux recréés chargent dans J’apprends, avec dix emplacements secrets anonymes.
+- Sauvegarde locale des trente anciennes images : empreintes et comparaison à l’octet près contre le dépôt avant remplacement, toutes conformes. Dossier hors site et ignoré par Git.
+- Compilation stricte réussie ; 29 tests automatisés réussis, dont la mise en cache des soixante illustrations. Aucun changement de clé ou de règles de progression dans cette mise à jour.
+
+
 Dernière correction : 29 tests passent. Bouton « Repartir de zéro » dans l’aide, confirmation avec Annuler par défaut. Test navigateur sur sauvegarde fictive entièrement débloquée : annuler conserve le mémo et quatre choix ; confirmer puis recharger revient à deux choix, dix cartes originales à zéro, dix emplacements vides, articles activés et mémo masqué. Les mots trouvés ne reviennent plus dans la partie ; les mots ratés peuvent revenir une fois après une question intermédiaire. Cent parties avec erreurs alternées vérifient l’absence de répétitions consécutives ou de mots déjà trouvés. L’ancienne progression (formats 1 à 3) et les anciens scores sont effacés ; les nouvelles sauvegardes restent intactes après plusieurs ouvertures. Mémo reste fermé si une seule des dix cartes originales n’a que cinq réussites, indépendamment des autres cartes. J’apprends affiche dix cartes originales et dix emplacements anonymes, puis onze cartes et neuf emplacements après une découverte.
 
 Les règles et résultats ci-dessous remplacent les seuils des versions historiques conservées plus bas.
