@@ -1,0 +1,131 @@
+{
+  "tool": "image_gen intégré",
+  "assets": [
+    {
+      "id": "house",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card 'a haunted house' for a children's Halloween educational game. The owl reference is STYLE ONLY, never include an owl. Draw one child-friendly HAUNTED HOUSE: a small squat two-storey old crooked wooden house seen from the front at a slight three-quarter angle, uneven steep pointed roof, bent chimney, an arched front door, two dark windows with askew shutters and one small boarded attic window. A tiny simplified cobweb in one eave conveys Halloween. Clearly a spooky old house but charming, playful and reassuring. NO living face on the facade, no ghosts, bats, pumpkins, people, trees, fences, landscape or separate objects. Match the reference's smooth bold clean black continuous outlines, simple rounded charming cartoon shapes and large white interior areas. Pure black-and-white coloring-book art, no gray, shading or color. Entire subject isolated and centered, fully visible, occupying about 75-80% of pure white square canvas with generous uninterrupted white margins. Child-friendly Halloween mood, mysterious but never frightening. No words, printed labels, border, dust, speckles, sketch marks or noise.",
+      "file": "public/images/house.png",
+      "generatedFile": "exec-6d966d8a-7907-4cbd-bc2b-1b0fbfbafb4f.png"
+    },
+    {
+      "id": "door",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card 'a door' for a children's Halloween educational game. Owl reference is STYLE ONLY, do not include an owl. Draw one mysterious old DOOR, standing alone in its chunky arched wooden frame: slightly crooked broad wooden planks, oversized curved wrought-iron strap hinges, an old round ring knocker and one simple keyhole. A small simple cobweb in an upper corner. Closed front view, full frame entirely visible. Halloween haunted-house atmosphere. NO wall facade, house, face, ghost, separate key, people, scenery or extra objects. Match smooth bold clean continuous black outlines, simple rounded charming cartoon shapes and large white interior areas. Pure black-and-white coloring-book art, no gray, shading or color. Entire subject alone centered and fully visible, about 75-80% of pure white square canvas, generous uninterrupted white margins. Mysterious old haunted-house Halloween atmosphere, child-friendly and never frightening. No words, labels, frame, dust, speckles or sketchy marks.",
+      "file": "public/images/door.png",
+      "generatedFile": "exec-6dfe1986-d095-4c65-b01b-914925a5bdca.png"
+    },
+    {
+      "id": "key",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card 'a key' for a children's Halloween educational game. Owl reference is STYLE ONLY, never include an owl. Draw one antique haunted-house KEY, a large old iron skeleton key with a distinctive ornate rounded bow handle, a long slightly crooked shaft, one collar and a broad toothed bit. Two small curled flourishes in the handle give it an old mysterious Gothic character, but the key silhouette must be immediately recognizable. Single key diagonally placed. NO skull or face, ribbon, other keys, ring of keys, door, person, scenery or extra objects. Match smooth bold clean black continuous contours, simple rounded cartoon forms and large white inner areas. Pure black-and-white coloring-book art, no gray or shading or color. Whole subject isolated centered and fully visible, occupying about 75-80% of pure white square canvas with generous uninterrupted margins. Mysterious antique haunted-house style, child-friendly and reassuring. No words, frame, labels, dust, speckles or scratches.",
+      "file": "public/images/key.png",
+      "generatedFile": "exec-b5faf266-1a65-4193-92de-c880b8dd2648.png"
+    },
+    {
+      "id": "chest",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card 'a chest' for a children's Halloween educational game. Owl reference is STYLE ONLY, never include an owl. Draw one mysterious old wooden CHEST: a squat closed storage trunk with a rounded domed lid, broad rough wooden planks, two substantial wrought-iron bands and a large old padlock at the front, seen at a slight three-quarter angle. One small simple cobweb tucked into a corner conveys an old haunted-house attic. Clearly a chest, not a suitcase or book. NO treasure spilling out, coins, skull, face, person, other objects or scenery. Match smooth bold clean continuous black outlines, simple rounded charming cartoon forms and large white areas. Pure black-and-white coloring-book art, no gray, shading or color. Whole subject isolated centered and completely visible, about 75-80% of pure white square canvas with generous uninterrupted white margins. Child-friendly mysterious haunted-house Halloween style, never frightening. No words, labels, border, dust, speckles or sketchy marks.",
+      "file": "public/images/chest.png",
+      "generatedFile": "exec-ccfa2a8c-379c-44a3-a3b6-cbaa4a33a1f0.png"
+    },
+    {
+      "id": "lantern",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card 'a lantern' for a children's Halloween educational game. Owl reference is STYLE ONLY, never include an owl. Draw one haunted-house LANTERN: an old Gothic hanging metal lantern with a large loop handle, a pointed slightly crooked cap, four broad glass panes, chunky decorative metal uprights and a small lit candle enclosed inside. Entire lantern front view with slight three-quarter depth. Its frame, cap and carrying loop dominate the silhouette so it is clearly a lantern, not just a candle. NO pumpkin face, person, wall bracket, separate objects or scenery. Match smooth bold clean continuous black contours, rounded simple charming cartoon shapes and large clean white inner areas. Pure black-and-white coloring-book illustration, no gray, shading or color. Whole subject alone centered, entire silhouette visible, about 75-80% of pure white square canvas with generous uninterrupted margins. Child-friendly Halloween haunted-house object, mysterious and reassuring. No labels, words, border, dust, speckles, scratch marks or noise.",
+      "file": "public/images/lantern.png",
+      "generatedFile": "exec-5953bab1-7b2f-4387-93d9-db948b5548e5.png"
+    },
+    {
+      "id": "bell",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset: square vocabulary card 'a bell' for a children's Halloween educational game. Owl reference is STYLE ONLY, never include an owl. Draw one old mysterious haunted-house BELL: a squat antique handbell with a gently flared rounded metal skirt, visible round clapper underneath, a short slightly crooked wooden handle and an old metal collar. A very simple small cobweb motif engraved on the upper bell shoulder gives a gentle Halloween character. Entire single bell with slight three-quarter depth, bold recognizable bell silhouette. NO Christmas holly, bow, ribbon, church tower, person, face or separate objects. Match smooth bold clean continuous black outlines, simple rounded charming cartoon shapes and large white interior areas. Pure black-and-white coloring-book art, no gray, shading or color. Whole subject alone centered and completely visible, about 75-80% of pure white square canvas with generous uninterrupted margins. Child-friendly haunted-house Halloween object, mysterious but not frightening. No words, labels, frame, dust, speckles, scratchy marks or noise.",
+      "file": "public/images/bell.png",
+      "generatedFile": "exec-4ac5e8e6-9efd-4dba-a2a0-5369577e9808.png"
+    },
+    {
+      "id": "house",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset: flat color reward for the children's Halloween vocabulary card 'a haunted house'. Image 1 is the EDIT TARGET: its new black-and-white illustration. Image 2 owl is STYLE ONLY. Color with clean simple solid flat fills and smooth bold black outlines. Palette: muted plum-purple old timber walls, charcoal-violet roof, warm orange-lit windows, weathered brown front door and pale cobweb detail. Preserve EXACT target silhouette, crooked architecture, roof and chimney, all doors, windows, boards, shutters, tiny cobweb, proportions, pose and framing. Clearly simpler than an artist reward: no shading or gradients. Same full subject alone centered on pure white square background with generous margins. Child-friendly mysterious Halloween, no faces, ghosts, added objects, scenery, text, border, dust or speckles.",
+      "file": "public/images/color/house.png",
+      "generatedFile": "exec-440e4657-31ba-420f-9c19-2480d57543f4.png"
+    },
+    {
+      "id": "door",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset: flat color reward for children's Halloween vocabulary card 'a door'. Image 1 is the EDIT TARGET: its new black-and-white illustration. Image 2 owl is STYLE ONLY. Apply clean solid flat fills with bold smooth black outlines, no shading or gradients. Palette: aged warm brown wood, deep charcoal wrought-iron hinges and ring knocker, plum-purple frame, subtle pale cobweb. Preserve EXACT original silhouette, all planks, hinges, frame, ring knocker, keyhole, cobweb, pose, proportions and framing. Same whole single subject centered on pure white square background with generous white margins. Child-friendly mysterious old haunted-house object. No text, labels, border, additional objects, ghosts, scenery, speckles, dust or scratches.",
+      "file": "public/images/color/door.png",
+      "generatedFile": "exec-d55abfbc-86ea-4438-a21f-78b73291ef9a.png"
+    },
+    {
+      "id": "key",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset: flat color reward for children's Halloween vocabulary card 'a key'. Image 1 is the EDIT TARGET: its new black-and-white illustration. Image 2 owl is STYLE ONLY. Palette: dark aged iron in charcoal and muted purple, warm antique-bronze collar accents. Clean solid flat fills and bold smooth black outlines, no shading or gradients. Preserve EXACT target silhouette, ornate bow, curlicues, shaft, collar, teeth, proportions, diagonal pose and framing. Same whole single subject alone centered on pure white square background with generous white margins. Child-friendly mysterious haunted-house antique. No extra objects, text, labels, border, scenery, dust or speckles.",
+      "file": "public/images/color/key.png",
+      "generatedFile": "exec-cc02393e-ccbd-4273-b8cd-e428f290a95d.png"
+    },
+    {
+      "id": "chest",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset: flat color reward for children's Halloween vocabulary card 'a chest'. Image 1 is the EDIT TARGET: its new black-and-white illustration. Image 2 owl is STYLE ONLY. Palette: weathered warm brown wood, charcoal-purple iron bands, antique brass padlock, a small pale cobweb. Apply simple clean solid flat fills and bold smooth black outlines, no shading or gradients. Preserve EXACT chest silhouette, domed closed lid, planks, two iron bands, padlock, tiny cobweb, perspective, all contours, proportions and framing. Same whole subject alone centered on pure white square background with generous white margins. Child-friendly old haunted-house attic object. No face, coins, treasure, new objects, text, border, scenery, dust or speckles.",
+      "file": "public/images/color/chest.png",
+      "generatedFile": "exec-5865277f-4b62-461e-986b-52d52a94875d.png"
+    },
+    {
+      "id": "lantern",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset: flat color reward for children's Halloween vocabulary card 'a lantern'. Image 1 is the EDIT TARGET: its new black-and-white illustration. Image 2 owl is STYLE ONLY. Palette: charcoal-purple wrought-iron frame, pale amber glass, warm orange-yellow flame and cream candle inside. Apply clean simple solid flat fills with bold smooth black outlines, no shading or gradients. Preserve EXACT target silhouette, Gothic metal frame, hanging loop, pointed cap, pane divisions, enclosed candle and flame, perspective, all proportions and composition. Same whole single subject alone centered on pure white square background with generous white margins. Mysterious haunted-house style, child-friendly and reassuring. No added objects, ghosts, pumpkins, scenery, words, border, dust or speckles.",
+      "file": "public/images/color/lantern.png",
+      "generatedFile": "exec-20d56434-a537-487c-9feb-fe3447d77022.png"
+    },
+    {
+      "id": "bell",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset: children's Halloween English flashcard. Input 1 edit target: black and white a bell. Input 2 style reference only: owl flat colour card. Create the flat colour reward version of input 1, matching the friendly clean bold rounded style of input 2. Keep the exact silhouette, angle, proportions, parts, engraved cobweb, thick outlines and white background/margins of input 1. Colour palette: aged antique brass bell, dark brown wood handle, charcoal-purple collar, warm copper details. Simple flat fills with minimal gentle shading; preserve empty white negative spaces. No added objects, faces, scenery, labels, border or pixel dust.",
+      "file": "public/images/color/bell.png",
+      "generatedFile": "exec-c2cdc7b3-50d0-42f3-8992-0d064dcd3844.png"
+    },
+    {
+      "id": "house",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium reward illustration for a children's Halloween English flashcard. Input 1 is the edit target, a flat coloured a haunted house. Input 2 owl is only the style reference for polished children's storybook illustration. Transform input 1 into a beautiful artist version: smooth refined painterly shading, clean delicate material details, gentle warm light and believable volume, friendly Halloween feeling. Preserve exactly the target's silhouette, perspective, proportions, all parts and motifs, and its recognizable palette: muted plum-purple old timber walls, charcoal-violet roof, warm orange-lit windows, weathered brown front door and pale cobweb detail. Entire isolated subject on pure white background with the same generous margins. No extra objects, faces, scenery, frame, text, watermark, photorealism, gritty textures or pixel dust. Keep the result readable at small card size.",
+      "file": "public/images/art/house.png",
+      "generatedFile": "exec-c0bd2b7f-0497-4963-9f08-5686daff6fb6.png"
+    },
+    {
+      "id": "door",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium reward illustration for a children's Halloween English flashcard. Input 1 is the edit target, a flat coloured a door. Input 2 owl is only the style reference for polished children's storybook illustration. Transform input 1 into a beautiful artist version: smooth refined painterly shading, clean delicate material details, gentle warm light and believable volume, friendly Halloween feeling. Preserve exactly the target's silhouette, perspective, proportions, all parts and motifs, and its recognizable palette: aged warm brown wood, deep charcoal wrought-iron hinges and ring knocker, plum-purple frame, subtle pale cobweb. Entire isolated subject on pure white background with the same generous margins. No extra objects, faces, scenery, frame, text, watermark, photorealism, gritty textures or pixel dust. Keep the result readable at small card size.",
+      "file": "public/images/art/door.png",
+      "generatedFile": "exec-df0fde1b-d9ab-4433-883f-863a046878f5.png"
+    },
+    {
+      "id": "key",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium reward illustration for a children's Halloween English flashcard. Input 1 is the edit target, a flat coloured a key. Input 2 owl is only the style reference for polished children's storybook illustration. Transform input 1 into a beautiful artist version: smooth refined painterly shading, clean delicate material details, gentle warm light and believable volume, friendly Halloween feeling. Preserve exactly the target's silhouette, perspective, proportions, all parts and motifs, and its recognizable palette: dark aged iron in charcoal and muted purple, warm antique-bronze collar accents. Entire isolated subject on pure white background with the same generous margins. No extra objects, faces, scenery, frame, text, watermark, photorealism, gritty textures or pixel dust. Keep the result readable at small card size.",
+      "file": "public/images/art/key.png",
+      "generatedFile": "exec-74285d10-39b6-47ee-8295-f07d02e92d81.png"
+    },
+    {
+      "id": "chest",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium reward illustration for a children's Halloween English flashcard. Input 1 is the edit target, a flat coloured a chest. Input 2 owl is only the style reference for polished children's storybook illustration. Transform input 1 into a beautiful artist version: smooth refined painterly shading, clean delicate material details, gentle warm light and believable volume, friendly Halloween feeling. Preserve exactly the target's silhouette, perspective, proportions, all parts and motifs, and its recognizable palette: weathered warm brown wood, charcoal-purple iron bands, antique brass padlock, a small pale cobweb. Entire isolated subject on pure white background with the same generous margins. No extra objects, faces, scenery, frame, text, watermark, photorealism, gritty textures or pixel dust. Keep the result readable at small card size.",
+      "file": "public/images/art/chest.png",
+      "generatedFile": "exec-615f8b05-41cd-452c-98ce-795f17db8d7b.png"
+    },
+    {
+      "id": "lantern",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium reward illustration for a children's Halloween English flashcard. Input 1 is the edit target, a flat coloured a lantern. Input 2 owl is only the style reference for polished children's storybook illustration. Transform input 1 into a beautiful artist version: smooth refined painterly shading, clean delicate material details, gentle warm light and believable volume, friendly Halloween feeling. Preserve exactly the target's silhouette, perspective, proportions, all parts and motifs, and its recognizable palette: charcoal-purple wrought-iron frame, pale amber glass, warm orange-yellow flame and cream candle inside. Entire isolated subject on pure white background with the same generous margins. No extra objects, faces, scenery, frame, text, watermark, photorealism, gritty textures or pixel dust. Keep the result readable at small card size.",
+      "file": "public/images/art/lantern.png",
+      "generatedFile": "exec-25a0dd2f-c554-4749-a26e-79f98cbbeb1c.png"
+    },
+    {
+      "id": "bell",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium reward illustration for a children's Halloween English flashcard. Input 1 is the edit target, a flat coloured a bell. Input 2 owl is only the style reference for polished children's storybook illustration. Transform input 1 into a beautiful artist version: smooth refined painterly shading, clean delicate material details, gentle warm light and believable volume, friendly Halloween feeling. Preserve exactly the target's silhouette, perspective, proportions, all parts and motifs, and its recognizable palette: aged antique brass bell, dark brown wood handle, charcoal-purple collar, warm copper details. Entire isolated subject on pure white background with the same generous margins. No extra objects, faces, scenery, frame, text, watermark, photorealism, gritty textures or pixel dust. Keep the result readable at small card size.",
+      "file": "public/images/art/bell.png",
+      "generatedFile": "exec-87c4fa03-584a-4f17-a312-f54a85da1682.png"
+    }
+  ]
+}

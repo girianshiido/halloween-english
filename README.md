@@ -1,6 +1,6 @@
 # Boo! English
 
-Jeu éducatif d’Halloween indépendant en TypeScript : **vingt-six mots** (vingt dans le premier parcours et six dans Petite sorcellerie), chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
+Jeu éducatif d’Halloween indépendant en TypeScript : **trente-deux mots** (vingt dans le premier parcours et deux packs de six cartes), chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
 
 [Jouer directement](https://girianshiido.github.io/halloween-english/)
 
@@ -14,7 +14,7 @@ Les quatre premières cartes sont **ghost, pumpkin, bat et witch**. Chaque paire
 
 ## Pack Petite sorcellerie
 
-Après les **vingt premières couleurs**, l’accueil et le bilan proposent de choisir la suite. Le joueur ouvre le pack avec **Explorer ce pack**. La mémoire et les versions artiste ne sont pas nécessaires pour l’ouvrir.
+Après les **vingt premières couleurs**, le joueur choisit librement **Petite sorcellerie** ou **La maison mystérieuse** avec **Explorer ce pack**. **Quatre couleurs dans le premier pack ouvrent le deuxième**, quel que soit l’ordre choisi. Les versions artiste restent facultatives. Les acquis, l’ordre des ouvertures et le pack en cours sont conservés dans la sauvegarde v5 existante.
 
 - **a black cat** : un chat noir.
 - **a broom** : un balai de sorcière.
@@ -25,7 +25,22 @@ Après les **vingt premières couleurs**, l’accueil et le bilan proposent de c
 
 Le chat et le balai sont révélés d’abord. Quand ils sont colorés, le chaudron et la baguette arrivent ; leurs couleurs ouvrent ensuite la potion et le grimoire. Chaque nouvelle carte est présentée avant de devenir cible ou proposition. Les anciennes cartes restent jouables, et les mêmes règles d’écoute, de lecture, de mémo et de récompenses s’appliquent aux nouvelles.
 
-Les galeries du premier parcours conservent leurs vingt emplacements. Les six emplacements du pack les rejoignent seulement après son ouverture. Le total général est de **26 cartes et 52 récompenses**. Les illustrations ont été créées avec image_gen intégré ; prompts exacts et chemins des dix-huit fichiers dans `sorcery-prompts.json`.
+Les galeries du premier parcours conservent leurs vingt emplacements. Les six emplacements de chaque pack les rejoignent seulement après son ouverture. Le total général est de **32 cartes et 64 récompenses**. Les illustrations ont été créées avec image_gen intégré ; prompts exacts et chemins des dix-huit fichiers dans `sorcery-prompts.json`.
+
+## Pack La maison mystérieuse
+
+Six objets dans l’esprit d’une maison hantée, avec les mêmes contours nets et le même style enfantin que le reste du jeu :
+
+- **a haunted house** : une maison hantée biscornue.
+- **a door** : une vieille porte à ferrures.
+- **a key** : une clé ancienne ouvragée.
+- **a chest** : un coffre de bois à cadenas.
+- **a lantern** : une lanterne gothique contenant une bougie.
+- **a bell** : une cloche ancienne avec un discret motif de toile.
+
+Maison et porte d’abord ; leurs couleurs révèlent clé et coffre ; les quatre couleurs révèlent lanterne et cloche. Chaque carte est présentée avant interrogation. Les dix-huit illustrations ont été créées avec image_gen intégré, sans retoucher les cartes existantes ; consignes exactes et fichiers dans `mystery-house-prompts.json`.
+
+L’écran des packs permet de reprendre celui souhaité. Le parcours guidé privilégie ses découvertes et ses mots faibles, sans imposer de terminer l’autre pack ni ses versions artiste.
 
 ## Les activités
 
@@ -72,7 +87,7 @@ Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les po
 
 Le bouton **Installer** explique les étapes adaptées à l’appareil. Sur Android avec Chrome ou Edge, confirmer l’installation proposée par le navigateur. Sur iPhone et iPad, ouvrir le lien dans Safari puis **Partager → Sur l’écran d’accueil → Ajouter**. Le manifeste utilise le mode autonome et fournit des icônes classiques, adaptatives et Apple.
 
-Après la première ouverture connectée, le jeu, ses soixante-dix-huit images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
+Après la première ouverture connectée, le jeu, ses quatre-vingt-seize images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
 
 Le cache et le service worker restent limités au chemin de ce dépôt. Une nouvelle version attend la fermeture des anciennes fenêtres du jeu pour remplacer la précédente sans interrompre une partie.
 
@@ -92,7 +107,7 @@ Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `mai
 
 ## Vocabulaire
 
-ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet, black cat, broom, cauldron, wand, potion, spellbook.
+ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet, black cat, broom, cauldron, wand, potion, spellbook, haunted house, door, key, chest, lantern, bell.
 
 ## Harmonisation graphique
 
@@ -102,7 +117,7 @@ L’accueil présente désormais trois cartes (fantôme, chauve-souris et citrou
 
 ## Vérifications
 
-Tests automatisés : 600 parties générées, 300 parties avec erreurs et douze parcours guidés complets jusqu’aux vingt-six versions artiste. Vérifications des compétences séparées, seuils, découvertes, introductions, révision facultative, absence de répétitions consécutives, sauvegardes, articles, voix et cache hors ligne. Les essais de rendu sont consignés dans `VALIDATION.md`.
+Tests automatisés : 600 parties générées, 300 parties avec erreurs et douze parcours guidés complets jusqu’aux trente-deux versions artiste. Vérifications des compétences séparées, seuils, découvertes, introductions, révision facultative, absence de répétitions consécutives, sauvegardes, articles, voix et cache hors ligne. Les essais de rendu sont consignés dans `VALIDATION.md`.
 
 ## Masque d’Halloween — 15 octobre 2026
 
@@ -113,3 +128,5 @@ Le masque théâtral a été remplacé par un masque de petit monstre que porter
 La sélection des voix et leur chargement suivent l’API documentée par [MDN](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis). Aucun microphone n’est requis.
 
 Projet indépendant : aucune dépendance ni modification de « Fabrique des mots » ou d’un autre projet.
+
+L’interface conserve la surprise : aucun total de cartes ou de récompenses n’est annoncé. L’accueil dit « De drôles de mots t’attendent », les compteurs indiquent uniquement les découvertes et les gains. Les seuils de déblocage restent expliqués.

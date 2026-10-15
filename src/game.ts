@@ -28,12 +28,18 @@ export const WORDS: readonly Word[] = [
   { id: 'wand', english: 'wand', french: 'baguette magique' },
   { id: 'potion', english: 'potion', french: 'potion' },
   { id: 'spellbook', english: 'spellbook', french: 'grimoire' },
+  { id: 'house', english: 'haunted house', french: 'maison hantée' },
+  { id: 'door', english: 'door', french: 'porte' },
+  { id: 'key', english: 'key', french: 'clé' },
+  { id: 'chest', english: 'chest', french: 'coffre' },
+  { id: 'lantern', english: 'lantern', french: 'lanterne' },
+  { id: 'bell', english: 'bell', french: 'cloche' },
 ];
 export const ORIGINAL_WORDS = WORDS.slice(0, 10);
 export interface CardPack { id: string; title: string; description: string; words: readonly Word[]; startingCount: number; }
 const wordIds = (ids: readonly string[]) => ids.map(id => WORDS.find(word => word.id === id)!);
-export const CORE_PACK: CardPack = { id: 'halloween', title: 'Halloween', description: 'Tes vingt premiers mots', startingCount: 4, words: wordIds(['ghost', 'pumpkin', 'bat', 'witch', 'vampire', 'monster', 'skeleton', 'spider', 'rat', 'frog', 'owl', 'snake', 'crow', 'wolf', 'moon', 'skull', 'mask', 'candle', 'hat', 'sweet']) };
-export const EXTRA_PACKS: readonly CardPack[] = [{ id: 'sorcery', title: 'Petite sorcellerie', description: 'Six nouveaux mots pour un peu plus de magie', startingCount: 2, words: wordIds(['cat', 'broom', 'cauldron', 'wand', 'potion', 'spellbook']) }];
+export const CORE_PACK: CardPack = { id: 'halloween', title: 'Halloween', description: 'Tes premiers mots d’Halloween', startingCount: 4, words: wordIds(['ghost', 'pumpkin', 'bat', 'witch', 'vampire', 'monster', 'skeleton', 'spider', 'rat', 'frog', 'owl', 'snake', 'crow', 'wolf', 'moon', 'skull', 'mask', 'candle', 'hat', 'sweet']) };
+export const EXTRA_PACKS: readonly CardPack[] = [{ id: 'sorcery', title: 'Petite sorcellerie', description: 'De nouveaux mots pour un peu plus de magie', startingCount: 2, words: wordIds(['cat', 'broom', 'cauldron', 'wand', 'potion', 'spellbook']) }, { id: 'mystery-house', title: 'La maison mystérieuse', description: 'De nouveaux mots derrière une porte d’Halloween', startingCount: 2, words: wordIds(['house', 'door', 'key', 'chest', 'lantern', 'bell']) }];
 export const DISCOVERY_ORDER: readonly Word[] = [...CORE_PACK.words, ...EXTRA_PACKS.flatMap(pack => pack.words)];
 export const STARTER_WORDS = CORE_PACK.words.slice(0, CORE_PACK.startingCount);
 export type Cue = 'flash' | 'once';

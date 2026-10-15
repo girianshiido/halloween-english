@@ -31,3 +31,7 @@ Remplacement du masque théâtral par un masque intégral de petit monstre, cost
 ## Petite sorcellerie — 15 octobre 2026
 
 Six nouveaux sujets, chacun en noir et blanc, couleur et artiste : cat, broom, cauldron, wand, potion, spellbook. Image_gen intégré, dix-huit appels finaux distincts et variantes dérivées de leur dessin d’origine. La baguette étoilée initialement proposée a été remplacée à la demande de l’utilisateur par du bois noueux ; le grimoire arbore désormais un fermoir et un croissant de lune. Consignes exactes, fichiers générés et chemins finaux dans `sorcery-prompts.json`. Les essais abandonnés sont exclus du site et de Git.
+
+## La maison mystérieuse — 15 octobre 2026
+
+Dix-huit nouvelles illustrations créées avec image_gen intégré : maison hantée, porte, clé, coffre, lanterne et cloche, chacune en noir et blanc, couleur et artiste. Silhouettes cohérentes, fond blanc, objets anciens et détails Halloween adaptés aux enfants. Consignes exactes et chemins : `mystery-house-prompts.json`. Les fichiers sont dans `public/images/`, `public/images/color/` et `public/images/art/`, puis copiés dans `docs/images/`.

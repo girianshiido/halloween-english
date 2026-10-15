@@ -1,3 +1,11 @@
+# Validation — La maison mystérieuse et choix des packs
+
+15 octobre 2026. TypeScript strict et construction réussis ; 45 tests passent. Simulation des parcours complets jusqu’aux 32 versions artiste, 96 images en cache, tests hors ligne, ancienne sauvegarde à 26 mots préservée. Premier pack au choix après vingt couleurs ; second après quatre couleurs dans le premier, dans les deux ordres, sans artiste obligatoire. Pack actif conservé après rechargement.
+
+Contrôle navigateur avec sauvegardes de test isolées : autre pack bloqué à trois couleurs, disponible après la quatrième ; guidage vers le coffre faible, prononciation « a chest », nouvelles paires et présentation du chat noir après changement de pack. Collection : 96 images chargées et zoom « a haunted house · Artiste ». Packs sans débordement à 320, 390, 768 et 1024 px. Aucun total dans les textes de l’accueil, de l’apprentissage, de la collection ou des packs. Voix testée par journal de synthèse ; pas de test physique iPhone/Android sur cette mise à jour.
+
+---
+
 # Petite sorcellerie — vérifications du 15 octobre 2026
 
 Cette extension conserve la progression v5 et les records v3 de la version précédente. Elle ajoute six cartes et dix-huit PNG, pour un total de 26 cartes et 78 illustrations.

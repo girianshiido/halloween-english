@@ -14,7 +14,7 @@ export function resetGameStorage(storage) {
 export const VARIANTS = ['original', 'color', 'art'];
 export const VARIANT_LABELS = { original: 'Original', color: 'Couleur', art: 'Artiste' };
 export function emptyProgress() {
-    return { words: Object.fromEntries(WORDS.map(word => [word.id, { listen: 0, read: 0, flash: 0, once: 0, selected: 'original', introduced: STARTER_WORDS.includes(word) }])), completedSessions: 0, openedPacks: [] };
+    return { words: Object.fromEntries(WORDS.map(word => [word.id, { listen: 0, read: 0, flash: 0, once: 0, selected: 'original', introduced: STARTER_WORDS.includes(word) }])), completedSessions: 0, openedPacks: [], activePack: null };
 }
 function colorReady(entry) { return entry.listen >= 3 && entry.read >= 3; }
 function packDiscoveries(progress, pack) {
@@ -28,17 +28,30 @@ function packDiscoveries(progress, pack) {
         count = next;
     }
 }
+export function packColors(progress, id) {
+    const pack = [CORE_PACK, ...EXTRA_PACKS].find(pack => pack.id === id);
+    return pack?.words.filter(word => colorReady(progress.words[word.id])).length ?? 0;
+}
 export function packAvailable(progress, id) {
-    const index = EXTRA_PACKS.findIndex(pack => pack.id === id);
-    if (index < 0)
+    if (!EXTRA_PACKS.some(pack => pack.id === id) || packColors(progress, CORE_PACK.id) < CORE_PACK.words.length)
         return false;
-    const preceding = [CORE_PACK, ...EXTRA_PACKS.slice(0, index)];
-    return preceding.every(pack => (pack === CORE_PACK || progress.openedPacks.includes(pack.id)) && pack.words.every(word => colorReady(progress.words[word.id])));
+    if (progress.openedPacks.includes(id))
+        return true;
+    // One first choice; each explored pack with four colors earns another choice.
+    const earned = 1 + progress.openedPacks.filter(opened => packColors(progress, opened) >= 4).length;
+    return progress.openedPacks.length < earned;
+}
+export function focusPack(progress, id) {
+    if (!progress.openedPacks.includes(id) || !packAvailable(progress, id))
+        return false;
+    progress.activePack = id;
+    return true;
 }
 export function openPack(progress, id) {
     if (progress.openedPacks.includes(id) || !packAvailable(progress, id))
         return false;
     progress.openedPacks.push(id);
+    progress.activePack = id;
     return true;
 }
 export function availablePacks(progress) { return EXTRA_PACKS.filter(pack => !progress.openedPacks.includes(pack.id) && packAvailable(progress, pack.id)); }
@@ -48,7 +61,11 @@ export function discoveredWords(progress) {
 }
 export function isDiscovered(progress, id) { return discoveredWords(progress).some(word => word.id === id); }
 export function knownWords(progress) { return discoveredWords(progress).filter(word => progress.words[word.id].introduced); }
-export function pendingWords(progress) { return discoveredWords(progress).filter(word => !progress.words[word.id].introduced); }
+export function pendingWords(progress) {
+    const pending = discoveredWords(progress).filter(word => !progress.words[word.id].introduced);
+    const active = EXTRA_PACKS.find(pack => pack.id === progress.activePack);
+    return active ? [...pending.filter(word => active.words.includes(word)), ...pending.filter(word => !active.words.includes(word))] : pending;
+}
 export function introduceWord(progress, id) {
     if (!isDiscovered(progress, id) || progress.words[id].introduced)
         return false;
@@ -85,9 +102,11 @@ export function parseProgress(text) {
         }
         // Format 5 stays compatible: saves made before packs simply have no opened pack.
         if ('openedPacks' in raw && Array.isArray(raw.openedPacks)) {
-            for (const pack of EXTRA_PACKS)
-                if (raw.openedPacks.includes(pack.id) && packAvailable(progress, pack.id))
-                    progress.openedPacks.push(pack.id);
+            for (const id of raw.openedPacks) {
+                if (typeof id === 'string' && !progress.openedPacks.includes(id) && packAvailable(progress, id))
+                    progress.openedPacks.push(id);
+            }
+            progress.activePack = 'activePack' in raw && typeof raw.activePack === 'string' && progress.openedPacks.includes(raw.activePack) ? raw.activePack : progress.openedPacks.at(-1) ?? null;
         }
         // Sanitize impossible records without letting hidden cards unlock other cards.
         const available = new Set(discoveredWords(progress).map(word => word.id));
@@ -137,8 +156,13 @@ export function firstMemoryCue(progress) {
     return sum('flash') <= sum('once') ? 'flash' : 'once';
 }
 export function recommend(progress, forceTarget) {
-    const memory = modeTargets(progress, 'memory').filter(word => !isUnlocked(progress, word.id, 'art'));
-    const normal = knownWords(progress).filter(word => !isUnlocked(progress, word.id, 'color'));
+    const active = EXTRA_PACKS.find(pack => pack.id === progress.activePack);
+    const prioritize = (words) => {
+        const focused = active ? words.filter(word => active.words.includes(word)) : [];
+        return focused.length ? focused : words;
+    };
+    const memory = prioritize(modeTargets(progress, 'memory').filter(word => !isUnlocked(progress, word.id, 'art')));
+    const normal = prioritize(knownWords(progress).filter(word => !isUnlocked(progress, word.id, 'color')));
     if (!forceTarget && memory.length && (!normal.length || progress.completedSessions % 3 === 2))
         return { mode: 'memory' };
     const least = forceTarget ? knownWords(progress).find(word => word.id === forceTarget) : [...normal].sort((a, b) => (progress.words[a.id].listen + progress.words[a.id].read) - (progress.words[b.id].listen + progress.words[b.id].read))[0];

@@ -41,7 +41,7 @@ async function setup() {
   }
   return { stores, fetchEvent };
 }
-test('Le cache contient le jeu, les 78 images, le manifeste et les icônes', async () => {
+test('Le cache contient le jeu, les 96 images, le manifeste et les icônes', async () => {
   assert.ok(!source.includes('__PRECACHE__') && !source.includes('__REVISION__'));
   const { stores } = await setup();
   assert.ok(stores.has('another-app-cache'));

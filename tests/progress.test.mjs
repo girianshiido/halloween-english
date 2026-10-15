@@ -5,7 +5,7 @@ import { emptyProgress, parseProgress, serializeProgress, recordAnswer, isUnlock
 import { learningCardsMarkup } from '../docs/app/learning.js';
 import { collectionMarkup } from '../docs/app/collection.js';
 function color(p, word) { Object.assign(p.words[word.id], { listen:3, read:3 }); }
-function allKnown(p) { p.openedPacks=['sorcery']; for(const word of WORDS) Object.assign(p.words[word.id],{listen:3,read:3,introduced:true}); }
+function allKnown(p) { p.openedPacks=['sorcery','mystery-house']; p.activePack='mystery-house'; for(const word of WORDS) Object.assign(p.words[word.id],{listen:3,read:3,introduced:true}); }
 function gain(p,id,mode='listen',cue='flash',wrong=false) {
   const s=createSession(mode,{targets:modeTargets(p,mode),pool:knownWords(p),forceTarget:id,firstCue:cue,level:(w,c)=>skillLevel(p,w.id,mode,c)});
   const q=s.questions[0]; assert.equal(q.target.id,id);
@@ -137,7 +137,7 @@ test('Parcours guidé complet : toutes les couleurs et toutes les versions artis
       assert.deepEqual(parseProgress(serializeProgress(p)),p);
     }
     assert.ok(rounds<500,`run ${run}: stalled at ${rounds}`);
-    assert.equal(discoveredWords(p).length,26);
+    assert.equal(discoveredWords(p).length,32);
     assert.ok(WORDS.every(w=>isUnlocked(p,w.id,'color')&&isUnlocked(p,w.id,'art')));
   }
 });

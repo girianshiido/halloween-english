@@ -1,22 +1,30 @@
 # Illustrations du jeu
 
-78 images harmonisées : 26 dessins noir et blanc, 26 versions couleur et 26 versions artiste. Le premier parcours comprend vingt cartes ; le pack Petite sorcellerie en ajoute six. Les dix premières cartes ont été harmonisées avec le style des dix suivantes. Le masque a été remplacé par un masque de costume d’enfant, puis les dix-huit images de sorcellerie ont été créées dans ce même style.
+96 images harmonisées : 32 dessins noir et blanc, 32 versions couleur et 32 versions artiste. Le premier parcours comprend vingt cartes ; Petite sorcellerie et La maison mystérieuse ajoutent chacun six cartes. Les dix premières cartes ont été harmonisées avec le style des dix suivantes. Le masque a été remplacé par un masque de costume d’enfant, puis les dix-huit images de sorcellerie ont été créées dans ce même style.
 
-Création avec **image_gen intégré**. Consignes et chemins : `style-refresh-prompts.json`, `expansion-prompts.json`, `mask-refresh-prompts.json` et `sorcery-prompts.json`. Les nouveaux dessins de baguette et de grimoire intègrent le retour de l’utilisateur : bois noueux sans étoile, ancien livre à fermoir et croissant de lune.
+Création avec **image_gen intégré**. Consignes et chemins : `style-refresh-prompts.json`, `expansion-prompts.json`, `mask-refresh-prompts.json` `sorcery-prompts.json` et `mystery-house-prompts.json`. Les nouveaux dessins de baguette et de grimoire intègrent le retour de l’utilisateur : bois noueux sans étoile, ancien livre à fermoir et croissant de lune.
 
 Livraison : `public/images/`, `public/images/color/` et `public/images/art/`, copiés dans `docs/images/` pour GitHub Pages. Les anciennes images remplacées sont conservées dans `backups/` (local uniquement, hors site et hors Git).
+
+Les dix-huit images de La maison mystérieuse déclinent une maison hantée, une porte, une clé, un coffre, une lanterne et une cloche dans une ambiance Halloween enfantine.
 
 | Fichier | SHA-256 |
 | --- | --- |
 | art/bat.png | `e84de45d2af3d77b766b0bc8c533e96713d9548726ef8cad0d4c529a894ccdba` |
+| art/bell.png | `d19276360a6c17f82f6e843e4731256b92fd6ec5e74ca8f60994dfd4a4d5f7eb` |
 | art/broom.png | `e64cebce1cee4b5fd7e5a2efc4f12846ef72b3f9b1a3636742cbd126afd5e98b` |
 | art/candle.png | `abc382408957e86ff64d8fec075752eb7c73ee61737ae59f7a112fa82f82f563` |
 | art/cat.png | `e2c262ccacf0488403e9b3bb7659fbb5de30341efa1d0ae84a6f58738eda2567` |
 | art/cauldron.png | `4f3387cedcecffe7580a75f3f2c18b215a16711c8f7af326a46931d902acd489` |
+| art/chest.png | `c6ee8198410070c63d1fea74d9efb80d73503be59794e44d1aa6cd62e8442e95` |
 | art/crow.png | `28ea7f66a3b1e3c36395df94110cd3e01d1b8fc1d1da0139b5f0c7a9b135a4ae` |
+| art/door.png | `aea8c56e176fbedd18f950104d82101943beca3c62440afc73260abfbfc29dc0` |
 | art/frog.png | `50eea7ef63e7ef058c4949809260de8f28d3240bcc43ad9447f29155e5f2dd7d` |
 | art/ghost.png | `f765ec55c9bd4794846e6ac93b468aee777616c868c8e6992b7b259f90b6180b` |
 | art/hat.png | `98aebe65d09cb00e75aa24e1fcad9adca86bae6efa1ca0b2b671f99c3f2fde4b` |
+| art/house.png | `aa0be8e4dcffc292c616468abade6065a33df718225fb95f3f02ee40b34da74a` |
+| art/key.png | `85ee97b74adce425764949b4fe565c33491687865bbec89f7d91ad4e871e5404` |
+| art/lantern.png | `e07c3c6d5cbff0bb4470c2c8f8bc32fe98363b5ec8c16a928676d0202ae3652a` |
 | art/mask.png | `4df624ef20c2c54040a47337b627dbb18d022261e02f60494a9fcd4860cb0c91` |
 | art/monster.png | `ee70955036936e71109f5b95cf41203ed2e800636700f63622f383c147a6c52e` |
 | art/moon.png | `4d4bf32567cbdd0d970c2617d883ec21bc99d88596eef29f9b4ea76b6e8a6420` |
@@ -35,19 +43,27 @@ Livraison : `public/images/`, `public/images/color/` et `public/images/art/`, co
 | art/witch.png | `274e4be75929d28d1c95789c98a2aadc4e776d010902654e8964f9a2e96dcf07` |
 | art/wolf.png | `ca3906879984da865893061bd21c3449da4b4a06d4ce386f24e35603d7f1520b` |
 | bat.png | `b47049072e5285ee806df1d2982d93bc61287985d3e580084803c68be13d4e76` |
+| bell.png | `50c2798d3bf189a1e9a8c03b0f628997ed03364af1cb91b610df60ceca48d338` |
 | broom.png | `ef98226c7e16758c00cfa730ae1e1f41f68186a0e80a97faa284b9f156c76406` |
 | candle.png | `2acb4532eb5c43abf4814263e2bfef9c225996b9fb0692d3ac7a155f249dee1e` |
 | cat.png | `81b5e9be44513e83c9ac5320b43ea61ed728d64ffe7428a2c0ba04024770b614` |
 | cauldron.png | `c9599824a5938375391de9263ca0da11b7c5df2527875c55f4fe032e274c3888` |
+| chest.png | `61b5e425ca0828e2275c8900a5f3ddc46bc1b750718ef1cee22e9cd782195413` |
 | color/bat.png | `f68d23c85635d0cfd9695f539ab2cdf490df7b9956d72726d82ffa12eb9f3c49` |
+| color/bell.png | `48c205abb15cfd7decf29798d3bbb5175341583e2c5a4cf97660ae43a4f6e3ef` |
 | color/broom.png | `911e963beb160c86ddfd1232ecb2588e6d817057138a55bbf9980a7a30164602` |
 | color/candle.png | `f2fba28a0594b7ff17e6b7f247924ea9df2832cbcfdff328d51f9684c4451a6a` |
 | color/cat.png | `ea418d1c241eba682be742a97d0b980fb618c9959d0c3e299405b376a7bc339a` |
 | color/cauldron.png | `ab0d1614c32464cdffea8ee0983cc6e408d370a062b0770d682a5163710e20af` |
+| color/chest.png | `de3b0dccdcf45830260fadefe07b4901851553b3bb87a0ecd0aba80bca202e92` |
 | color/crow.png | `e357a2739353f946eb1c14c33d4d1cdc10f6caa8b1dd3d896ceaef3cfcbe2a86` |
+| color/door.png | `b5efe058e6e48510e901ac6b08d4f642ce86170f4d1be38f3078428c4a0c8d06` |
 | color/frog.png | `99e6a6700d12737f1b059b64863c2b8ebe90c19d628c8507103539bf6a1aee67` |
 | color/ghost.png | `dc8c2ee5f708f1ca6f2e31d409308f362790776d0b7657383dd76cabc059d4b3` |
 | color/hat.png | `9367efea80c7e1073b4ec747cf5a3a51c3ddddee7adae442e32a574289a640bb` |
+| color/house.png | `9584a44a4999d6420af3367e44c9a9aa36fff52c4365d8843711ba6bc6dff63d` |
+| color/key.png | `b41005795874aebb35f07fc3f55e24993f15d5f9258f76b57ffe32c3e9073614` |
+| color/lantern.png | `c7174148422d24440e7d3befb1af7cdaef89a353c6e6b50bfec156f96d1da234` |
 | color/mask.png | `8656180b0633a6ede30b7560d4312ac28e45686bdba289bc48261db11c9bcc4e` |
 | color/monster.png | `2ac150d12cf10d9cb3abb5614e03da768bb2150cad1676beb4be5cc7f6ff742d` |
 | color/moon.png | `fa2a367337f780967b18e50a40ebf1d9eb489e149a2e99866223b2e60aabc19e` |
@@ -66,9 +82,13 @@ Livraison : `public/images/`, `public/images/color/` et `public/images/art/`, co
 | color/witch.png | `0c7559215614c93b653386a071dfcdd7a8bf2bc39f90e145620284e824787939` |
 | color/wolf.png | `8f19bd21890fd14eb740fa177f5f395776c5ebb103c57af39b61408dcab09741` |
 | crow.png | `d6a6d505056291bd39cdbbebe86e854f3a9ebd27fe756a0afb336f05be56fd3c` |
+| door.png | `12985b7dfd81bbf4575a648ba4e527d645fdfe0c3ad0cce6246b248865595261` |
 | frog.png | `de5ddd463561cc104ab408e6316a547e453371d4390af3a58c3bd3b33824bc1e` |
 | ghost.png | `933d7ab02c754f25df14ba44ec09a089c4819d98794e73b1920088115ed884b1` |
 | hat.png | `671372f6604cacf4ae4585b128087bf090b5c7d70c17192f1b978f75b5740f59` |
+| house.png | `c623a28e7add5819a23f405f1db6cc33e7fa805d4e49da107c4015644b6fa128` |
+| key.png | `63a200d17dd9196ab4293080a13b44c4d82434b844e6fbf11ccae1f48dc67d25` |
+| lantern.png | `f895d66c2c11a49b1737c34059039a3bbf59142d8366bd14cc8888f5d5edddfd` |
 | mask.png | `930fb44409b4d441ce6c581b0b24d440a163d1e82ebb76925aee58a6b2a25101` |
 | monster.png | `eeb3967fef5c19beb8b27261eb6c946cae9351820ea55c2e5a40303313fcc3b6` |
 | moon.png | `34392e716fdc99bd8a992ca0b38de17b08e679048ebf480cd1bedf6a99416fb1` |
