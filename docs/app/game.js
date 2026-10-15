@@ -1,14 +1,14 @@
 export const WORDS = [
-    { id: 'ghost', unlocks: 'owl', english: 'ghost', french: 'fantôme' },
-    { id: 'vampire', unlocks: 'snake', english: 'vampire', french: 'vampire' },
-    { id: 'pumpkin', unlocks: 'crow', english: 'pumpkin', french: 'citrouille' },
-    { id: 'monster', unlocks: 'wolf', english: 'monster', french: 'monstre' },
-    { id: 'witch', unlocks: 'moon', english: 'witch', french: 'sorcière' },
-    { id: 'bat', unlocks: 'skull', english: 'bat', french: 'chauve-souris' },
-    { id: 'skeleton', unlocks: 'mask', english: 'skeleton', french: 'squelette' },
-    { id: 'spider', unlocks: 'candle', english: 'spider', french: 'araignée' },
-    { id: 'rat', unlocks: 'hat', english: 'rat', french: 'rat' },
-    { id: 'frog', unlocks: 'sweet', english: 'frog', french: 'grenouille' },
+    { id: 'ghost', english: 'ghost', french: 'fantôme' },
+    { id: 'vampire', english: 'vampire', french: 'vampire' },
+    { id: 'pumpkin', english: 'pumpkin', french: 'citrouille' },
+    { id: 'monster', english: 'monster', french: 'monstre' },
+    { id: 'witch', english: 'witch', french: 'sorcière' },
+    { id: 'bat', english: 'bat', french: 'chauve-souris' },
+    { id: 'skeleton', english: 'skeleton', french: 'squelette' },
+    { id: 'spider', english: 'spider', french: 'araignée' },
+    { id: 'rat', english: 'rat', french: 'rat' },
+    { id: 'frog', english: 'frog', french: 'grenouille' },
     { id: 'owl', english: 'owl', french: 'hibou', article: 'an' },
     { id: 'snake', english: 'snake', french: 'serpent' },
     { id: 'crow', english: 'crow', french: 'corbeau' },
@@ -20,6 +20,13 @@ export const WORDS = [
     { id: 'hat', english: 'hat', french: 'chapeau' },
     { id: 'sweet', english: 'sweet', french: 'bonbon' },
 ];
+export const ORIGINAL_WORDS = WORDS.slice(0, 10);
+// Append future packs here: existing card identifiers and acquired skills stay stable.
+export const DISCOVERY_ORDER = ['ghost', 'pumpkin', 'bat', 'witch', 'vampire', 'monster', 'skeleton', 'spider', 'rat', 'frog', 'owl', 'snake', 'crow', 'wolf', 'moon', 'skull', 'mask', 'candle', 'hat', 'sweet'].map(id => WORDS.find(word => word.id === id));
+export const STARTER_WORDS = DISCOVERY_ORDER.slice(0, 4);
+export function spokenWord(word, articles = true) {
+    return articles ? `${word.article ?? 'a'} ${word.english}` : word.english;
+}
 export function shuffle(items, random = Math.random) {
     const result = [...items];
     for (let i = result.length - 1; i > 0; i--) {
@@ -28,55 +35,48 @@ export function shuffle(items, random = Math.random) {
     }
     return result;
 }
-export const ORIGINAL_WORDS = WORDS.slice(0, 10);
-export function spokenWord(word, articles = true) {
-    return articles ? `${word.article ?? 'a'} ${word.english}` : word.english;
+export function progressiveCount(level) { return level >= 2 ? 4 : level >= 1 ? 3 : 2; }
+export function questionChoices(target, count, random = Math.random, pool = STARTER_WORDS) {
+    return shuffle([target, ...shuffle(pool.filter(w => w.id !== target.id), random).slice(0, count - 1)], random);
 }
-export function progressiveCount(targets, levels) {
-    const half = Math.ceil(targets.length / 2);
-    if (targets.filter(w => (levels[w.id] ?? 0) >= 4).length >= half)
-        return 4;
-    if (targets.filter(w => (levels[w.id] ?? 0) >= 2).length >= half)
-        return 3;
-    return 2;
+function weighted(pool, level, random) {
+    const weights = pool.map(word => 1 / (1 + level(word)) ** 2);
+    let pick = random() * weights.reduce((a, b) => a + b, 0);
+    for (let i = 0; i < pool.length; i++) {
+        pick -= weights[i];
+        if (pick < 0)
+            return pool[i];
+    }
+    return pool[pool.length - 1];
 }
-// Weighted sampling favours low levels without repeating a target initially.
-export function createSession(mode, count, random = Math.random, targets = ORIGINAL_WORDS, levels = {}) {
+function cueAt(session, index) {
+    return index % 2 === 0 ? session.firstCue : session.firstCue === 'flash' ? 'once' : 'flash';
+}
+function makeQuestion(session, target, index, review = false) {
+    const cue = cueAt(session, index);
+    return { target, cue, review, choices: questionChoices(target, progressiveCount(session.level(target, cue)), session.random, session.pool) };
+}
+// Four different targets, selected more often when the active skill is still weak.
+export function createSession(mode, options = {}) {
     if (!['listen', 'read', 'memory'].includes(mode))
         throw new Error('Invalid mode');
-    if (![2, 3, 4].includes(count))
-        throw new Error('Invalid choice count');
-    if (!targets.length || targets.some(w => !WORDS.includes(w)))
+    const targets = options.targets ?? STARTER_WORDS;
+    const pool = options.pool ?? targets;
+    if (!targets.length || new Set(targets.map(w => w.id)).size !== targets.length || targets.some(w => !WORDS.includes(w) || !pool.includes(w)))
         throw new Error('Invalid targets');
-    const uses = {};
-    const questions = [];
-    for (let index = 0; index < Math.min(10, targets.length); index++) {
-        const pool = targets.filter(w => (uses[w.id] ?? 0) === 0);
-        const weights = pool.map(w => 1 / (1 + (levels[w.id] ?? 0) + (uses[w.id] ?? 0)) ** 2);
-        let pick = random() * weights.reduce((a, b) => a + b, 0);
-        let selected = pool.length - 1;
-        for (let i = 0; i < pool.length; i++) {
-            pick -= weights[i];
-            if (pick < 0) {
-                selected = i;
-                break;
-            }
-        }
-        const target = pool[selected];
-        uses[target.id] = (uses[target.id] ?? 0) + 1;
-        questions.push({ target, cue: index % 2 === 0 ? 'flash' : 'once', choices: questionChoices(target, count, random) });
+    const session = { mode, count: 2, questions: [], principalLength: Math.min(4, targets.length), index: 0, score: 0, attempts: 0, solved: false, missed: [], found: [], rejected: [], credited: [], targets, pool, level: options.level ?? (() => 0), random: options.random ?? Math.random, firstCue: options.firstCue ?? 'flash' };
+    for (let index = 0; index < Math.min(4, targets.length); index++) {
+        const available = targets.filter(w => !session.questions.some(q => q.target.id === w.id));
+        const forced = index === 0 ? available.find(w => w.id === options.forceTarget) : undefined;
+        const target = forced ?? weighted(available, word => session.level(word, cueAt(session, index)), session.random);
+        session.questions.push(makeQuestion(session, target, index));
     }
-    return { mode, count, questions, index: 0, score: 0, attempts: 0, solved: false, missed: [], rejected: [], lastCorrect: false };
-}
-export function questionChoices(target, count, random = Math.random) {
-    return shuffle([target, ...shuffle(WORDS.filter(w => w.id !== target.id), random).slice(0, count - 1)], random);
+    return session;
 }
 export function memoryPeek(level, random = Math.random) {
-    if (level < 2)
+    if (level < 1)
         return null;
-    const radius = level >= 4 ? 18 : 30;
-    // The window stays near the subject, entirely inside the picture.
-    return { radius, x: 35 + random() * 30, y: 35 + random() * 30 };
+    return { radius: level >= 2 ? 18 : 30, x: 35 + random() * 30, y: 35 + random() * 30 };
 }
 export function answer(session, id) {
     const q = session.questions[session.index];
@@ -94,29 +94,31 @@ export function answer(session, id) {
         return 'retry';
     }
     session.solved = true;
-    session.lastCorrect = true;
+    session.found.push(q.target.id);
     if (session.attempts === 1)
         session.score++;
     return 'correct';
 }
-export function advance(session) {
+function reviewCandidates(session) {
+    const previous = session.questions[session.index]?.target.id;
+    const retry = session.targets.filter(word => session.missed.includes(word.id) && !session.found.includes(word.id) && word.id !== previous && session.questions.filter(q => q.target.id === word.id).length < 2);
+    const unseen = session.targets.filter(word => !session.questions.some(q => q.target.id === word.id) && session.level(word, cueAt(session, session.questions.length)) < 3);
+    return retry.length ? retry : unseen;
+}
+export function canReview(session) {
+    return session.solved && session.index === session.questions.length - 1 && session.questions.length === session.principalLength && reviewCandidates(session).length > 0;
+}
+export function advance(session, includeReview = true) {
     if (!session.solved)
         return false;
-    const question = session.questions[session.index];
-    if (!session.lastCorrect && question) {
-        // A missed target can return once, with at least one intervening question.
-        const retryIndex = session.index + 2;
-        const occurrences = session.questions.filter(q => q.target.id === question.target.id).length;
-        if (retryIndex < session.questions.length && occurrences < 2 &&
-            session.questions[retryIndex - 1]?.target.id !== question.target.id &&
-            session.questions[retryIndex + 1]?.target.id !== question.target.id) {
-            session.questions[retryIndex] = { target: question.target, cue: retryIndex % 2 === 0 ? 'flash' : 'once', choices: questionChoices(question.target, session.count) };
-        }
+    if (includeReview && canReview(session)) {
+        // Only an unfound word can return, at most twice and never consecutively.
+        const target = weighted(reviewCandidates(session), word => session.level(word, cueAt(session, session.questions.length)), session.random);
+        session.questions.push(makeQuestion(session, target, session.questions.length, true));
     }
     session.index++;
     session.solved = false;
     session.attempts = 0;
-    session.lastCorrect = false;
     session.rejected = [];
     return session.index < session.questions.length;
 }

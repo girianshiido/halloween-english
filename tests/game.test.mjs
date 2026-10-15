@@ -1,94 +1,121 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createSession, answer, advance, WORDS, shuffle } from '../docs/app/game.js';
+import { createSession, questionChoices, answer, advance, WORDS, STARTER_WORDS, progressiveCount, memoryPeek, spokenWord } from '../docs/app/game.js';
 function randomSeed(seed) { return () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; }; }
-test('Chaque combinaison propose dix questions et des distracteurs sans doublons', () => {
+test('600 parties courtes : choix uniques, bonne réponse et seulement des cartes connues', () => {
   const positions = new Set();
-  for (const mode of ['listen', 'read']) for (const count of [2, 3, 4]) for (let seed = 0; seed < 100; seed++) {
-    const s = createSession(mode, count, randomSeed(seed));
-    assert.equal(s.questions.length, 10);
-    assert.ok(s.questions.every(q => WORDS.slice(0, 10).includes(q.target)));
-    for(const word of WORDS) assert.ok(s.questions.filter(q=>q.target.id===word.id).length<=2);
+  for (const mode of ['listen', 'read', 'memory']) for (const level of [0, 1, 2, 3]) for (let seed = 0; seed < 50; seed++) {
+    const s = createSession(mode, { random: randomSeed(seed), level: () => level });
+    assert.equal(s.questions.length, 4);
+    assert.equal(new Set(s.questions.map(q => q.target.id)).size, 4);
     for (const q of s.questions) {
-      assert.equal(q.choices.length, count);
-      assert.equal(new Set(q.choices.map(w => w.id)).size, count);
+      assert.equal(q.choices.length, progressiveCount(level));
+      assert.equal(new Set(q.choices.map(w => w.id)).size, q.choices.length);
       assert.equal(q.choices.filter(w => w.id === q.target.id).length, 1);
-      assert.ok(q.choices.every(w => WORDS.includes(w)));
+      assert.ok(q.choices.every(w => STARTER_WORDS.includes(w)));
       positions.add(q.choices.findIndex(w => w.id === q.target.id));
     }
   }
   assert.deepEqual([...positions].sort(), [0, 1, 2, 3]);
 });
-test('Une partie parfaite donne dix étoiles et se termine après dix questions', () => {
-  const s = createSession('listen', 4, randomSeed(10));
-  for (let i = 0; i < 10; i++) {
-    const q = s.questions[s.index];
-    assert.equal(answer(s, q.target.id), 'correct');
-    assert.equal(answer(s, q.target.id), 'ignored');
+test('Une partie parfaite initiale se termine à quatre étoiles, sans répétition', () => {
+  const s = createSession('listen');
+  for (let i = 0; i < 4; i++) {
+    assert.equal(answer(s, s.questions[s.index].target.id), 'correct');
+    assert.equal(answer(s, s.questions[s.index].target.id), 'ignored');
     assert.equal(s.score, i + 1);
-    assert.equal(advance(s), i < 9);
+    assert.equal(advance(s), i < 3);
   }
-  assert.equal(s.index, 10);
+  assert.equal(s.questions.length, 4);
   assert.equal(answer(s, WORDS[0].id), 'ignored');
   assert.equal(advance(s), false);
 });
-test('Une erreur permet de réessayer sans gagner une étoile sur cette question', () => {
-  const s = createSession('read', 3, randomSeed(3));
+test('Une correction après erreur ne gagne pas une étoile et le mot trouvé ne revient plus', () => {
+  const s = createSession('read');
   assert.equal(advance(s), false);
-  const q = s.questions[0];
-  const wrong = q.choices.find(w => w.id !== q.target.id);
+  const q = s.questions[0]; const wrong = q.choices.find(w => w !== q.target);
+  assert.equal(answer(s, 'not-a-word'), 'ignored');
+  assert.equal(s.attempts, 0);
   assert.equal(answer(s, wrong.id), 'retry');
   assert.equal(answer(s, wrong.id), 'ignored');
   assert.equal(s.attempts, 1);
-  assert.deepEqual(s.missed, [q.target.id]);
   assert.equal(answer(s, q.target.id), 'correct');
   assert.equal(s.score, 0);
+  while (advance(s)) answer(s, s.questions[s.index].target.id);
+  assert.equal(s.questions.length, 4);
+  assert.equal(s.questions.filter(item => item.target === q.target).length, 1);
+});
+test('Le mémo alterne et une cinquième question revoit un mot raté non consécutif', () => {
+  const s = createSession('memory', { firstCue: 'once' });
+  const first = s.questions[0];
+  assert.equal(answer(s, first.choices.find(w => w !== first.target).id), 'incorrect');
+  assert.equal(answer(s, first.target.id), 'ignored');
+  for (let i = 1; i < 4; i++) { assert.equal(advance(s), true); answer(s, s.questions[s.index].target.id); }
   assert.equal(advance(s), true);
-  assert.equal(s.attempts, 0);
-  assert.deepEqual(s.rejected, []);
-  assert.equal(answer(s, s.questions[1].target.id), 'correct');
-  assert.equal(s.score, 1);
+  assert.equal(s.questions.length, 5);
+  assert.equal(s.questions[4].target, first.target);
+  assert.equal(s.questions[4].review, true);
+  assert.deepEqual(s.questions.map(q => q.cue), ['once','flash','once','flash','once']);
+  answer(s, s.questions[4].choices.find(w => w !== first.target).id);
+  assert.equal(advance(s), false);
 });
-test('Les entrées invalides et les doubles clics ne changent pas le score', () => {
-  assert.throws(() => createSession('invalid', 2));
-  assert.throws(() => createSession('read', 5));
-  const s = createSession('listen', 2);
-  assert.equal(answer(s, 'not-a-word'), 'ignored');
-  assert.equal(s.attempts, 0);
-  answer(s, s.questions[0].target.id);
-  for (let i = 0; i < 10; i++) answer(s, s.questions[0].target.id);
-  assert.equal(s.score, 1);
+test('Une seule révision, même avec seulement trois cibles mémo ou une erreur finale', () => {
+  const s = createSession('memory', { targets: STARTER_WORDS.slice(0,3), pool: STARTER_WORDS });
+  for (let i = 0; i < 3; i++) { const q = s.questions[s.index]; answer(s, q.choices.find(w => w !== q.target).id); assert.equal(advance(s), true); }
+  assert.equal(s.questions.length, 4);
+  const q = s.questions[s.index]; answer(s, q.choices.find(w => w !== q.target).id);
+  assert.equal(advance(s), false);
+  const perfect = createSession('memory', { targets: STARTER_WORDS.slice(0,3), pool: STARTER_WORDS });
+  do { answer(perfect, perfect.questions[perfect.index].target.id); } while (advance(perfect));
+  assert.equal(perfect.questions.length, 3);
 });
-test('Le mélange ne modifie pas le catalogue et varie les parties', () => {
-  const before = [...WORDS];
-  shuffle(WORDS, randomSeed(1));
-  assert.deepEqual(WORDS, before);
-  assert.notDeepEqual(createSession('read', 3, randomSeed(1)).questions, createSession('read', 3, randomSeed(2)).questions);
+test('Une cinquième carte peu avancée peut servir de révision sans dépasser cinq questions', () => {
+  const s = createSession('listen', { targets: WORDS, pool: WORDS, random: randomSeed(8) });
+  do { answer(s, s.questions[s.index].target.id); } while (advance(s));
+  assert.equal(s.questions.length, 5);
+  assert.equal(new Set(s.questions.map(q => q.target.id)).size, 5);
+  assert.equal(s.questions[4].review, true);
 });
-
-test('La sélection privilégie fortement les cartes faibles, sans dépasser deux occurrences',()=>{
-  let seed=42;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
-  const levels=Object.fromEntries(WORDS.map(w=>[w.id,30]));levels.ghost=0;
-  let low=0,other=0;for(let i=0;i<200;i++){const s=createSession('memory',2,random,WORDS,levels);low+=s.questions.filter(q=>q.target.id==='ghost').length;other+=s.questions.filter(q=>q.target.id==='vampire').length;assert.equal(s.questions.filter(q=>q.cue==='flash').length,5);}
-  assert.ok(low>other*1.8);assert.ok(low<=400);
-});
-
-test('Un mot trouvé ne revient jamais dans la partie ; seuls les échecs reviennent, sans succession',()=>{
-  for(let seed=0;seed<100;seed++) {
-    const s=createSession('memory',3,randomSeed(seed));const found=new Set(), seen=[];
-    for(let i=0;i<10;i++) {
-      const q=s.questions[s.index];assert.ok(!found.has(q.target.id));assert.notEqual(q.target.id,seen.at(-1));seen.push(q.target.id);
-      const success=i%3!==0;
-      const result=answer(s,success?q.target.id:q.choices.find(w=>w.id!==q.target.id).id);
-      if(result==='correct')found.add(q.target.id);
-      advance(s);
-    }
-    for(const id of seen)assert.ok(seen.filter(w=>w===id).length<=2);
+test('300 parties avec erreurs : jamais deux fois de suite, jamais un mot déjà trouvé', () => {
+  for(let seed=0;seed<300;seed++) {
+    const s=createSession('memory',{targets:WORDS,pool:WORDS,random:randomSeed(seed)});
+    const found=new Set();const seen=[];
+    do {
+      const q=s.questions[s.index];
+      assert.ok(!found.has(q.target.id));
+      assert.notEqual(q.target.id,seen.at(-1)); seen.push(q.target.id);
+      if(s.index%2) {answer(s,q.target.id);found.add(q.target.id);} else answer(s,q.choices.find(w=>w!==q.target).id);
+    } while(advance(s));
+    assert.ok(s.questions.length<=5);
+    for(const word of WORDS) assert.ok(seen.filter(id=>id===word.id).length<=2);
   }
 });
-test('Une carte ratée revient deux questions plus tard, une carte corrigée au second essai reste acquise pour la partie',()=>{
-  const s=createSession('memory',2);const first=s.questions[0];answer(s,first.choices.find(w=>w.id!==first.target.id).id);advance(s);
-  assert.notEqual(s.questions[1].target.id,first.target.id);assert.equal(s.questions[2].target.id,first.target.id);
-  const read=createSession('read',2), q=read.questions[0];answer(read,q.choices.find(w=>w.id!==q.target.id).id);answer(read,q.target.id);advance(read);
-  assert.ok(read.questions.slice(1).every(next=>next.target.id!==q.target.id));
+test('La carte faible est privilégiée selon la compétence active', () => {
+  let weak = 0;
+  for(let seed=0;seed<400;seed++) {
+    const s=createSession('read',{targets:WORDS,pool:WORDS,random:randomSeed(seed+90),level:w=>w.id==='ghost'?0:3});
+    if(s.questions.some(q=>q.target.id==='ghost')) weak++;
+  }
+  assert.ok(weak > 300, `${weak}/400`);
+});
+test('Difficulté individuelle, trous mémo et articles', () => {
+  assert.deepEqual([0,1,2,3].map(progressiveCount),[2,3,4,4]);
+  assert.equal(memoryPeek(0),null);
+  assert.equal(memoryPeek(1).radius,30);
+  assert.equal(memoryPeek(2).radius,18);
+  for(let i=0;i<100;i++) {const peek=memoryPeek(3); assert.ok(peek.x>=35&&peek.x<=65&&peek.y>=35&&peek.y<=65);}
+  assert.equal(spokenWord(WORDS.find(w=>w.id==='owl')),'an owl');
+  assert.equal(spokenWord(WORDS.find(w=>w.id==='moon')),'the Moon');
+  assert.equal(spokenWord(WORDS[0],false),'ghost');
+});
+test('Entrées invalides refusées et petit pool sans doublon', () => {
+  assert.throws(()=>createSession('invalid'));
+  assert.throws(()=>createSession('listen',{targets:[]}));
+  assert.throws(()=>createSession('listen',{targets:[WORDS[1]],pool:STARTER_WORDS}));
+  assert.equal(questionChoices(STARTER_WORDS[0],4,Math.random,STARTER_WORDS.slice(0,2)).length,2);
+});
+test('La révision est facultative : terminer après les quatre questions reste possible', () => {
+  const s=createSession('read',{targets:WORDS,pool:WORDS});
+  for(let i=0;i<4;i++){answer(s,s.questions[s.index].target.id);assert.equal(advance(s,false),i<3);}
+  assert.equal(s.questions.length,4);assert.equal(s.score,4);
 });

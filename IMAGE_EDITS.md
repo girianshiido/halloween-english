@@ -23,3 +23,7 @@ Fichiers finaux : `public/images/{owl,snake,crow,wolf,moon,skull,mask,candle,hat
 Trente images recréées avec **image_gen intégré**. Les dix dessins noir et blanc utilisent `owl.png` et `snake.png` comme références de style. Chaque nouveau dessin sert ensuite de cible pour ses variantes couleur et artiste, avec la version correspondante du hibou comme référence de finition. Les sujets restent ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat et frog.
 
 Fichiers finaux : mêmes noms dans `public/images/`, `public/images/color/` et `public/images/art/`. Les anciennes trente images ont été copiées et vérifiées à l’octet près contre le dépôt avant remplacement dans `backups/illustrations-2026-10-14-before-style-refresh/` (copie locale hors du site). Consignes exactes dans [style-refresh-prompts.json](style-refresh-prompts.json).
+
+## Masque — 15 octobre 2026
+
+Remplacement du masque théâtral par un masque intégral de petit monstre, costume d’enfant pour Halloween. Deux ouvertures pour les yeux sans pupilles, quatre dents arrondies, deux cornes et attache visible. Les variantes couleur et artiste dérivent du même dessin. Outil image_gen intégré ; prompts et fichiers dans `mask-refresh-prompts.json`. Sauvegarde des trois anciens PNG et empreintes SHA-256 dans `backups/mask-2026-10-15-before-halloween-redraw/` (local uniquement).

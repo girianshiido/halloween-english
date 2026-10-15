@@ -1,55 +1,57 @@
 # Boo! English
 
-Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun avec trois illustrations (original, couleur, artiste). Dix cartes sont disponibles au départ, dix autres se découvrent progressivement. Aucun compte requis.
+Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
 
 [Jouer directement](https://girianshiido.github.io/halloween-english/)
 
+## Un petit parcours guidé
+
+**Continuer mon aventure** propose la compétence à travailler : écouter ou reconnaître les mots, en privilégiant les cartes les moins avancées. Mémo magique est suggéré régulièrement lorsqu’il est disponible. Les activités restent accessibles librement depuis l’accueil.
+
+Une partie contient **quatre questions différentes**, suivies d’**une révision facultative** lorsqu’un mot raté ou une autre carte peu avancée mérite d’être revu. Le joueur peut terminer directement ou accepter ce bonus. Avec seulement trois cartes colorées, le mémo commence par trois questions plutôt que répéter un mot déjà trouvé.
+
+Les quatre premières cartes sont **ghost, pumpkin, bat et witch**. Chaque paire de cartes colorées révèle deux nouvelles cartes. L’aventure présente les nouveautés **une par une** : image, mot et écoute libre, puis un premier défi contenant cette carte. Une carte révélée peut aussi être présentée en l’écoutant dans J’apprends. Les mots encore secrets ou jamais présentés ne sont ni cibles ni distracteurs.
+
 ## Les activités
 
-- **J’apprends** : toutes les cartes déjà découvertes, à écouter librement.
-- **J’écoute** : entendre un mot et choisir l’image.
+- **J’apprends** : les cartes révélées à écouter librement ; des emplacements anonymes attendent les autres cartes.
+- **J’écoute** : entendre un mot et choisir l’image, avec réécoute libre.
 - **Je regarde** : regarder une image et choisir le mot ; chaque réponse touchée est prononcée.
-- **Ma collection** : compteurs, trois versions, zoom au toucher et choix manuel de la version utilisée.
-- **Mémo magique**, une fois les dix premières couleurs débloquées : cinq images montrées une seconde puis cachées et cinq mots entendus une seule fois. Une seule tentative, aucune réécoute audio.
+- **Ma collection** : quatre petits compteurs par carte, trois versions, zoom au toucher et choix manuel de la version utilisée.
+- **Mémo magique**, dès **trois cartes colorées** : alterner une image montrée une seconde puis cachée et un mot entendu une seule fois. Seules les cartes colorées sont interrogées. Une seule tentative et aucune réécoute audio.
 
-La touche **a / an / the** active les articles dans les prononciations et les textes anglais, par défaut : « a ghost », « an owl », « the Moon ». Le réglage persiste sur l’appareil et actualise les propositions même pendant une question.
+La touche **a / an / the** active les articles dans la prononciation et les textes anglais, par défaut : « a ghost », « an owl », « the Moon ». Le réglage persiste sur l’appareil et actualise les propositions pendant une question.
 
-## Progression
+## Quatre compétences, deux récompenses
 
-Seule une **bonne réponse du premier coup** gagne une étoile et augmente le compteur. Les défis ordinaires permettent de corriger une erreur pour apprendre, sans faire monter la carte. Écouter une carte, cliquer deux fois ou répondre à un distracteur ne donne aucun progrès.
+Seule une **bonne réponse du premier coup** gagne une étoile et fait progresser une compétence. Les défis ordinaires permettent de corriger une erreur pour apprendre, sans faire monter la carte. Écouter librement, cliquer deux fois ou toucher un distracteur ne donne aucun progrès. Les compteurs sont plafonnés à trois, mais toutes les cartes restent jouables.
 
-**Six réussites normales** débloquent la couleur. Les dix premières couleurs ouvrent définitivement l’accès à Mémo magique. Les cartes découvertes rejoignent ce mode quand leur couleur est débloquée. **Six réussites mémo** débloquent la version artiste, et pour chaque carte officielle une nouvelle carte :
-
-| Carte de départ | Nouvelle carte |
+| Récompense | Conditions par carte |
 | --- | --- |
-| ghost | owl |
-| vampire | snake |
-| pumpkin | crow |
-| monster | wolf |
-| witch | Moon |
-| bat | skull |
-| skeleton | mask |
-| spider | candle |
-| rat | hat |
-| frog | sweet |
+| Couleur | **3 réussites J’écoute + 3 réussites Je regarde** |
+| Artiste | **3 images éclair + 3 écoutes uniques** dans Mémo magique |
+| Deux nouvelles cartes | Chaque **paire de cartes colorées** |
+| Accès à Mémo magique | **3 cartes colorées** |
 
-Les cartes secrètes peuvent apparaître comme distracteurs mais ne deviennent jamais des cibles avant leur découverte. Elles restent absentes des galeries jusque-là. Une récompense ne change jamais automatiquement la version choisie.
+Les versions artiste sont des récompenses facultatives : elles ne bloquent pas les nouvelles cartes. Une récompense ne change jamais automatiquement la version choisie. Chaque déblocage est conservé sur l’appareil.
 
-## Difficulté progressive et révisions
+## Difficulté et révisions
 
-Deux propositions au départ. Trois dès qu’au moins la moitié des cartes éligibles atteint **deux réussites**, quatre dès que la moitié atteint **quatre réussites**. Le seuil est arrondi au supérieur pour un nombre impair de cartes. Les défis ordinaires utilisent les cartes découvertes et leur compteur normal ; le mémo utilise les cartes avec couleur et leur compteur mémo. La difficulté est recalculée à chaque question.
+Chaque carte a son propre niveau **dans chacune des quatre compétences** : deux réponses avec zéro réussite, trois après une réussite, quatre après deux réussites. La difficulté est recalculée à chaque question, indépendamment des autres cartes. Une nouvelle carte débute toujours à deux choix.
 
-Chaque partie comporte dix questions. Les cibles sont tirées avec une pondération inverse du carré de leur niveau augmenté de un : les cartes peu trouvées sont prioritaires. Une carte trouvée ne revient jamais dans la même partie, même si elle a été corrigée après une erreur. Une carte ratée peut revenir une seule fois, après au moins une autre question. Deux mots identiques ne se suivent jamais. La sélection reste aléatoire ; une partie ne garantit pas de présenter toutes les cartes.
+Les cibles sont tirées sans répétition avec une pondération inverse du carré du niveau actif augmenté de un. La carte la moins avancée dans sa compétence faible ouvre le défi guidé. En mémo, la première compétence favorise celle ayant le moins de réussites, puis les questions alternent.
 
-Au niveau mémo **2**, un cache noir masque l’image, sauf un trou placé aléatoirement près du centre du dessin. Au niveau **4**, ce trou est plus petit. Dans les deux cas, l’image disparaît toujours après une seconde et les propositions apparaissent ensuite.
+Un mot trouvé ne revient jamais dans la même partie, même après correction. Une carte ratée peut revenir **une seule fois**, en révision, après au moins une autre question. Deux mots identiques ne se suivent jamais ; au maximum cinq questions, sans remplir artificiellement une partie avec des mots déjà trouvés.
 
-## Sauvegardes et confidentialité
+Les images éclair sont d’abord entières. Après **une réussite en image éclair**, un cache noir ne laisse voir qu’un grand trou aléatoire ; après **deux**, le trou est plus petit. Le trou recherche une zone contenant réellement un détail dessiné. L’image disparaît toujours après une seconde, avant l’affichage des propositions.
 
-Deux compteurs indépendants par carte : normal et mémo. À partir de cette mise à jour, **l’ancienne progression et les anciens scores sont effacés**. Le nouveau jeu utilise des clés dédiées (progression format 4 et scores v2), sans migration des anciens compteurs. La remise à zéro n’efface jamais les acquis enregistrés ensuite, les préférences d’articles ou les données d’autres jeux. J’apprends affiche les dix cartes originales et des emplacements anonymes pour les dix nouvelles cartes ; chaque emplacement devient une carte jouable uniquement après son déblocage.
+## Sauvegardes et remise à zéro
 
-Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les polices Google Fonts sont facultatives. Le verrouillage des illustrations est une règle locale de jeu, pas une protection de fichiers privés.
+Cette mise à jour **efface l’ancienne progression et les anciens records une seule fois** : nouvelle progression de format 5, scores v3, aucune migration des anciens compteurs. Les nouvelles réussites sont ensuite conservées après rechargement, avec les cartes présentées, les versions choisies et le parcours guidé. Ajouter un futur pack devra conserver ces identifiants et ce format pour garder les acquis.
 
-Le bouton **Repartir de zéro**, en bas de l’aide (bouton « ? »), ouvre une confirmation avec **Annuler** sélectionné par défaut. Confirmer efface uniquement les données de ce jeu sur l’appareil : compteurs, records, récompenses, nouvelles cartes et préférence des articles. Le jeu revient à l’accueil, dix cartes initiales, deux choix et articles activés. Annuler conserve la partie et la progression.
+Le bouton **Repartir de zéro**, dans l’aide « ? », demande confirmation avec **Annuler** sélectionné par défaut. Confirmer efface uniquement les données de ce jeu sur l’appareil et revient aux quatre cartes initiales, deux choix et articles activés. Annuler conserve les acquis. Les données des autres jeux ne sont jamais touchées.
+
+Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les polices Google Fonts sont facultatives. Le verrouillage des illustrations est une règle locale de jeu.
 
 ## Installer comme application
 
@@ -81,11 +83,15 @@ ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, 
 
 Les dix cartes de départ ont été redessinées avec image_gen intégré dans le style des dix cartes suivantes : contours noirs lisses, formes arrondies, grands yeux expressifs et présentation enfantine. Leurs versions couleur et artiste suivent le nouveau dessin. Les trente anciennes images sont conservées localement dans `backups/illustrations-2026-10-14-before-style-refresh/`, avec un manifeste d’empreintes ; ce dossier est exclu du site et de Git. Les consignes exactes sont dans `style-refresh-prompts.json`.
 
-L’accueil présente désormais trois cartes (fantôme, chauve-souris et citrouille). Fonds très discrets, ombres légères, boutons et contrastes sont harmonisés en CSS, sans nouvelle bibliothèque, police ou animation permanente. Les cartes restent lisibles de 320 px à la tablette. La progression actuelle et les choix de versions sont conservés.
+L’accueil présente désormais trois cartes (fantôme, chauve-souris et citrouille). Fonds très discrets, ombres légères, boutons et contrastes sont harmonisés en CSS, sans nouvelle bibliothèque, police ou animation permanente. Les cartes restent lisibles de 320 px à la tablette. Cette harmonisation graphique est conservée dans le nouveau parcours.
 
 ## Vérifications
 
-Tests automatisés du moteur : 600 parties couvrant les deux modes et les trois difficultés, cibles découvertes, répétition limitée à deux et priorité aux cartes faibles, présence de la bonne réponse, diversité des positions, scores, erreurs, doubles réponses et fin de partie. Les vérifications de rendu et de parcours sont consignées dans `VALIDATION.md`.
+Tests automatisés : 600 parties générées, 300 parties avec erreurs et douze parcours guidés complets jusqu’aux vingt versions artiste. Vérifications des compétences séparées, seuils, découvertes, introductions, révision facultative, absence de répétitions consécutives, sauvegardes, articles, voix et cache hors ligne. Les essais de rendu sont consignés dans `VALIDATION.md`.
+
+## Masque d’Halloween — 15 octobre 2026
+
+Le masque théâtral a été remplacé par un masque de petit monstre que porterait un enfant : ouvertures pour les yeux, petites cornes, quatre dents arrondies et attache élastique visible. Les trois variantes conservent la même silhouette : noir et blanc, aplats verts/violets/orangés, puis illustration artiste avec volumes et texture. Création avec image_gen intégré ; consignes exactes dans `mask-refresh-prompts.json`. Les trois anciennes images sont sauvegardées localement dans `backups/mask-2026-10-15-before-halloween-redraw/`, hors Git et hors site.
 
 ## Voix anglaise
 

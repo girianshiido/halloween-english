@@ -1,0 +1,26 @@
+[
+  {
+    "id": "mask",
+    "variant": "original",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration for a children's Halloween educational game. The supplied owl is a STYLE REFERENCE ONLY: match its smooth bold black contours, rounded clean shapes and simple charming coloring-book design; do not draw an owl. Draw a SINGLE clearly recognizable wearable Halloween costume MASK for a child: a full-face little monster mask, with a broad rounded cheek-and-chin silhouette, two short rounded horns, two large empty oval cut-out eye holes (dark openings, NO eyeballs or pupils), a small nose relief and a cheeky open grinning mouth with four blunt little teeth. Two small side attachment holes and a short visible elastic strap loop behind one side make it unmistakably a removable mask rather than a creature's head. Front view with a very slight three-quarter turn to suggest the hollow costume object. Playfully spooky, not frightening, suitable for young children pretending to scare their friends at Halloween. Pure black-and-white line art, white interiors, crisp thick continuous black outlines, no gray and no shading. Entire subject centered, about 75-80% of square plain white canvas, generous white margins. No child wearing it, no body, hands, theatrical half-mask, masquerade elegance, Venetian ornament, feathers, ribbons, Harlequin, Commedia dell'arte, text, border, other objects, background scenery, scratches or dust pixels.",
+    "outputFile": "public/images/mask.png",
+    "generatedFile": "exec-72e22926-7007-4a6a-bd8e-cee8d915e287.png"
+  },
+  {
+    "id": "mask",
+    "variant": "color",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: flat color reward variant for the Halloween word 'a mask'. Image 1 is the EDIT TARGET: the new black-and-white full-face child monster costume mask. Image 2 (owl) is only a STYLE REFERENCE for simple clean color fills and smooth bold outlines. Color the mask face cheerful leaf green, the small nose slightly darker green, the two short striped horns purple and soft orange, the four blunt teeth ivory white, and the elastic strap dark purple. The two eye holes and the mouth opening must remain empty cut-out openings showing plain white background, no pupils, irises, eyeballs or living creature eyes. Preserve exactly the target outline, proportions, every contour, two horns, four teeth, smile, eye openings, visible strap, position and generous square white margins. Simple solid flat fills, no shading or gradients, bold crisp black contours. It must remain clearly a wearable children's Halloween mask, not a living monster. Single full subject isolated on pure white. No labels, text, borders, extra objects, texture, speckles, masquerade ornament or theatrical ribbons.",
+    "outputFile": "public/images/color/mask.png",
+    "generatedFile": "exec-87e64f27-2d2e-458f-a3ac-811a5fc2b4b1.png"
+  },
+  {
+    "id": "mask",
+    "variant": "art",
+    "tool": "image_gen intégré",
+    "prompt": "Use case: style-transfer. Asset: premium artist color reward for the Halloween vocabulary card 'a mask'. Image 1 is the EDIT TARGET: the new green monster costume mask in flat color. Image 2 (owl) is ONLY a STYLE REFERENCE for premium polished children's book painting, controlled soft highlights, elegant volume and impeccable contours; never include an owl. Render the SAME wearable Halloween mask as a beautifully crafted child costume object: leaf-green softly textured molded surface, dark-green nose, purple and warm-orange striped rounded horns, ivory blunt teeth and dark-purple elastic strap. Preserve exactly the silhouette, framing, proportions, two horns, four teeth, grin, side attachment holes and strap loop. Keep both eye holes and the mouth EMPTY CUT-OUTS showing the white background; add a subtle shaded rim inside each opening to make the hollow mask tangible. NO eyeballs, pupils or irises: this is a mask, not a monster head. Refined painted shading, soft luminous highlights, clean material detail and professional outlines, richer and more artistic than the flat version. Playful child's Halloween disguise, not frightening. Same full subject centered on pure white square background with generous margins. No child, hands, body, scenery, extra objects, labels, words, frame, dust, masquerade decoration, theatrical ribbons or feathers.",
+    "outputFile": "public/images/art/mask.png",
+    "generatedFile": "exec-4af1c06e-89e2-4d24-b05c-b17ebbd5c18f.png"
+  }
+]

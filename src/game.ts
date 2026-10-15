@@ -1,17 +1,17 @@
 export type Mode = 'listen' | 'read' | 'memory';
 export type ChoiceCount = 2 | 3 | 4;
-export interface Word { id: string; english: string; french: string; article?: 'a' | 'an' | 'the'; unlocks?: string; }
+export interface Word { id: string; english: string; french: string; article?: 'a' | 'an' | 'the'; }
 export const WORDS: readonly Word[] = [
-  { id: 'ghost', unlocks: 'owl', english: 'ghost', french: 'fantôme' },
-  { id: 'vampire', unlocks: 'snake', english: 'vampire', french: 'vampire' },
-  { id: 'pumpkin', unlocks: 'crow', english: 'pumpkin', french: 'citrouille' },
-  { id: 'monster', unlocks: 'wolf', english: 'monster', french: 'monstre' },
-  { id: 'witch', unlocks: 'moon', english: 'witch', french: 'sorcière' },
-  { id: 'bat', unlocks: 'skull', english: 'bat', french: 'chauve-souris' },
-  { id: 'skeleton', unlocks: 'mask', english: 'skeleton', french: 'squelette' },
-  { id: 'spider', unlocks: 'candle', english: 'spider', french: 'araignée' },
-  { id: 'rat', unlocks: 'hat', english: 'rat', french: 'rat' },
-  { id: 'frog', unlocks: 'sweet', english: 'frog', french: 'grenouille' },
+  { id: 'ghost', english: 'ghost', french: 'fantôme' },
+  { id: 'vampire', english: 'vampire', french: 'vampire' },
+  { id: 'pumpkin', english: 'pumpkin', french: 'citrouille' },
+  { id: 'monster', english: 'monster', french: 'monstre' },
+  { id: 'witch', english: 'witch', french: 'sorcière' },
+  { id: 'bat', english: 'bat', french: 'chauve-souris' },
+  { id: 'skeleton', english: 'skeleton', french: 'squelette' },
+  { id: 'spider', english: 'spider', french: 'araignée' },
+  { id: 'rat', english: 'rat', french: 'rat' },
+  { id: 'frog', english: 'frog', french: 'grenouille' },
   { id: 'owl', english: 'owl', french: 'hibou', article: 'an' },
   { id: 'snake', english: 'snake', french: 'serpent' },
   { id: 'crow', english: 'crow', french: 'corbeau' },
@@ -23,6 +23,15 @@ export const WORDS: readonly Word[] = [
   { id: 'hat', english: 'hat', french: 'chapeau' },
   { id: 'sweet', english: 'sweet', french: 'bonbon' },
 ];
+export const ORIGINAL_WORDS = WORDS.slice(0, 10);
+// Append future packs here: existing card identifiers and acquired skills stay stable.
+export const DISCOVERY_ORDER: readonly Word[] = ['ghost', 'pumpkin', 'bat', 'witch', 'vampire', 'monster', 'skeleton', 'spider', 'rat', 'frog', 'owl', 'snake', 'crow', 'wolf', 'moon', 'skull', 'mask', 'candle', 'hat', 'sweet'].map(id => WORDS.find(word => word.id === id)!);
+export const STARTER_WORDS = DISCOVERY_ORDER.slice(0, 4);
+export type Cue = 'flash' | 'once';
+export type Skill = 'listen' | 'read' | Cue;
+export function spokenWord(word: Word, articles = true): string {
+  return articles ? `${word.article ?? 'a'} ${word.english}` : word.english;
+}
 export function shuffle<T>(items: readonly T[], random: () => number = Math.random): T[] {
   const result = [...items];
   for (let i = result.length - 1; i > 0; i--) {
@@ -31,51 +40,54 @@ export function shuffle<T>(items: readonly T[], random: () => number = Math.rand
   }
   return result;
 }
-export interface Question { target: Word; choices: Word[]; cue: 'flash' | 'once'; }
+export function progressiveCount(level: number): ChoiceCount { return level >= 2 ? 4 : level >= 1 ? 3 : 2; }
+export interface Question { target: Word; choices: Word[]; cue: Cue; review: boolean; }
 export interface Session {
-  mode: Mode; count: ChoiceCount; questions: Question[];
+  mode: Mode; count: ChoiceCount; questions: Question[]; principalLength: number;
   index: number; score: number; attempts: number; solved: boolean;
-  missed: string[]; rejected: string[]; lastCorrect: boolean;
+  missed: string[]; found: string[]; rejected: string[];
+  credited: number[]; targets: readonly Word[]; pool: readonly Word[];
+  level: (word: Word, cue: Cue) => number; random: () => number; firstCue: Cue;
 }
-export const ORIGINAL_WORDS = WORDS.slice(0, 10);
-export function spokenWord(word: Word, articles = true): string {
-  return articles ? `${word.article ?? 'a'} ${word.english}` : word.english;
+export function questionChoices(target: Word, count: ChoiceCount, random: () => number = Math.random, pool: readonly Word[] = STARTER_WORDS): Word[] {
+  return shuffle([target, ...shuffle(pool.filter(w => w.id !== target.id), random).slice(0, count - 1)], random);
 }
-export type Levels = Record<string, number>;
-export function progressiveCount(targets: readonly Word[], levels: Levels): ChoiceCount {
-  const half = Math.ceil(targets.length / 2);
-  if (targets.filter(w => (levels[w.id] ?? 0) >= 4).length >= half) return 4;
-  if (targets.filter(w => (levels[w.id] ?? 0) >= 2).length >= half) return 3;
-  return 2;
+function weighted(pool: readonly Word[], level: (word: Word) => number, random: () => number): Word {
+  const weights = pool.map(word => 1 / (1 + level(word)) ** 2);
+  let pick = random() * weights.reduce((a, b) => a + b, 0);
+  for (let i = 0; i < pool.length; i++) { pick -= weights[i]!; if (pick < 0) return pool[i]!; }
+  return pool[pool.length - 1]!;
 }
-// Weighted sampling favours low levels without repeating a target initially.
-export function createSession(mode: Mode, count: ChoiceCount, random: () => number = Math.random, targets: readonly Word[] = ORIGINAL_WORDS, levels: Levels = {}): Session {
+function cueAt(session: Pick<Session, 'firstCue'>, index: number): Cue {
+  return index % 2 === 0 ? session.firstCue : session.firstCue === 'flash' ? 'once' : 'flash';
+}
+function makeQuestion(session: Session, target: Word, index: number, review = false): Question {
+  const cue = cueAt(session, index);
+  return { target, cue, review, choices: questionChoices(target, progressiveCount(session.level(target, cue)), session.random, session.pool) };
+}
+export interface SessionOptions {
+  random?: () => number; targets?: readonly Word[]; pool?: readonly Word[];
+  level?: (word: Word, cue: Cue) => number; firstCue?: Cue; forceTarget?: string;
+}
+// Four different targets, selected more often when the active skill is still weak.
+export function createSession(mode: Mode, options: SessionOptions = {}): Session {
   if (!['listen', 'read', 'memory'].includes(mode)) throw new Error('Invalid mode');
-  if (![2, 3, 4].includes(count)) throw new Error('Invalid choice count');
-  if (!targets.length || targets.some(w => !WORDS.includes(w))) throw new Error('Invalid targets');
-  const uses: Record<string, number> = {};
-  const questions: Question[] = [];
-  for (let index = 0; index < Math.min(10, targets.length); index++) {
-    const pool = targets.filter(w => (uses[w.id] ?? 0) === 0);
-    const weights = pool.map(w => 1 / (1 + (levels[w.id] ?? 0) + (uses[w.id] ?? 0)) ** 2);
-    let pick = random() * weights.reduce((a, b) => a + b, 0);
-    let selected = pool.length - 1;
-    for (let i = 0; i < pool.length; i++) { pick -= weights[i]!; if (pick < 0) { selected = i; break; } }
-    const target = pool[selected]!;
-    uses[target.id] = (uses[target.id] ?? 0) + 1;
-    questions.push({ target, cue: index % 2 === 0 ? 'flash' : 'once', choices: questionChoices(target, count, random) });
+  const targets = options.targets ?? STARTER_WORDS;
+  const pool = options.pool ?? targets;
+  if (!targets.length || new Set(targets.map(w => w.id)).size !== targets.length || targets.some(w => !WORDS.includes(w) || !pool.includes(w))) throw new Error('Invalid targets');
+  const session: Session = { mode, count: 2, questions: [], principalLength: Math.min(4, targets.length), index: 0, score: 0, attempts: 0, solved: false, missed: [], found: [], rejected: [], credited: [], targets, pool, level: options.level ?? (() => 0), random: options.random ?? Math.random, firstCue: options.firstCue ?? 'flash' };
+  for (let index = 0; index < Math.min(4, targets.length); index++) {
+    const available = targets.filter(w => !session.questions.some(q => q.target.id === w.id));
+    const forced = index === 0 ? available.find(w => w.id === options.forceTarget) : undefined;
+    const target = forced ?? weighted(available, word => session.level(word, cueAt(session, index)), session.random);
+    session.questions.push(makeQuestion(session, target, index));
   }
-  return { mode, count, questions, index: 0, score: 0, attempts: 0, solved: false, missed: [], rejected: [], lastCorrect: false };
-}
-export function questionChoices(target: Word, count: ChoiceCount, random: () => number = Math.random): Word[] {
-  return shuffle([target, ...shuffle(WORDS.filter(w => w.id !== target.id), random).slice(0, count - 1)], random);
+  return session;
 }
 export interface Peek { radius: number; x: number; y: number; }
 export function memoryPeek(level: number, random: () => number = Math.random): Peek | null {
-  if (level < 2) return null;
-  const radius = level >= 4 ? 18 : 30;
-  // The window stays near the subject, entirely inside the picture.
-  return { radius, x: 35 + random() * 30, y: 35 + random() * 30 };
+  if (level < 1) return null;
+  return { radius: level >= 2 ? 18 : 30, x: 35 + random() * 30, y: 35 + random() * 30 };
 }
 export type AnswerResult = 'correct' | 'retry' | 'incorrect' | 'ignored';
 export function answer(session: Session, id: string): AnswerResult {
@@ -89,27 +101,29 @@ export function answer(session: Session, id: string): AnswerResult {
     return 'retry';
   }
   session.solved = true;
-  session.lastCorrect = true;
+  session.found.push(q.target.id);
   if (session.attempts === 1) session.score++;
   return 'correct';
 }
-export function advance(session: Session): boolean {
+function reviewCandidates(session: Session): Word[] {
+  const previous = session.questions[session.index]?.target.id;
+  const retry = session.targets.filter(word => session.missed.includes(word.id) && !session.found.includes(word.id) && word.id !== previous && session.questions.filter(q => q.target.id === word.id).length < 2);
+  const unseen = session.targets.filter(word => !session.questions.some(q => q.target.id === word.id) && session.level(word, cueAt(session, session.questions.length)) < 3);
+  return retry.length ? retry : unseen;
+}
+export function canReview(session: Session): boolean {
+  return session.solved && session.index === session.questions.length - 1 && session.questions.length === session.principalLength && reviewCandidates(session).length > 0;
+}
+export function advance(session: Session, includeReview = true): boolean {
   if (!session.solved) return false;
-  const question = session.questions[session.index];
-  if (!session.lastCorrect && question) {
-    // A missed target can return once, with at least one intervening question.
-    const retryIndex = session.index + 2;
-    const occurrences = session.questions.filter(q => q.target.id === question.target.id).length;
-    if (retryIndex < session.questions.length && occurrences < 2 &&
-        session.questions[retryIndex - 1]?.target.id !== question.target.id &&
-        session.questions[retryIndex + 1]?.target.id !== question.target.id) {
-      session.questions[retryIndex] = { target: question.target, cue: retryIndex % 2 === 0 ? 'flash' : 'once', choices: questionChoices(question.target, session.count) };
-    }
+  if (includeReview && canReview(session)) {
+    // Only an unfound word can return, at most twice and never consecutively.
+    const target = weighted(reviewCandidates(session), word => session.level(word, cueAt(session, session.questions.length)), session.random);
+    session.questions.push(makeQuestion(session, target, session.questions.length, true));
   }
   session.index++;
   session.solved = false;
   session.attempts = 0;
-  session.lastCorrect = false;
   session.rejected = [];
   return session.index < session.questions.length;
 }
