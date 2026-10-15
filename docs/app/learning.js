@@ -1,7 +1,7 @@
-import { DISCOVERY_ORDER, spokenWord } from './game.js';
-import { isDiscovered, variantPath } from './progress.js';
+import { spokenWord } from './game.js';
+import { collectionWords, isDiscovered, variantPath } from './progress.js';
 export function learningCardsMarkup(progress, speaker, articles) {
-    return DISCOVERY_ORDER.map(word => {
+    return collectionWords(progress).map(word => {
         if (!isDiscovered(progress, word.id))
             return '<div class="vocab-card secret-card" aria-label="Carte à découvrir"><span class="secret-picture" aria-hidden="true">?</span><strong>À découvrir</strong><small>Une nouvelle carte apparaîtra ici</small></div>';
         const entry = progress.words[word.id];

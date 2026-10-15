@@ -1,4 +1,4 @@
-import { WORDS, DISCOVERY_ORDER, STARTER_WORDS, progressiveCount } from './game.js';
+import { WORDS, CORE_PACK, EXTRA_PACKS, STARTER_WORDS, progressiveCount } from './game.js';
 export const PROGRESS_KEY = 'boo-english-progress-v5';
 export const BESTS_KEY = 'boo-english-bests-v3';
 export const SKILLS = ['listen', 'read', 'flash', 'once'];
@@ -14,19 +14,37 @@ export function resetGameStorage(storage) {
 export const VARIANTS = ['original', 'color', 'art'];
 export const VARIANT_LABELS = { original: 'Original', color: 'Couleur', art: 'Artiste' };
 export function emptyProgress() {
-    return { words: Object.fromEntries(WORDS.map(word => [word.id, { listen: 0, read: 0, flash: 0, once: 0, selected: 'original', introduced: STARTER_WORDS.includes(word) }])), completedSessions: 0 };
+    return { words: Object.fromEntries(WORDS.map(word => [word.id, { listen: 0, read: 0, flash: 0, once: 0, selected: 'original', introduced: STARTER_WORDS.includes(word) }])), completedSessions: 0, openedPacks: [] };
 }
 function colorReady(entry) { return entry.listen >= 3 && entry.read >= 3; }
-export function discoveredWords(progress) {
-    let count = STARTER_WORDS.length;
-    // Only already accessible cards can reveal the following pair.
+function packDiscoveries(progress, pack) {
+    let count = pack.startingCount;
+    // A pack only uses its own already revealed colors to open its next pair.
     while (true) {
-        const colored = DISCOVERY_ORDER.slice(0, count).filter(word => colorReady(progress.words[word.id])).length;
-        const next = Math.min(WORDS.length, STARTER_WORDS.length + 2 * Math.floor(colored / 2));
+        const colored = pack.words.slice(0, count).filter(word => colorReady(progress.words[word.id])).length;
+        const next = Math.min(pack.words.length, pack.startingCount + 2 * Math.floor(colored / 2));
         if (next <= count)
-            return DISCOVERY_ORDER.slice(0, count);
+            return pack.words.slice(0, count);
         count = next;
     }
+}
+export function packAvailable(progress, id) {
+    const index = EXTRA_PACKS.findIndex(pack => pack.id === id);
+    if (index < 0)
+        return false;
+    const preceding = [CORE_PACK, ...EXTRA_PACKS.slice(0, index)];
+    return preceding.every(pack => (pack === CORE_PACK || progress.openedPacks.includes(pack.id)) && pack.words.every(word => colorReady(progress.words[word.id])));
+}
+export function openPack(progress, id) {
+    if (progress.openedPacks.includes(id) || !packAvailable(progress, id))
+        return false;
+    progress.openedPacks.push(id);
+    return true;
+}
+export function availablePacks(progress) { return EXTRA_PACKS.filter(pack => !progress.openedPacks.includes(pack.id) && packAvailable(progress, pack.id)); }
+export function collectionWords(progress) { return [...CORE_PACK.words, ...EXTRA_PACKS.filter(pack => progress.openedPacks.includes(pack.id)).flatMap(pack => pack.words)]; }
+export function discoveredWords(progress) {
+    return [...packDiscoveries(progress, CORE_PACK), ...EXTRA_PACKS.filter(pack => progress.openedPacks.includes(pack.id) && packAvailable(progress, pack.id)).flatMap(pack => packDiscoveries(progress, pack))];
 }
 export function isDiscovered(progress, id) { return discoveredWords(progress).some(word => word.id === id); }
 export function knownWords(progress) { return discoveredWords(progress).filter(word => progress.words[word.id].introduced); }
@@ -64,6 +82,12 @@ export function parseProgress(text) {
                     target[skill] = Math.min(3, value);
             }
             target.introduced ||= data.introduced === true;
+        }
+        // Format 5 stays compatible: saves made before packs simply have no opened pack.
+        if ('openedPacks' in raw && Array.isArray(raw.openedPacks)) {
+            for (const pack of EXTRA_PACKS)
+                if (raw.openedPacks.includes(pack.id) && packAvailable(progress, pack.id))
+                    progress.openedPacks.push(pack.id);
         }
         // Sanitize impossible records without letting hidden cards unlock other cards.
         const available = new Set(discoveredWords(progress).map(word => word.id));

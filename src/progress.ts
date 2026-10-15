@@ -1,8 +1,8 @@
-import { WORDS, DISCOVERY_ORDER, STARTER_WORDS, progressiveCount, type Mode, type Word, type Skill, type Cue, type Session, type AnswerResult } from './game.js';
+import { WORDS, CORE_PACK, EXTRA_PACKS, STARTER_WORDS, progressiveCount, type Mode, type Word, type Skill, type Cue, type Session, type AnswerResult, type CardPack } from './game.js';
 
 export type Variant = 'original' | 'color' | 'art';
 export interface WordProgress { listen: number; read: number; flash: number; once: number; selected: Variant; introduced: boolean; }
-export interface Progress { words: Record<string, WordProgress>; completedSessions: number; }
+export interface Progress { words: Record<string, WordProgress>; completedSessions: number; openedPacks: string[]; }
 export const PROGRESS_KEY = 'boo-english-progress-v5';
 export const BESTS_KEY = 'boo-english-bests-v3';
 export const SKILLS: readonly Skill[] = ['listen', 'read', 'flash', 'once'];
@@ -16,18 +16,34 @@ export function resetGameStorage(storage: Pick<Storage, 'removeItem'>): void {
 export const VARIANTS: readonly Variant[] = ['original', 'color', 'art'];
 export const VARIANT_LABELS: Record<Variant, string> = { original: 'Original', color: 'Couleur', art: 'Artiste' };
 export function emptyProgress(): Progress {
-  return { words: Object.fromEntries(WORDS.map(word => [word.id, { listen: 0, read: 0, flash: 0, once: 0, selected: 'original' as const, introduced: STARTER_WORDS.includes(word) }])), completedSessions: 0 };
+  return { words: Object.fromEntries(WORDS.map(word => [word.id, { listen: 0, read: 0, flash: 0, once: 0, selected: 'original' as const, introduced: STARTER_WORDS.includes(word) }])), completedSessions: 0, openedPacks: [] };
 }
 function colorReady(entry: WordProgress): boolean { return entry.listen >= 3 && entry.read >= 3; }
-export function discoveredWords(progress: Progress): Word[] {
-  let count = STARTER_WORDS.length;
-  // Only already accessible cards can reveal the following pair.
+function packDiscoveries(progress: Progress, pack: CardPack): Word[] {
+  let count = pack.startingCount;
+  // A pack only uses its own already revealed colors to open its next pair.
   while (true) {
-    const colored = DISCOVERY_ORDER.slice(0, count).filter(word => colorReady(progress.words[word.id]!)).length;
-    const next = Math.min(WORDS.length, STARTER_WORDS.length + 2 * Math.floor(colored / 2));
-    if (next <= count) return DISCOVERY_ORDER.slice(0, count);
+    const colored = pack.words.slice(0, count).filter(word => colorReady(progress.words[word.id]!)).length;
+    const next = Math.min(pack.words.length, pack.startingCount + 2 * Math.floor(colored / 2));
+    if (next <= count) return pack.words.slice(0, count);
     count = next;
   }
+}
+export function packAvailable(progress: Progress, id: string): boolean {
+  const index = EXTRA_PACKS.findIndex(pack => pack.id === id);
+  if (index < 0) return false;
+  const preceding = [CORE_PACK, ...EXTRA_PACKS.slice(0, index)];
+  return preceding.every(pack => (pack === CORE_PACK || progress.openedPacks.includes(pack.id)) && pack.words.every(word => colorReady(progress.words[word.id]!)));
+}
+export function openPack(progress: Progress, id: string): boolean {
+  if (progress.openedPacks.includes(id) || !packAvailable(progress, id)) return false;
+  progress.openedPacks.push(id);
+  return true;
+}
+export function availablePacks(progress: Progress): CardPack[] { return EXTRA_PACKS.filter(pack => !progress.openedPacks.includes(pack.id) && packAvailable(progress, pack.id)); }
+export function collectionWords(progress: Progress): Word[] { return [...CORE_PACK.words, ...EXTRA_PACKS.filter(pack => progress.openedPacks.includes(pack.id)).flatMap(pack => pack.words)]; }
+export function discoveredWords(progress: Progress): Word[] {
+  return [...packDiscoveries(progress, CORE_PACK), ...EXTRA_PACKS.filter(pack => progress.openedPacks.includes(pack.id) && packAvailable(progress, pack.id)).flatMap(pack => packDiscoveries(progress, pack))];
 }
 export function isDiscovered(progress: Progress, id: string): boolean { return discoveredWords(progress).some(word => word.id === id); }
 export function knownWords(progress: Progress): Word[] { return discoveredWords(progress).filter(word => progress.words[word.id]!.introduced); }
@@ -60,6 +76,10 @@ export function parseProgress(text: string | null): Progress {
         if (typeof value === 'number' && Number.isSafeInteger(value) && value >= 0) target[skill] = Math.min(3, value);
       }
       target.introduced ||= data.introduced === true;
+    }
+    // Format 5 stays compatible: saves made before packs simply have no opened pack.
+    if ('openedPacks' in raw && Array.isArray(raw.openedPacks)) {
+      for (const pack of EXTRA_PACKS) if (raw.openedPacks.includes(pack.id) && packAvailable(progress, pack.id)) progress.openedPacks.push(pack.id);
     }
     // Sanitize impossible records without letting hidden cards unlock other cards.
     const available = new Set(discoveredWords(progress).map(word => word.id));

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.25.0",
-  "description": "Un jeu d'Halloween pour découvrir vingt mots anglais.",
+  "description": "Un jeu d'Halloween pour découvrir vingt-six mots anglais.",
   "scripts": {
     "typecheck": "tsc --noEmit && tsc --noEmit -p tsconfig.worker.json",
     "build": "tsc && tsc -p tsconfig.worker.json && node scripts/build.mjs",

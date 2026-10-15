@@ -1,6 +1,6 @@
 # Boo! English
 
-Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
+Jeu éducatif d’Halloween indépendant en TypeScript : **vingt-six mots** (vingt dans le premier parcours et six dans Petite sorcellerie), chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
 
 [Jouer directement](https://girianshiido.github.io/halloween-english/)
 
@@ -11,6 +11,21 @@ Jeu éducatif d’Halloween indépendant en TypeScript : **vingt mots**, chacun 
 Une partie contient **quatre questions différentes**, suivies d’**une révision facultative** lorsqu’un mot raté ou une autre carte peu avancée mérite d’être revu. Le joueur peut terminer directement ou accepter ce bonus. Avec seulement trois cartes colorées, le mémo commence par trois questions plutôt que répéter un mot déjà trouvé.
 
 Les quatre premières cartes sont **ghost, pumpkin, bat et witch**. Chaque paire de cartes colorées révèle deux nouvelles cartes. L’aventure présente les nouveautés **une par une** : image, mot et écoute libre, puis un premier défi contenant cette carte. Une carte révélée peut aussi être présentée en l’écoutant dans J’apprends. Les mots encore secrets ou jamais présentés ne sont ni cibles ni distracteurs.
+
+## Pack Petite sorcellerie
+
+Après les **vingt premières couleurs**, l’accueil et le bilan proposent de choisir la suite. Le joueur ouvre le pack avec **Explorer ce pack**. La mémoire et les versions artiste ne sont pas nécessaires pour l’ouvrir.
+
+- **a cat** : un chat noir.
+- **a broom** : un balai de sorcière.
+- **a cauldron** : un chaudron.
+- **a wand** : une baguette de bois noueux, sans étoile de fée.
+- **a potion** : une potion en flacon.
+- **a spellbook** : un vieux grimoire à fermoir, marqué d’un croissant de lune.
+
+Le chat et le balai sont révélés d’abord. Quand ils sont colorés, le chaudron et la baguette arrivent ; leurs couleurs ouvrent ensuite la potion et le grimoire. Chaque nouvelle carte est présentée avant de devenir cible ou proposition. Les anciennes cartes restent jouables, et les mêmes règles d’écoute, de lecture, de mémo et de récompenses s’appliquent aux nouvelles.
+
+Les galeries du premier parcours conservent leurs vingt emplacements. Les six emplacements du pack les rejoignent seulement après son ouverture. Le total général est de **26 cartes et 52 récompenses**. Les illustrations ont été créées avec image_gen intégré ; prompts exacts et chemins des dix-huit fichiers dans `sorcery-prompts.json`.
 
 ## Les activités
 
@@ -47,7 +62,7 @@ Les images éclair sont d’abord entières. Après **une réussite en image éc
 
 ## Sauvegardes et remise à zéro
 
-Cette mise à jour **efface l’ancienne progression et les anciens records une seule fois** : nouvelle progression de format 5, scores v3, aucune migration des anciens compteurs. Les nouvelles réussites sont ensuite conservées après rechargement, avec les cartes présentées, les versions choisies et le parcours guidé. Ajouter un futur pack devra conserver ces identifiants et ce format pour garder les acquis.
+La refonte précédente a remis à zéro les anciens compteurs pour passer au format 5 et aux scores v3. **L’ajout de Petite sorcellerie conserve cette progression et les records actuels**, avec les mêmes clés. Les anciennes sauvegardes de format 5 sans packs restent compatibles. Les nouvelles réussites sont ensuite conservées après rechargement, avec les cartes présentées, les versions choisies et le parcours guidé. Les packs choisis sont conservés dans ce même format ; les nouveaux mots absents d’une sauvegarde existante commencent à zéro.
 
 Le bouton **Repartir de zéro**, dans l’aide « ? », demande confirmation avec **Annuler** sélectionné par défaut. Confirmer efface uniquement les données de ce jeu sur l’appareil et revient aux quatre cartes initiales, deux choix et articles activés. Annuler conserve les acquis. Les données des autres jeux ne sont jamais touchées.
 
@@ -57,7 +72,7 @@ Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les po
 
 Le bouton **Installer** explique les étapes adaptées à l’appareil. Sur Android avec Chrome ou Edge, confirmer l’installation proposée par le navigateur. Sur iPhone et iPad, ouvrir le lien dans Safari puis **Partager → Sur l’écran d’accueil → Ajouter**. Le manifeste utilise le mode autonome et fournit des icônes classiques, adaptatives et Apple.
 
-Après la première ouverture connectée, le jeu, ses soixante images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
+Après la première ouverture connectée, le jeu, ses soixante-dix-huit images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
 
 Le cache et le service worker restent limités au chemin de ce dépôt. Une nouvelle version attend la fermeture des anciennes fenêtres du jeu pour remplacer la précédente sans interrompre une partie.
 
@@ -77,7 +92,7 @@ Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `mai
 
 ## Vocabulaire
 
-ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet.
+ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet, cat, broom, cauldron, wand, potion, spellbook.
 
 ## Harmonisation graphique
 
@@ -87,7 +102,7 @@ L’accueil présente désormais trois cartes (fantôme, chauve-souris et citrou
 
 ## Vérifications
 
-Tests automatisés : 600 parties générées, 300 parties avec erreurs et douze parcours guidés complets jusqu’aux vingt versions artiste. Vérifications des compétences séparées, seuils, découvertes, introductions, révision facultative, absence de répétitions consécutives, sauvegardes, articles, voix et cache hors ligne. Les essais de rendu sont consignés dans `VALIDATION.md`.
+Tests automatisés : 600 parties générées, 300 parties avec erreurs et douze parcours guidés complets jusqu’aux vingt-six versions artiste. Vérifications des compétences séparées, seuils, découvertes, introductions, révision facultative, absence de répétitions consécutives, sauvegardes, articles, voix et cache hors ligne. Les essais de rendu sont consignés dans `VALIDATION.md`.
 
 ## Masque d’Halloween — 15 octobre 2026
 

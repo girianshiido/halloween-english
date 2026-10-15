@@ -1,11 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { WORDS, STARTER_WORDS, DISCOVERY_ORDER, createSession, answer, advance } from '../docs/app/game.js';
-import { emptyProgress, parseProgress, serializeProgress, recordAnswer, isUnlocked, memoryAvailable, discoveredWords, knownWords, pendingWords, introduceWord, modeTargets, recommend, skillLevel, difficulty, firstMemoryCue, chooseVariant, clearLegacyProgress, resetGameStorage, PROGRESS_KEY, BESTS_KEY } from '../docs/app/progress.js';
+import { WORDS, CORE_PACK, STARTER_WORDS, createSession, answer, advance } from '../docs/app/game.js';
+import { emptyProgress, parseProgress, serializeProgress, recordAnswer, isUnlocked, memoryAvailable, discoveredWords, knownWords, pendingWords, introduceWord, modeTargets, recommend, skillLevel, difficulty, firstMemoryCue, chooseVariant, clearLegacyProgress, resetGameStorage, PROGRESS_KEY, BESTS_KEY, openPack, availablePacks } from '../docs/app/progress.js';
 import { learningCardsMarkup } from '../docs/app/learning.js';
 import { collectionMarkup } from '../docs/app/collection.js';
 function color(p, word) { Object.assign(p.words[word.id], { listen:3, read:3 }); }
-function allKnown(p) { for(const word of WORDS) Object.assign(p.words[word.id],{listen:3,read:3,introduced:true}); }
+function allKnown(p) { p.openedPacks=['sorcery']; for(const word of WORDS) Object.assign(p.words[word.id],{listen:3,read:3,introduced:true}); }
 function gain(p,id,mode='listen',cue='flash',wrong=false) {
   const s=createSession(mode,{targets:modeTargets(p,mode),pool:knownWords(p),forceTarget:id,firstCue:cue,level:(w,c)=>skillLevel(p,w.id,mode,c)});
   const q=s.questions[0]; assert.equal(q.target.id,id);
@@ -53,7 +53,7 @@ test('Chaque paire colorée révèle deux cartes ; elles sont présentées avant
 });
 test('Les vingt cartes sont accessibles grâce aux couleurs, sans aucune réussite mémo', () => {
   const p=emptyProgress();
-  for(const word of DISCOVERY_ORDER) {
+  for(const word of CORE_PACK.words) {
     assert.ok(discoveredWords(p).includes(word)); introduceWord(p,word.id);color(p,word);
   }
   assert.equal(discoveredWords(p).length,20);
@@ -128,6 +128,7 @@ test('Parcours guidé complet : toutes les couleurs et toutes les versions artis
     const p=emptyProgress();let seed=run;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
     let rounds=0;
     while(!WORDS.every(w=>isUnlocked(p,w.id,'art'))&&rounds<500) {
+      for(const pack of availablePacks(p))openPack(p,pack.id);
       const pending=pendingWords(p)[0];if(pending)introduceWord(p,pending.id);
       const rec=recommend(p,pending?.id);const s=createSession(rec.mode,{targets:modeTargets(p,rec.mode),pool:knownWords(p),level:(w,c)=>skillLevel(p,w.id,rec.mode,c),firstCue:firstMemoryCue(p),forceTarget:rec.target,random});
       do {const q=s.questions[s.index];assert.ok(p.words[q.target.id].introduced);assert.ok(q.choices.every(w=>p.words[w.id].introduced));const result=answer(s,q.target.id);recordAnswer(p,s,result);} while(advance(s));
@@ -136,7 +137,7 @@ test('Parcours guidé complet : toutes les couleurs et toutes les versions artis
       assert.deepEqual(parseProgress(serializeProgress(p)),p);
     }
     assert.ok(rounds<500,`run ${run}: stalled at ${rounds}`);
-    assert.equal(discoveredWords(p).length,20);
+    assert.equal(discoveredWords(p).length,26);
     assert.ok(WORDS.every(w=>isUnlocked(p,w.id,'color')&&isUnlocked(p,w.id,'art')));
   }
 });

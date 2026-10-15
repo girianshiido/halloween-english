@@ -1,10 +1,11 @@
-import { WORDS, spokenWord, questionChoices, memoryPeek, createSession, answer, advance, canReview } from './game.js';
+import { WORDS, EXTRA_PACKS, spokenWord, questionChoices, memoryPeek, createSession, answer, advance, canReview } from './game.js';
 import { picturePeek } from './peek.js';
 import { speak, stopSpeech } from './speech.js';
 import './install.js';
-import { parseProgress, serializeProgress, PROGRESS_KEY, BESTS_KEY, clearLegacyProgress, resetGameStorage, emptyProgress, recordAnswer, chooseVariant, variantPath, memoryAvailable, discoveredWords, isDiscovered, modeTargets, knownWords, pendingWords, introduceWord, coloredWords, recommend, firstMemoryCue, skillLevel, difficulty, isUnlocked, VARIANT_LABELS } from './progress.js';
+import { availablePacks, openPack, collectionWords, parseProgress, serializeProgress, PROGRESS_KEY, BESTS_KEY, clearLegacyProgress, resetGameStorage, emptyProgress, recordAnswer, chooseVariant, variantPath, memoryAvailable, discoveredWords, isDiscovered, modeTargets, knownWords, pendingWords, introduceWord, coloredWords, recommend, firstMemoryCue, skillLevel, difficulty, isUnlocked, VARIANT_LABELS } from './progress.js';
 import { collectionMarkup } from './collection.js';
 import { learningCardsMarkup } from './learning.js';
+import { packsMarkup } from './packs.js';
 const app = document.querySelector('#app');
 const speaker = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 4 5 9H2v6h3l6 5V4Zm5 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></svg>';
 const eye = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
@@ -77,6 +78,8 @@ function focusHeading() { document.querySelector('[data-focus]')?.focus({ preven
 function nextAction() {
     if (pendingWords(progress).length)
         return { label: 'Découvrir une nouvelle carte', detail: 'Écoute son nom, puis retrouve-la dans un petit défi.' };
+    if (availablePacks(progress).length)
+        return { label: 'Un nouveau pack t’attend !', detail: 'Tes premières couleurs sont gagnées. À toi de choisir la suite !' };
     const next = recommend(progress);
     return next.mode === 'memory' ? { label: 'Essayer Mémo magique', detail: 'Une courte aventure pour gagner les versions artiste.' }
         : { label: 'Continuer mon aventure', detail: next.mode === 'listen' ? 'Un petit défi d’écoute pour faire grandir tes couleurs.' : 'Un petit défi avec les mots pour faire grandir tes couleurs.' };
@@ -87,12 +90,13 @@ function home() {
     session = null;
     const next = nextAction();
     const colors = coloredWords(progress).length;
-    app.innerHTML = `${progressNotice ? `<p class="save-notice" role="status">${progressNotice}</p>` : ''}<section class="welcome"><div class="welcome-copy"><span class="eyebrow"><span aria-hidden="true">✦</span> LA PETITE AVENTURE D’HALLOWEEN</span><h1>Un peu de <em>boo!</em><br>Beaucoup d’<span class="underline">anglais.</span></h1><p class="intro">Vingt drôles de mots t’attendent.<br>Quatre cartes pour commencer… et plein de surprises !</p><div class="little-tags"><span>${discoveredWords(progress).length} / 20 cartes révélées</span><span>4 questions · révision au choix</span></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✦</span><div class="paper-card back-card">${image(WORDS[2], '', '', 'original')}<span class="paper-label" lang="en" data-label="pumpkin">${wordLabel(WORDS[2])}</span></div><div class="paper-card middle-card">${image(WORDS[5], '', '', 'original')}<span class="paper-label" lang="en" data-label="bat">${wordLabel(WORDS[5])}</span></div><div class="paper-card front-card">${image(WORDS[0], '', '', 'original')}<span class="paper-label" lang="en" data-label="ghost">${wordLabel(WORDS[0])}</span></div><span class="art-caption">Même pas peur !</span></div></section>
+    app.innerHTML = `${progressNotice ? `<p class="save-notice" role="status">${progressNotice}</p>` : ''}<section class="welcome"><div class="welcome-copy"><span class="eyebrow"><span aria-hidden="true">✦</span> LA PETITE AVENTURE D’HALLOWEEN</span><h1>Un peu de <em>boo!</em><br>Beaucoup d’<span class="underline">anglais.</span></h1><p class="intro">${WORDS.length} drôles de mots t’attendent.<br>Quatre cartes pour commencer… et plein de surprises !</p><div class="little-tags"><span>${discoveredWords(progress).length} / ${WORDS.length} cartes révélées</span><span>4 questions · révision au choix</span></div></div><div class="hero-art" aria-hidden="true"><span class="art-star">✦</span><div class="paper-card back-card">${image(WORDS[2], '', '', 'original')}<span class="paper-label" lang="en" data-label="pumpkin">${wordLabel(WORDS[2])}</span></div><div class="paper-card middle-card">${image(WORDS[5], '', '', 'original')}<span class="paper-label" lang="en" data-label="bat">${wordLabel(WORDS[5])}</span></div><div class="paper-card front-card">${image(WORDS[0], '', '', 'original')}<span class="paper-label" lang="en" data-label="ghost">${wordLabel(WORDS[0])}</span></div><span class="art-caption">Même pas peur !</span></div></section>
   <section class="adventure-path" aria-label="Mon aventure"><div><span class="eyebrow">TON PROCHAIN PETIT PAS</span><h2>${next.label}</h2><p>${next.detail}</p><p class="path-summary">${colors} couleur${colors > 1 ? 's' : ''} gagnée${colors > 1 ? 's' : ''} · Chaque paire de couleurs révèle deux cartes.</p></div><button type="button" class="primary" id="adventure">${pendingWords(progress).length ? 'Découvrir ma carte' : 'C’est parti !'} ${arrow}</button></section>
-  <section class="setup" aria-label="Choisir librement"><div class="setup-main"><div class="step-title"><span>✧</span><h2>Ou choisis ton activité</h2></div><div class="mode-grid" role="group" aria-label="Mode de jeu"><button type="button" class="mode-card ${mode === 'learn' ? 'selected' : ''}" data-mode="learn" aria-pressed="${mode === 'learn'}"><span class="mode-icon mint">${book}</span><span><strong>J’apprends</strong><small>Mes cartes à écouter librement</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'listen' ? 'selected' : ''}" data-mode="listen" aria-pressed="${mode === 'listen'}"><span class="mode-icon peach">${speaker}</span><span><strong>J’écoute</strong><small>Un mot anglais → la bonne image</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'read' ? 'selected' : ''}" data-mode="read" aria-pressed="${mode === 'read'}"><span class="mode-icon lavender">${eye}</span><span><strong>Je regarde</strong><small>Une image → le bon mot anglais</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'collection' ? 'selected' : ''}" data-mode="collection" aria-pressed="${mode === 'collection'}"><span class="mode-icon gold">✦</span><span><strong>Ma collection</strong><small>Mes images et leurs trois versions</small></span><span class="radio-mark" aria-hidden="true"></span></button>${memoryAvailable(progress) ? `<button type="button" class="mode-card ${mode === 'memory' ? 'selected' : ''}" data-mode="memory" aria-pressed="${mode === 'memory'}"><span class="mode-icon magic">✧</span><span><strong>Mémo magique</strong><small>Une image éclair. Un mot, une seule fois.</small></span><span class="radio-mark" aria-hidden="true"></span></button>` : ''}</div><p class="reward-road">${memoryAvailable(progress) ? '✦ Mémo magique est débloqué !' : `Mémo magique s’ouvrira avec trois cartes colorées : ${colors} / 3.`}</p></div><div class="setup-bottom"><div id="choice-settings"><div class="step-title"><span>✦</span><h2>Un défi à ta taille</h2></div><p class="difficulty-note" id="difficulty-note"></p></div><div class="start-block"><button type="button" class="primary start" id="start">C’est parti ! ${arrow}</button><p id="best-note"></p></div></div></section><p class="home-footnote">${speaker} Mets le son pour entendre les mots en anglais.</p>`;
+  <section class="setup" aria-label="Choisir librement"><div class="setup-main"><div class="step-title"><span>✧</span><h2>Ou choisis ton activité</h2></div><div class="mode-grid" role="group" aria-label="Mode de jeu"><button type="button" class="mode-card ${mode === 'learn' ? 'selected' : ''}" data-mode="learn" aria-pressed="${mode === 'learn'}"><span class="mode-icon mint">${book}</span><span><strong>J’apprends</strong><small>Mes cartes à écouter librement</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'listen' ? 'selected' : ''}" data-mode="listen" aria-pressed="${mode === 'listen'}"><span class="mode-icon peach">${speaker}</span><span><strong>J’écoute</strong><small>Un mot anglais → la bonne image</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'read' ? 'selected' : ''}" data-mode="read" aria-pressed="${mode === 'read'}"><span class="mode-icon lavender">${eye}</span><span><strong>Je regarde</strong><small>Une image → le bon mot anglais</small></span><span class="radio-mark" aria-hidden="true"></span></button><button type="button" class="mode-card ${mode === 'collection' ? 'selected' : ''}" data-mode="collection" aria-pressed="${mode === 'collection'}"><span class="mode-icon gold">✦</span><span><strong>Ma collection</strong><small>Mes images et leurs trois versions</small></span><span class="radio-mark" aria-hidden="true"></span></button>${memoryAvailable(progress) ? `<button type="button" class="mode-card ${mode === 'memory' ? 'selected' : ''}" data-mode="memory" aria-pressed="${mode === 'memory'}"><span class="mode-icon magic">✧</span><span><strong>Mémo magique</strong><small>Une image éclair. Un mot, une seule fois.</small></span><span class="radio-mark" aria-hidden="true"></span></button>` : ''}</div><p class="reward-road">${memoryAvailable(progress) ? '✦ Mémo magique est débloqué !' : `Mémo magique s’ouvrira avec trois cartes colorées : ${colors} / 3.`}</p></div><div class="setup-bottom"><div id="choice-settings"><div class="step-title"><span>✦</span><h2>Un défi à ta taille</h2></div><p class="difficulty-note" id="difficulty-note"></p></div><div class="start-block"><button type="button" class="primary start" id="start">C’est parti ! ${arrow}</button><p id="best-note"></p></div></div></section><section class="pack-road" aria-label="La suite de mon aventure"><div><span class="eyebrow">LA SUITE DE L’AVENTURE</span><h2>${EXTRA_PACKS[0].title}</h2><p>Six nouvelles cartes après tes vingt premières couleurs.</p></div><button type="button" class="secondary" id="packs">${progress.openedPacks.length ? 'Voir mes packs' : availablePacks(progress).length ? 'Choisir mon prochain pack' : 'Découvrir le prochain pack'} →</button></section><p class="home-footnote">${speaker} Mets le son pour entendre les mots en anglais.</p>`;
     app.querySelectorAll('[data-mode]').forEach(button => button.addEventListener('click', () => { mode = button.dataset.mode; updateSettings(); }));
     document.querySelector('#start').addEventListener('click', () => { start(); });
     document.querySelector('#adventure').addEventListener('click', continueAdventure);
+    document.querySelector('#packs').addEventListener('click', packs);
     updateSettings();
     window.scrollTo(0, 0);
 }
@@ -111,9 +115,29 @@ function continueAdventure() {
         introduce(pending);
         return;
     }
+    if (availablePacks(progress).length) {
+        packs();
+        return;
+    }
     const next = recommend(progress);
     mode = next.mode;
     start(next.target);
+}
+function packs() {
+    stopSpeech();
+    clearFlash();
+    session = null;
+    app.innerHTML = packsMarkup(progress);
+    document.querySelector('#packs-back').addEventListener('click', home);
+    document.querySelector('#packs-play').addEventListener('click', () => { const next = recommend(progress); mode = next.mode; start(next.target); });
+    app.querySelectorAll('[data-open-pack]').forEach(button => button.addEventListener('click', () => {
+        if (!openPack(progress, button.dataset.openPack))
+            return;
+        saveProgress();
+        continueAdventure();
+    }));
+    app.querySelectorAll('[data-pack-continue]').forEach(button => button.addEventListener('click', continueAdventure));
+    focusHeading();
 }
 function introduce(word) {
     stopSpeech();
@@ -339,7 +363,7 @@ function learn() {
     stopSpeech();
     clearFlash();
     session = null;
-    app.innerHTML = `<section class="learn-area"><div class="game-top"><button type="button" id="back" class="quiet">← Accueil</button><span class="mode-label">${book} J’apprends</span><span class="learn-pill">20 mots à découvrir</span></div><div class="question-head"><span class="eyebrow">À TON RYTHME</span><h1 data-focus tabindex="-1">Mes vingt mots d’Halloween</h1><p>${discoveredWords(progress).length} cartes découvertes sur 20. Touche une carte pour entendre le mot en anglais.</p></div><div class="vocab-grid" aria-label="Les vingt cartes à découvrir">${learningCardsMarkup(progress, speaker, articles)}</div><p id="audio-status" role="status">Tu peux écouter chaque mot autant de fois que tu veux.</p><button type="button" class="primary" id="learn-back">Choisir un défi ${arrow}</button></section>`;
+    app.innerHTML = `<section class="learn-area"><div class="game-top"><button type="button" id="back" class="quiet">← Accueil</button><span class="mode-label">${book} J’apprends</span><span class="learn-pill">${WORDS.length} mots à découvrir</span></div><div class="question-head"><span class="eyebrow">À TON RYTHME</span><h1 data-focus tabindex="-1">Mes mots d’Halloween</h1><p>${discoveredWords(progress).length} cartes découvertes sur ${WORDS.length}. Touche une carte pour entendre le mot en anglais.</p></div><div class="vocab-grid" aria-label="Les cartes à découvrir">${learningCardsMarkup(progress, speaker, articles)}</div>${collectionWords(progress).length < WORDS.length ? '<p class="discovery-note">Les six cartes de Petite sorcellerie rejoindront cette galerie quand tu ouvriras le pack.</p>' : ''}<p id="audio-status" role="status">Tu peux écouter chaque mot autant de fois que tu veux.</p><button type="button" class="primary" id="learn-back">Choisir un défi ${arrow}</button></section>`;
     app.querySelectorAll('[data-word]').forEach(button => button.addEventListener('click', () => {
         app.querySelectorAll('.vocab-card').forEach(card => card.classList.remove('last-listened'));
         button.classList.add('last-listened');

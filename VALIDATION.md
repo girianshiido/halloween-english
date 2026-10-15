@@ -1,4 +1,25 @@
-# Vérifications — 15 octobre 2026
+# Petite sorcellerie — vérifications du 15 octobre 2026
+
+Cette extension conserve la progression v5 et les records v3 de la version précédente. Elle ajoute six cartes et dix-huit PNG, pour un total de 26 cartes et 78 illustrations.
+
+- Compilation TypeScript stricte réussie ; **41 tests automatisés réussis**, dont 600 parties générées, 300 parties avec erreurs et douze parcours complets jusqu’aux vingt-six versions artiste.
+- Pack fermé avant vingt couleurs du premier parcours, disponible ensuite sans points mémo requis. Ouverture volontaire, deux cartes initiales puis découvertes par paires selon les couleurs du pack.
+- Sauvegarde v5 antérieure au pack : compteurs, nombre de parties, images choisies et records conservés ; nouveaux mots initialisés à zéro et pack encore fermé.
+- Ouverture persistante, cartes introduites avant cible ou distracteur, accès mémo selon la couleur et récompenses normales/mémo indépendantes.
+- Cache hors ligne : 78 PNG, jeu, manifeste et icônes ; isolation du service worker conservée.
+- Navigateur sur une origine locale distincte avec données fictives : vingt couleurs et fantôme artiste choisis retrouvés ; ouverture de Petite sorcellerie, présentation du chat, bouton de défi désactivé avant écoute, première question sur le chat avec deux réponses, aucun balai inconnu parmi les propositions.
+- Réussite du chat du premier coup : Mot 0 → 1. Partie terminée à 3/4, ancien record 4/4 conservé. Après rechargement : 22 cartes visibles, quatre emplacements secrets du pack, compteur du chat à 1, fantôme toujours en version artiste.
+- Balai : Mot 2 → 3 avec Écoute 3/3, récompense couleur, deux nouvelles cartes révélées ; le chaudron est présenté ensuite.
+- Écrans de packs : aucune largeur excédentaire à 320, 360, 390, 768 et 1024 px. Inspection visuelle sur 390 × 844.
+- Lecture du grimoire avec quatre réponses à 320 × 568 : « a spellbook » et « a cauldron » lisibles sur deux lignes, aucun texte coupé ou débordement horizontal. Texte envoyé à la voix : « a spellbook ».
+- Collection complète : 26 cartes, 78 images chargées, zoom artiste du grimoire accessible. Planche des dix-huit nouvelles illustrations inspectée : noir et blanc, aplats, artiste ; silhouettes et poses cohérentes.
+- Corrections graphiques demandées intégrées : baguette en bois noueux sans étoile, ancien grimoire à fermoir et croissant de lune. Consignes finales : `sorcery-prompts.json`.
+
+Les essais mobiles sont simulés dans le navigateur ; aucune nouvelle installation sur téléphone physique n’a été effectuée. Le journal vocal de test vérifie les textes demandés, pas la qualité de chaque voix installée.
+
+---
+
+# Vérifications de la refonte précédente — 15 octobre 2026
 
 Cette version remplace les anciennes règles de progression. Les validations des versions antérieures restent disponibles dans l’historique Git.
 

@@ -27,3 +27,7 @@ Fichiers finaux : mêmes noms dans `public/images/`, `public/images/color/` et `
 ## Masque — 15 octobre 2026
 
 Remplacement du masque théâtral par un masque intégral de petit monstre, costume d’enfant pour Halloween. Deux ouvertures pour les yeux sans pupilles, quatre dents arrondies, deux cornes et attache visible. Les variantes couleur et artiste dérivent du même dessin. Outil image_gen intégré ; prompts et fichiers dans `mask-refresh-prompts.json`. Sauvegarde des trois anciens PNG et empreintes SHA-256 dans `backups/mask-2026-10-15-before-halloween-redraw/` (local uniquement).
+
+## Petite sorcellerie — 15 octobre 2026
+
+Six nouveaux sujets, chacun en noir et blanc, couleur et artiste : cat, broom, cauldron, wand, potion, spellbook. Image_gen intégré, dix-huit appels finaux distincts et variantes dérivées de leur dessin d’origine. La baguette étoilée initialement proposée a été remplacée à la demande de l’utilisateur par du bois noueux ; le grimoire arbore désormais un fermoir et un croissant de lune. Consignes exactes, fichiers générés et chemins finaux dans `sorcery-prompts.json`. Les essais abandonnés sont exclus du site et de Git.

@@ -22,11 +22,20 @@ export const WORDS: readonly Word[] = [
   { id: 'candle', english: 'candle', french: 'bougie' },
   { id: 'hat', english: 'hat', french: 'chapeau' },
   { id: 'sweet', english: 'sweet', french: 'bonbon' },
+  { id: 'cat', english: 'cat', french: 'chat' },
+  { id: 'broom', english: 'broom', french: 'balai' },
+  { id: 'cauldron', english: 'cauldron', french: 'chaudron' },
+  { id: 'wand', english: 'wand', french: 'baguette magique' },
+  { id: 'potion', english: 'potion', french: 'potion' },
+  { id: 'spellbook', english: 'spellbook', french: 'grimoire' },
 ];
 export const ORIGINAL_WORDS = WORDS.slice(0, 10);
-// Append future packs here: existing card identifiers and acquired skills stay stable.
-export const DISCOVERY_ORDER: readonly Word[] = ['ghost', 'pumpkin', 'bat', 'witch', 'vampire', 'monster', 'skeleton', 'spider', 'rat', 'frog', 'owl', 'snake', 'crow', 'wolf', 'moon', 'skull', 'mask', 'candle', 'hat', 'sweet'].map(id => WORDS.find(word => word.id === id)!);
-export const STARTER_WORDS = DISCOVERY_ORDER.slice(0, 4);
+export interface CardPack { id: string; title: string; description: string; words: readonly Word[]; startingCount: number; }
+const wordIds = (ids: readonly string[]) => ids.map(id => WORDS.find(word => word.id === id)!);
+export const CORE_PACK: CardPack = { id: 'halloween', title: 'Halloween', description: 'Tes vingt premiers mots', startingCount: 4, words: wordIds(['ghost', 'pumpkin', 'bat', 'witch', 'vampire', 'monster', 'skeleton', 'spider', 'rat', 'frog', 'owl', 'snake', 'crow', 'wolf', 'moon', 'skull', 'mask', 'candle', 'hat', 'sweet']) };
+export const EXTRA_PACKS: readonly CardPack[] = [{ id: 'sorcery', title: 'Petite sorcellerie', description: 'Six nouveaux mots pour un peu plus de magie', startingCount: 2, words: wordIds(['cat', 'broom', 'cauldron', 'wand', 'potion', 'spellbook']) }];
+export const DISCOVERY_ORDER: readonly Word[] = [...CORE_PACK.words, ...EXTRA_PACKS.flatMap(pack => pack.words)];
+export const STARTER_WORDS = CORE_PACK.words.slice(0, CORE_PACK.startingCount);
 export type Cue = 'flash' | 'once';
 export type Skill = 'listen' | 'read' | Cue;
 export function spokenWord(word: Word, articles = true): string {

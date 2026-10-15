@@ -1,0 +1,146 @@
+[
+  {
+    "id": "broom",
+    "variant": "art",
+    "prompt": "Use case: style-transfer. Asset: premium artist vocabulary reward for a children's Halloween game. Image 1 is the EDIT TARGET: the flat-color broom. Image 2 owl is STYLE ONLY, for beautifully polished children's book art. Palette: warm brown wooden handle, golden straw bristles and purple bindings. Render with elegant soft volume shading, beautiful warm highlights, clean wooden grain and refined straw texture, professional smooth contours. Preserve EXACT target silhouette, bristle bundle, bindings, handle, diagonal pose, proportions and framing. Child-friendly cartoon, clearly richer than the flat reward. Whole broom alone centered on pure white square background with the same generous margins. No witch, text, border, added objects, scenery, dust, noise or speckles.",
+    "file": "public/images/art/broom.png",
+    "generatedFile": "exec-956b91fe-4556-46e8-8086-ded3b379269c.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "broom",
+    "variant": "color",
+    "prompt": "Use case: style-transfer. Asset: flat color vocabulary reward for a children's Halloween card game. Image 1 is the EDIT TARGET: the new black-and-white broom illustration. Image 2, owl, is STYLE REFERENCE ONLY. Color the target with simple clean solid fills and bold smooth black outlines, matching the reference. Palette: warm brown wooden handle, golden straw bristles and purple bindings. Preserve EXACT original pose, silhouette, expression, proportions, each contour, all parts and composition. Keep all image elements in the same place. Clearly simpler than an artist reward: no shading, gradients or realistic textures. Full subject isolated centered on pure white square background with the same generous margins. No text, frame, added objects, scenery, speckles, dust or scary details.",
+    "file": "public/images/color/broom.png",
+    "generatedFile": "exec-f285d52b-58ba-426c-8d42-09c90f402001.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "broom",
+    "variant": "original",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference owl is STYLE ONLY, do not draw an owl. Draw a SINGLE clearly recognizable witch's BROOM: one slightly crooked wooden handle attached with two neat bindings to a broad fan-shaped bundle of straw bristles, gently angled diagonally. Full broom entirely visible, not a mop or brush, no witch riding it and no other object. Match smooth bold black continuous outlines, rounded charming simple cartoon forms and clean white interiors of the reference. Pure black-and-white coloring-book art, no gray, shading or color. Centered on square pure white background, entire subject occupies about 75-80%, generous uninterrupted white margins. No face, text, frame, scenery, speckles, dust or scratchy lines. Child-friendly Halloween.",
+    "file": "public/images/broom.png",
+    "generatedFile": "exec-fc224bde-0a00-4c07-a297-7296a4e56bbe.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "cat",
+    "variant": "art",
+    "prompt": "Use case: style-transfer. Asset: premium artist reward for a children's Halloween vocabulary card. Image 1 is the EDIT TARGET: the new flat-color cat illustration. Image 2 owl is ONLY a STYLE REFERENCE for beautifully polished children's book art. Transform the target into a premium illustration with elegant soft volume shading, refined material textures, warm luminous highlights, beautifully expressive eyes where applicable and professional smooth contours. Palette: charcoal-black fur, warm yellow-green eyes, soft pink nose and inner ears; clearly a black Halloween cat. Preserve EXACT target identity, cartoon silhouette, pose, all appendages, face, expression, proportions and framing; no anatomy changes. For the cat, keep charcoal-black fur with subtle soft highlights, NOT a white or striped cat. Clearly richer than a flat-color reward but still a child-friendly cartoon. Whole subject alone centered on pure white square background with the same generous margins. No text, frame, scenery, added objects, dust, speckles, noise or scary details.",
+    "file": "public/images/art/cat.png",
+    "generatedFile": "exec-75f4c9b4-ae90-4e54-a600-cf85ddc88dcd.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "cat",
+    "variant": "color",
+    "prompt": "Use case: style-transfer. Asset: flat color vocabulary reward for a children's Halloween card game. Image 1 is the EDIT TARGET: the new black-and-white cat illustration. Image 2, owl, is STYLE REFERENCE ONLY. Color the target with simple clean solid fills and bold smooth black outlines, matching the reference. Palette: charcoal-black fur, warm yellow-green eyes, soft pink nose and inner ears; clearly a black Halloween cat. Preserve EXACT original pose, silhouette, expression, proportions, each contour, all parts and composition. Keep all image elements in the same place. Clearly simpler than an artist reward: no shading, gradients or realistic textures. Full subject isolated centered on pure white square background with the same generous margins. No text, frame, added objects, scenery, speckles, dust or scary details.",
+    "file": "public/images/color/cat.png",
+    "generatedFile": "exec-ae7d97dc-5a8a-4e28-922e-cfb630445332.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "cat",
+    "variant": "original",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference owl is STYLE ONLY, do not draw an owl. Draw one cute sitting Halloween CAT, entire body, with a long curled tail, pointed ears, large friendly expressive eyes, round cheeks and a small playful smile. No hat, clothes or accessories; silhouette clearly a cat rather than the existing wolf. Smooth bold clean continuous black outlines, rounded balanced simple cartoon shapes, generous white interior shapes. Pure black-and-white coloring-book art, no gray or shading, no color. Full subject alone centered, occupying 75-80% of square pure white background with generous uninterrupted white margins. No text, frame, scenery, extra objects, speckles, scratch marks or dust. Child-friendly, charming and reassuring Halloween mood.",
+    "file": "public/images/cat.png",
+    "generatedFile": "exec-c7092192-b4c2-4e0e-aa6b-35f06bd52f94.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "cauldron",
+    "variant": "art",
+    "prompt": "Use case: style-transfer. Asset: premium artist vocabulary reward for a children's Halloween game. Image 1 is the EDIT TARGET: the flat-color cauldron. Image 2 owl is STYLE ONLY, for beautifully polished children's book art. Palette: deep purple-black pot, bright leaf-green bubbling potion inside, lavender rim accents. Elegant soft volume shading, gentle luminous highlights on green bubbles, refined rounded pot material, impeccable professional contours. Preserve EXACT target silhouette, oval rim, two side handles, three feet, bubble positions, proportions and composition. Do not add fire or a face. Child-friendly cartoon, clearly richer than flat color. Same full subject alone centered on pure white square background with generous white margins. No text, border, added objects, scenery, dust, noise or speckles.",
+    "file": "public/images/art/cauldron.png",
+    "generatedFile": "exec-f83fb8a5-f663-4efb-b5b9-a320d388a42c.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "cauldron",
+    "variant": "color",
+    "prompt": "Use case: style-transfer. Asset: flat color vocabulary reward for a children's Halloween card game. Image 1 is the EDIT TARGET: the new black-and-white cauldron. Image 2, owl, is STYLE REFERENCE ONLY. Color using simple clean solid fills and bold smooth black outlines. Palette: deep purple-black pot, bright leaf-green bubbling potion inside, lavender rim accents. Preserve EXACT silhouette, rim, handles, three feet, all bubbles, proportions and composition. Simple flat fills, no shading or gradients. Full subject isolated centered on pure white square background with the same generous white margins. No text, frame, added objects, scenery, speckles, dust or scary details.",
+    "file": "public/images/color/cauldron.png",
+    "generatedFile": "exec-531e2bbe-0cb8-4cb9-a0a9-13cfa73a2a40.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "cauldron",
+    "variant": "original",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference owl is STYLE ONLY, never include an owl. Draw one large rounded witch's CAULDRON: a squat pot with a thick oval rim, two round side handles, three little rounded feet and a few large bubbles visible at the opening. Empty white space around it, no fire, witch, spoon, separate bottle, facial features or extra objects. Match its smooth bold clean black contours, rounded simple charming cartoon forms and large white interior shapes. Pure black-and-white coloring-book art, no gray, shading or color. Full subject alone centered, entirely visible, about 75-80% of square pure white canvas, generous unbroken white margins. Child-friendly playful Halloween. No words, printed label, border, dust, speckles or scratchy lines.",
+    "file": "public/images/cauldron.png",
+    "generatedFile": "exec-e61dfffa-a3a2-408b-b829-13d46d9688e4.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "potion",
+    "variant": "art",
+    "prompt": "Use case: style-transfer. Asset: premium artist vocabulary reward for a children's Halloween game. Image 1 is the EDIT TARGET: flat-color potion. Image 2 owl is STYLE ONLY for polished children's book painting. Palette: pale cyan transparent glass, bright violet liquid, tan cork and lavender bubbles. Beautiful clear glass with controlled soft highlights and refined translucent shading, gently luminous violet liquid, tactile cork and clean bubbles, professional smooth contours. Preserve EXACT bottle silhouette, neck, cork, liquid level, three bubble positions, all proportions, composition and framing. Clearly richer than flat color yet a simple charming child-friendly cartoon, not photoreal. Same entire single subject centered on pure white square background with generous margins. No labels, text, frame, new objects, scenery, noise, dust or speckles.",
+    "file": "public/images/art/potion.png",
+    "generatedFile": "exec-215c7284-a1cb-4ddc-a29f-f4f35eb6d09e.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "potion",
+    "variant": "color",
+    "prompt": "Use case: style-transfer. Asset: flat color vocabulary reward for a children's Halloween game. Image 1 is the EDIT TARGET: new black-and-white potion. Image 2 owl is STYLE ONLY. Palette: pale cyan transparent glass, bright violet liquid, tan cork and lavender bubbles. Apply clean solid flat fills, bold smooth black outlines, no shading or gradients. Preserve EXACT bottle silhouette, cork, liquid level, bubbles, glass contours, proportions and composition. Same entire subject alone centered on pure white square background with generous white margins. No labels, text, border, new objects, scenery, dust or speckles.",
+    "file": "public/images/color/potion.png",
+    "generatedFile": "exec-a0c66628-e8ad-415c-b6c1-6ddd76ef7591.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "potion",
+    "variant": "original",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary card for a children's Halloween educational game. Reference owl is STYLE ONLY, never draw an owl. Draw one squat round glass POTION bottle with a short neck, a large cork stopper, and a simple liquid level filling its lower half with three large bubbles inside the liquid. Clearly a magical potion, not a cauldron. No label, skull symbol, face, separate objects or scenery. Match smooth bold continuous black contours, rounded simple charming cartoon forms, crisp outlines and large white interior shapes. Pure black-and-white coloring-book art, no gray, shading or color. Full subject alone centered, entirely visible, occupying 75-80% of square pure white canvas, generous unbroken white margins. Child-friendly playful Halloween mood. No printed words, frame, dust, speckles or scratchy lines.",
+    "file": "public/images/potion.png",
+    "generatedFile": "exec-c1b8a0cb-8ed2-40ed-9005-cfea5d762655.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "spellbook",
+    "variant": "art",
+    "prompt": "Use case: style-transfer. Asset: premium artist vocabulary reward for children's Halloween card 'a spellbook'. Image 1 is the EDIT TARGET: the new flat-color old grimoire. Image 2 owl is STYLE ONLY for beautifully polished children's book painting. Palette: deep plum-purple leather cover, antique warm gold metal clasp and small crescent moon, cream old page edges and a muted orange ribbon bookmark. Refined tactile old leather with gentle volume shading, warm soft highlights on antique gold clasp and corner plates, slightly wavy cream page edges and clean bookmark texture. Preserve EXACT book silhouette, small crescent moon, one clasp, spine ribs, corner plates, bookmark, page edges, three-quarter pose, proportions and framing. It should be an old witch's book of spells, playful and child-friendly, not grim or frightening. No giant star, no fairy sparkles, no skull or face. Same entire subject alone centered on pure white square background with generous margins. No readable text, printed title, border, new objects, scenery, dust, noise or speckles.",
+    "file": "public/images/art/spellbook.png",
+    "generatedFile": "exec-6b1b9874-73af-40f0-a188-ae49ea0be699.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "spellbook",
+    "variant": "color",
+    "prompt": "Use case: style-transfer. Asset: flat color vocabulary reward for a children's Halloween game. Image 1 is the EDIT TARGET: the new black-and-white old witch's spellbook. Image 2 owl is STYLE ONLY. Palette: deep plum-purple leather cover, antique warm gold metal clasp and small crescent moon, cream old page edges and a muted orange ribbon bookmark. Clean simple solid flat fills and bold black outlines, no shading or gradients. Preserve EXACT book silhouette, cover, small crescent moon, clasp, spine ribs, corner plates, bookmark, page edges, angle, proportions and composition. It remains an old witch's grimoire, not a fairy book: NO star or added sparkles. Same whole subject centered on pure white square background with generous white margins. No readable text, labels, frame, new objects, scenery, dust or scratches.",
+    "file": "public/images/color/spellbook.png",
+    "generatedFile": "exec-fdcde57a-71d5-455c-b654-6143614a62c9.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "spellbook",
+    "variant": "original",
+    "prompt": "Use case: illustration-story. Asset: vocabulary card 'a spellbook' for a children's Halloween game. Owl reference is STYLE ONLY, never include an owl. Draw ONE old witch's SPELLBOOK: a closed thick squat book in gentle three-quarter view, chunky leather binding, rounded worn cover corners, two broad spine ribs, one substantial metal clasp closing the outer edge, a small crescent moon embossed in the middle of the cover, cream page edges represented by a few broad clean lines and one short ribbon bookmark. It should clearly look like a mysterious old grimoire, playful and reassuring for children. The moon emblem is modest, the actual book remains dominant. NO large star, fairy sparkles, skull, face, readable lettering, printed title, tiny runes, separate objects or scenery. Match the reference's clean bold rounded black outlines and simple charming cartoon forms. Pure black-and-white coloring-book line art, white interior shapes, no gray or shading and no color. Entire subject centered, 75-80% of square pure white background, generous uninterrupted white margins. No border, dust, speckles or scratchy lines.",
+    "file": "public/images/spellbook.png",
+    "generatedFile": "exec-18a86512-7dc6-4518-9f26-0594666ee80b.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "wand",
+    "variant": "art",
+    "prompt": "Use case: style-transfer. Asset: premium artist reward for children's Halloween vocabulary card 'a wand'. Image 1 is the EDIT TARGET: the flat-color gnarly wooden wand. Image 2 owl is STYLE ONLY, for polished children's book painting. Palette: warm chestnut-brown natural wood, slightly lighter honey-brown oval knots and gentle bark accents; no purple, metal, stars or ornaments. Beautiful softly shaded chestnut wood, refined clean wood grain texture, gentle highlights, tactile knots and burls, elegant professional contours. Preserve EXACT target natural wooden silhouette, two oval knots, knobbly burls, crooked tip, diagonal pose, proportions and framing. A witch's simple natural wood wand, absolutely NO star, jewels, purple ornament, ribbon, sparkles, leaves or added objects. Clearly richer than flat color while keeping a child-friendly cartoon appearance. Whole subject alone centered on pure white square background with generous margins. No text, border, scenery, dust, noise or speckles.",
+    "file": "public/images/art/wand.png",
+    "generatedFile": "exec-21bf69a8-3f77-4727-b354-6922a72c26d7.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "wand",
+    "variant": "color",
+    "prompt": "Use case: style-transfer. Asset: color vocabulary reward for a children's Halloween game. Image 1 is the EDIT TARGET: the new black-and-white wand. Image 2 owl is STYLE ONLY. Apply clean flat solid color fills with bold smooth black outlines, no shading, gradients or realistic texture. Palette: warm chestnut-brown natural wood, slightly lighter honey-brown oval knots and gentle bark accents; no purple, metal, stars or ornaments. Preserve EXACT target silhouette, every natural knot and burl, wood grain contours, crooked tip, proportions, diagonal pose and framing. It is a natural gnarly witch's wood wand, NO star, sparkle, jewel, ribbon or metal. Same full subject centered on pure white square background with generous white margins. No text, frame, added objects, scenery, dust or scratches.",
+    "file": "public/images/color/wand.png",
+    "generatedFile": "exec-924f8746-7168-4f73-a9d4-d70a519b1351.png",
+    "tool": "image_gen intégré"
+  },
+  {
+    "id": "wand",
+    "variant": "original",
+    "prompt": "Use case: illustration-story. Asset: square vocabulary illustration of 'a wand' for a children's Halloween witchcraft card game. Owl reference is STYLE ONLY, never include an owl. Draw one WITCH'S WOODEN WAND, a natural gnarly little piece of wood: a single slender gently twisted twig, thicker rounded handle at the lower left and tapering to a slightly crooked blunt tip at upper right, with three little knobbly burls, two clearly visible oval wood knots and a few smooth simplified wood-grain contour lines. It should look like a witch's handmade wand carved from an old tree branch. One continuous elegant branch silhouette. NO star on the tip, no star-shaped ornaments, ribbons, sparkles, leaves, crystals, hand or other object. Charming child-friendly cartoon, smooth bold rounded black continuous outlines matching the reference, large simple clean white shapes. Pure black-and-white coloring-book line art, NO gray, shading or color. Whole wand visible diagonally and centered, about 75-80% of pure white square canvas with generous uninterrupted margins. No words, frame, scenery, dust, speckles or scratches.",
+    "file": "public/images/wand.png",
+    "generatedFile": "exec-923cf8ba-a379-4c19-823b-8c35b64db715.png",
+    "tool": "image_gen intégré"
+  }
+]

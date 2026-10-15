@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
+import { WORDS } from '../docs/app/game.js';
 const source = await readFile(new URL('../docs/sw.js', import.meta.url), 'utf8');
 const scope = 'https://example.test/halloween-english/';
 async function setup() {
@@ -40,15 +41,15 @@ async function setup() {
   }
   return { stores, fetchEvent };
 }
-test('Le cache contient le jeu, les soixante images, le manifeste et les icônes', async () => {
+test('Le cache contient le jeu, les 78 images, le manifeste et les icônes', async () => {
   assert.ok(!source.includes('__PRECACHE__') && !source.includes('__REVISION__'));
   const { stores } = await setup();
   assert.ok(stores.has('another-app-cache'));
   assert.ok(!stores.has('boo-english-obsolete'));
   const cache = [...stores.entries()].find(([name]) => name.startsWith('boo-english-'))[1];
-  assert.equal([...cache.keys()].filter(url => /images\/\w+\.png$/.test(url)).length, 20);
-  assert.equal([...cache.keys()].filter(url => /images\/color\/\w+\.png$/.test(url)).length, 20);
-  assert.equal([...cache.keys()].filter(url => /images\/art\/\w+\.png$/.test(url)).length, 20);
+  assert.equal([...cache.keys()].filter(url => /images\/\w+\.png$/.test(url)).length, WORDS.length);
+  assert.equal([...cache.keys()].filter(url => /images\/color\/\w+\.png$/.test(url)).length, WORDS.length);
+  assert.equal([...cache.keys()].filter(url => /images\/art\/\w+\.png$/.test(url)).length, WORDS.length);
   for (const file of ['index.html', 'style.css', 'app/main.js', 'app/game.js', 'app/speech.js', 'app/install.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png']) assert.ok(cache.has(scope + file));
 });
 test('Sans réseau, les pages et les images restent accessibles, même avec un paramètre URL', async () => {
