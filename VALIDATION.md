@@ -13,6 +13,7 @@ Cette extension conserve la progression v5 et les records v3 de la version préc
 - Écrans de packs : aucune largeur excédentaire à 320, 360, 390, 768 et 1024 px. Inspection visuelle sur 390 × 844.
 - Lecture du grimoire avec quatre réponses à 320 × 568 : « a spellbook » et « a cauldron » lisibles sur deux lignes, aucun texte coupé ou débordement horizontal. Texte envoyé à la voix : « a spellbook ».
 - Collection complète : 26 cartes, 78 images chargées, zoom artiste du grimoire accessible. Planche des dix-huit nouvelles illustrations inspectée : noir et blanc, aplats, artiste ; silhouettes et poses cohérentes.
+- Libellé du chat précisé en « a black cat », traduction « chat noir » ; vérification navigateur des textes et demandes vocales « a black cat » puis « black cat » sans article. Identifiant `cat` conservé pour préserver les acquis et les choix de variantes.
 - Corrections graphiques demandées intégrées : baguette en bois noueux sans étoile, ancien grimoire à fermoir et croissant de lune. Consignes finales : `sorcery-prompts.json`.
 
 Les essais mobiles sont simulés dans le navigateur ; aucune nouvelle installation sur téléphone physique n’a été effectuée. Le journal vocal de test vérifie les textes demandés, pas la qualité de chaque voix installée.

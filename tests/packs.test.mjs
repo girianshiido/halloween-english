@@ -9,7 +9,7 @@ function finishCore(p){for(const w of CORE_PACK.words)Object.assign(p.words[w.id
 function color(p,id){Object.assign(p.words[id],{listen:3,read:3,introduced:true});}
 test('Pack Petite sorcellerie : six noms illustrables, uniques et prononcés avec leur article',()=>{
   assert.equal(WORDS.length,26);assert.equal(new Set(WORDS.map(w=>w.id)).size,26);
-  assert.deepEqual(pack.words.map(w=>spokenWord(w)),['a cat','a broom','a cauldron','a wand','a potion','a spellbook']);
+  assert.deepEqual(pack.words.map(w=>spokenWord(w)),['a black cat','a broom','a cauldron','a wand','a potion','a spellbook']);
   assert.ok(pack.words.every(w=>!CORE_PACK.words.includes(w)));
 });
 test('Le pack attend les vingt premières couleurs ; le mémo est facultatif',()=>{

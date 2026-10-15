@@ -16,7 +16,7 @@ Les quatre premières cartes sont **ghost, pumpkin, bat et witch**. Chaque paire
 
 Après les **vingt premières couleurs**, l’accueil et le bilan proposent de choisir la suite. Le joueur ouvre le pack avec **Explorer ce pack**. La mémoire et les versions artiste ne sont pas nécessaires pour l’ouvrir.
 
-- **a cat** : un chat noir.
+- **a black cat** : un chat noir.
 - **a broom** : un balai de sorcière.
 - **a cauldron** : un chaudron.
 - **a wand** : une baguette de bois noueux, sans étoile de fée.
@@ -92,7 +92,7 @@ Le site statique est compilé dans `docs/`, publié par GitHub Pages depuis `mai
 
 ## Vocabulaire
 
-ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet, cat, broom, cauldron, wand, potion, spellbook.
+ghost, vampire, pumpkin, monster, witch, bat, skeleton, spider, rat, frog, owl, snake, crow, wolf, Moon, skull, mask, candle, hat, sweet, black cat, broom, cauldron, wand, potion, spellbook.
 
 ## Harmonisation graphique
 

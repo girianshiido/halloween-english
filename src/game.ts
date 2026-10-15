@@ -22,7 +22,7 @@ export const WORDS: readonly Word[] = [
   { id: 'candle', english: 'candle', french: 'bougie' },
   { id: 'hat', english: 'hat', french: 'chapeau' },
   { id: 'sweet', english: 'sweet', french: 'bonbon' },
-  { id: 'cat', english: 'cat', french: 'chat' },
+  { id: 'cat', english: 'black cat', french: 'chat noir' },
   { id: 'broom', english: 'broom', french: 'balai' },
   { id: 'cauldron', english: 'cauldron', french: 'chaudron' },
   { id: 'wand', english: 'wand', french: 'baguette magique' },
