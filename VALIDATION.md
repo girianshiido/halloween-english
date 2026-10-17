@@ -1,3 +1,11 @@
+# Validation — La forêt enchantée
+
+17 octobre 2026. Construction, TypeScript strict et 50 tests réussis. Les 24 permutations des quatre packs sont vérifiées jusqu’à leur ouverture complète ; chaque pack à quatre couleurs donne un seul choix supplémentaire, sans mémo obligatoire. Ancienne sauvegarde à 38 mots : compteurs, images sélectionnées, ordre des trois anciens packs et aventure active conservés. Parcours complet jusqu’aux 44 cartes artiste simulé. Les 132 illustrations sont dans le cache hors ligne. Le test de pondération compare désormais le tirage à celui de la même collection avec niveaux égaux : un seuil absolu de fréquence ne convenait plus à l’agrandissement de la collection. Aucun changement de l’algorithme de sélection.
+
+Navigateur avec sauvegardes isolées : forêt fermée à trois couleurs dans le troisième pack, puis disponible à la quatrième ; présentation de « a fox », premier défi à deux images, réussite conservée après rechargement, découverte suivante « a rabbit ». Lecture « a squirrel » : bonne réponse prononcée, quatrième couleur et paire hérisson/cerf débloquées ; présentation et écoute « a hedgehog ». Journal vocal : « a squirrel » puis « squirrel » sans articles. Collection : 132 images chargées sans erreur et zoom du renard artiste sur écran de 390 × 844. Quatre packs présents et aucun débordement ni bouton tronqué à 320, 390, 768 et 1024 px. Totaux toujours masqués dans l’interface. Pas de test physique iPhone/Android sur cette mise à jour.
+
+---
+
 # Validation — Les trésors d’automne
 
 17 octobre 2026. TypeScript strict, construction et 48 tests réussis. Les trois packs sont testés dans tous les ordres : quatre couleurs dans un pack donnent un seul choix supplémentaire ; six couleurs dans ce même pack ne permettent pas de sauter la condition du suivant. L’écran indique le progrès du pack encore en dessous de quatre couleurs. Anciennes sauvegardes à 32 mots, ordre des packs et aventure active conservés. Parcours complet jusqu’aux 38 cartes artiste simulé ; 114 illustrations dans le cache hors ligne.

@@ -1,6 +1,6 @@
 # Boo! English
 
-Jeu éducatif d’Halloween indépendant en TypeScript : **trente-huit mots** (vingt dans le premier parcours et trois packs de six cartes), chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
+Jeu éducatif d’Halloween indépendant en TypeScript : **quarante-quatre mots** (vingt dans le premier parcours et quatre packs de six cartes), chacun avec trois illustrations (original, couleur, artiste). **Quatre cartes au départ**, puis des découvertes par paires. Aucun compte requis.
 
 [Jouer directement](https://girianshiido.github.io/halloween-english/)
 
@@ -14,7 +14,7 @@ Les quatre premières cartes sont **ghost, pumpkin, bat et witch**. Chaque paire
 
 ## Pack Petite sorcellerie
 
-Après les **vingt premières couleurs**, le joueur choisit librement **Petite sorcellerie**, **La maison mystérieuse** ou **Les trésors d’automne** avec **Explorer ce pack**. **Chaque pack où quatre couleurs ont été gagnées donne un choix de pack supplémentaire**, quel que soit l’ordre choisi. Les couleurs supplémentaires du même pack ne donnent pas un deuxième choix. Les versions artiste restent facultatives. Les acquis, l’ordre des ouvertures et le pack en cours sont conservés dans la sauvegarde v5 existante.
+Après les **vingt premières couleurs**, le joueur choisit librement **Petite sorcellerie**, **La maison mystérieuse**, **Les trésors d’automne** ou **La forêt enchantée** avec **Explorer ce pack**. **Chaque pack où quatre couleurs ont été gagnées donne un choix de pack supplémentaire**, quel que soit l’ordre choisi. Les couleurs supplémentaires du même pack ne donnent pas un deuxième choix. Les versions artiste restent facultatives. Les acquis, l’ordre des ouvertures et le pack en cours sont conservés dans la sauvegarde v5 existante.
 
 - **a black cat** : un chat noir.
 - **a broom** : un balai de sorcière.
@@ -25,7 +25,7 @@ Après les **vingt premières couleurs**, le joueur choisit librement **Petite s
 
 Le chat et le balai sont révélés d’abord. Quand ils sont colorés, le chaudron et la baguette arrivent ; leurs couleurs ouvrent ensuite la potion et le grimoire. Chaque nouvelle carte est présentée avant de devenir cible ou proposition. Les anciennes cartes restent jouables, et les mêmes règles d’écoute, de lecture, de mémo et de récompenses s’appliquent aux nouvelles.
 
-Les galeries du premier parcours conservent leurs vingt emplacements. Les six emplacements de chaque pack les rejoignent seulement après son ouverture. Le total général est de **38 cartes et 76 récompenses**. Les illustrations ont été créées avec image_gen intégré ; prompts exacts et chemins des dix-huit fichiers dans `sorcery-prompts.json`.
+Les galeries du premier parcours conservent leurs vingt emplacements. Les six emplacements de chaque pack les rejoignent seulement après son ouverture. Le total général est de **44 cartes et 88 récompenses**. Les illustrations ont été créées avec image_gen intégré ; prompts exacts et chemins des dix-huit fichiers dans `sorcery-prompts.json`.
 
 ## Pack La maison mystérieuse
 
@@ -52,6 +52,17 @@ L’écran des packs permet de reprendre celui souhaité. Le parcours guidé pri
 - **an umbrella** : un parapluie ouvert aux couleurs orange et prune.
 
 Feuille et gland apparaissent d’abord ; leurs couleurs révèlent champignon et pomme ; les quatre couleurs révèlent panier et parapluie. Les trois versions de chaque carte gardent la même silhouette. Les dix-huit illustrations ont été créées avec image_gen intégré ; consignes exactes et chemins dans `autumn-prompts.json`. Les anciennes sauvegardes à 32 mots gardent leurs compteurs, versions choisies, ordre de packs et aventure active. Le troisième pack s’ouvre après quatre couleurs dans un deuxième pack, sans obligation de gagner des versions artiste.
+
+## Pack La forêt enchantée
+
+- **a fox** : un renard roux à la queue touffue.
+- **a rabbit** : un lapin aux longues oreilles.
+- **a bear** : un ourson brun.
+- **a squirrel** : un écureuil à grande queue recourbée.
+- **a hedgehog** : un hérisson au dos piquant.
+- **a deer** : un cerf aux petits bois.
+
+Renard et lapin d’abord ; leurs couleurs révèlent ours et écureuil ; les quatre couleurs révèlent hérisson et cerf. Même apprentissage avant interrogation, difficulté progressive, mémo et choix de version. Dix-huit illustrations créées avec image_gen intégré, avec les animaux existants comme références de style ; consignes exactes et fichiers finaux dans `forest-prompts.json`. La sauvegarde v5 précédente à 38 mots reste compatible sans remise à zéro. Les quatre packs peuvent être ouverts dans n’importe quel ordre, avec un choix supplémentaire pour chaque pack ayant quatre couleurs.
 
 ## Les activités
 
@@ -98,7 +109,7 @@ Tout reste dans le navigateur, sans compte ni serveur de données de jeu. Les po
 
 Le bouton **Installer** explique les étapes adaptées à l’appareil. Sur Android avec Chrome ou Edge, confirmer l’installation proposée par le navigateur. Sur iPhone et iPad, ouvrir le lien dans Safari puis **Partager → Sur l’écran d’accueil → Ajouter**. Le manifeste utilise le mode autonome et fournit des icônes classiques, adaptatives et Apple.
 
-Après la première ouverture connectée, le jeu, ses cent quatorze images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
+Après la première ouverture connectée, le jeu, ses cent trente-deux images et ses icônes sont mis en cache. Le panneau d’installation indique quand le jeu est prêt hors ligne. La voix anglaise hors ligne dépend des voix disponibles sur l’appareil ; le mode « Je regarde » fonctionne sans son. Les polices système prennent le relais sans réseau. Aucune boutique d’applications n’est nécessaire.
 
 Le cache et le service worker restent limités au chemin de ce dépôt. Une nouvelle version attend la fermeture des anciennes fenêtres du jeu pour remplacer la précédente sans interrompre une partie.
 

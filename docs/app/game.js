@@ -37,6 +37,12 @@ export const WORDS = [
     { id: 'apple', english: 'apple', french: 'pomme', article: 'an' },
     { id: 'basket', english: 'basket', french: 'panier' },
     { id: 'umbrella', english: 'umbrella', french: 'parapluie', article: 'an' },
+    { id: 'fox', english: 'fox', french: 'renard' },
+    { id: 'rabbit', english: 'rabbit', french: 'lapin' },
+    { id: 'bear', english: 'bear', french: 'ours' },
+    { id: 'squirrel', english: 'squirrel', french: 'écureuil' },
+    { id: 'hedgehog', english: 'hedgehog', french: 'hérisson' },
+    { id: 'deer', english: 'deer', french: 'cerf' },
 ];
 export const ORIGINAL_WORDS = WORDS.slice(0, 10);
 const wordIds = (ids) => ids.map(id => WORDS.find(word => word.id === id));
@@ -45,6 +51,7 @@ export const EXTRA_PACKS = [
     { id: 'sorcery', title: 'Petite sorcellerie', description: 'De nouveaux mots pour un peu plus de magie', startingCount: 2, words: wordIds(['cat', 'broom', 'cauldron', 'wand', 'potion', 'spellbook']) },
     { id: 'mystery-house', title: 'La maison mystérieuse', description: 'De nouveaux mots derrière une porte d’Halloween', startingCount: 2, words: wordIds(['house', 'door', 'key', 'chest', 'lantern', 'bell']) },
     { id: 'autumn', title: 'Les trésors d’automne', description: 'De petites trouvailles aux couleurs de la saison', startingCount: 2, words: wordIds(['leaf', 'acorn', 'mushroom', 'apple', 'basket', 'umbrella']) },
+    { id: 'forest', title: 'La forêt enchantée', description: 'De nouvelles rencontres au détour des bois', startingCount: 2, words: wordIds(['fox', 'rabbit', 'bear', 'squirrel', 'hedgehog', 'deer']) },
 ];
 export const DISCOVERY_ORDER = [...CORE_PACK.words, ...EXTRA_PACKS.flatMap(pack => pack.words)];
 export const STARTER_WORDS = CORE_PACK.words.slice(0, CORE_PACK.startingCount);

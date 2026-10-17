@@ -39,3 +39,7 @@ Dix-huit nouvelles illustrations créées avec image_gen intégré : maison hant
 ## Les trésors d’automne — 17 octobre 2026
 
 Dix-huit illustrations créées avec image_gen intégré : feuille d’érable, gland, champignon, pomme, panier vide et parapluie, en noir et blanc, couleur et artiste. Références de style : cartes existantes ; silhouettes, pose et détails conservés dans les variantes. Le parapluie couleur a reçu une retouche des petits débordements orange. Consignes exactes et chemins des fichiers finaux : `autumn-prompts.json`. Images livrées dans `public/images/`, `public/images/color/` et `public/images/art/`, copiées dans `docs/images/`.
+
+## La forêt enchantée — 17 octobre 2026
+
+Dix-huit illustrations créées avec image_gen intégré : renard, lapin, ours, écureuil, hérisson et cerf, en noir et blanc, couleur et artiste. Références de style : hibou noir et blanc, loup couleur et hibou artiste. Même silhouette, pose, expression et anatomie dans chaque famille. Consignes exactes et chemins des fichiers finaux : `forest-prompts.json`. Livraison dans `public/images/`, `public/images/color/` et `public/images/art/`, copiés dans `docs/images/`.

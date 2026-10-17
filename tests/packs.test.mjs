@@ -8,7 +8,7 @@ const pack=EXTRA_PACKS[0];
 function finishCore(p){for(const w of CORE_PACK.words)Object.assign(p.words[w.id],{listen:3,read:3,introduced:true});}
 function color(p,id){Object.assign(p.words[id],{listen:3,read:3,introduced:true});}
 test('Pack Petite sorcellerie : six noms illustrables, uniques et prononcés avec leur article',()=>{
-  assert.equal(WORDS.length,38);assert.equal(new Set(WORDS.map(w=>w.id)).size,38);
+  assert.equal(WORDS.length,44);assert.equal(new Set(WORDS.map(w=>w.id)).size,44);
   assert.deepEqual(pack.words.map(w=>spokenWord(w)),['a black cat','a broom','a cauldron','a wand','a potion','a spellbook']);
   assert.ok(pack.words.every(w=>!CORE_PACK.words.includes(w)));
 });
@@ -120,19 +120,22 @@ test('Les trésors d’automne : articles, première paire et découverte progre
   assert.deepEqual(parseProgress(serializeProgress(p)),p);
 });
 
-test('Trois packs dans tous les ordres : un seul nouveau choix par pack à quatre couleurs',()=>{
-  for(const first of EXTRA_PACKS)for(const second of EXTRA_PACKS.filter(pack=>pack!==first)){
-    const third=EXTRA_PACKS.find(pack=>pack!==first&&pack!==second);
-    const p=emptyProgress();finishCore(p);openPack(p,first.id);
-    first.words.slice(0,4).forEach(w=>color(p,w.id));assert.equal(openPack(p,second.id),true);
-    assert.equal(packAvailable(p,third.id),false);assert.equal(openPack(p,third.id),false);
-    assert.match(packsMarkup(p),/0 \/ 4 couleurs/);
-    first.words.slice(4).forEach(w=>color(p,w.id));
-    second.words.slice(0,3).forEach(w=>color(p,w.id));
-    assert.equal(packAvailable(p,third.id),false);assert.match(packsMarkup(p),/3 \/ 4 couleurs/);
-    color(p,second.words[3].id);assert.equal(openPack(p,third.id),true);
-    assert.deepEqual(p.openedPacks,[first.id,second.id,third.id]);
-    assert.deepEqual(parseProgress(serializeProgress(p)),p);
+test('Quatre packs dans tous les ordres : un choix unique par pack à quatre couleurs',()=>{
+  const permutations=items=>items.length ? items.flatMap((item,i)=>permutations(items.filter((_,j)=>j!==i)).map(tail=>[item,...tail])) : [[]];
+  const orders=permutations(EXTRA_PACKS);assert.equal(orders.length,24);
+  for(const order of orders){
+    const p=emptyProgress();finishCore(p);assert.equal(openPack(p,order[0].id),true);
+    for(let index=1;index<order.length;index++){
+      const previous=order[index-1],next=order[index];
+      assert.equal(openPack(p,next.id),false);assert.match(packsMarkup(p),/0 \/ 4 couleurs/);
+      previous.words.slice(0,3).forEach(w=>color(p,w.id));
+      assert.equal(openPack(p,next.id),false);assert.match(packsMarkup(p),/3 \/ 4 couleurs/);
+      color(p,previous.words[3].id);assert.equal(openPack(p,next.id),true);
+      previous.words.slice(4).forEach(w=>color(p,w.id));
+      if(order[index+1])assert.equal(packAvailable(p,order[index+1].id),false);
+      assert.deepEqual(p.openedPacks,order.slice(0,index+1).map(pack=>pack.id));
+      assert.deepEqual(parseProgress(serializeProgress(p)),p);
+    }
     assert.ok(WORDS.every(w=>p.words[w.id].flash===0&&p.words[w.id].once===0));
   }
 });
@@ -147,4 +150,32 @@ test('Sauvegarde précédente à 32 mots : les acquis et le pack actif restent i
   const loaded=parseProgress(JSON.stringify(raw));
   assert.deepEqual(loaded,p);assert.equal(packAvailable(loaded,'autumn'),true);
   assert.ok(!learningCardsMarkup(loaded,'',true).includes('leaf.png'));
+});
+
+test('La forêt enchantée : six animaux, articles et paires présentées avant interrogation',()=>{
+  const forest=EXTRA_PACKS.find(pack=>pack.id==='forest');
+  assert.deepEqual(forest.words.map(w=>spokenWord(w)),['a fox','a rabbit','a bear','a squirrel','a hedgehog','a deer']);
+  const p=emptyProgress();finishCore(p);assert.equal(openPack(p,'forest'),true);
+  assert.deepEqual(pendingWords(p).map(w=>w.id),['fox','rabbit']);
+  assert.ok(!knownWords(p).some(w=>forest.words.includes(w)));
+  introduceWord(p,'fox');
+  const session=createSession('listen',{targets:knownWords(p),pool:knownWords(p),forceTarget:'fox'});
+  assert.equal(session.questions[0].target.id,'fox');assert.equal(session.questions[0].choices.length,2);
+  assert.ok(session.questions.every(q=>q.choices.every(w=>!forest.words.includes(w)||w.id==='fox')));
+  color(p,'fox');color(p,'rabbit');assert.deepEqual(pendingWords(p).map(w=>w.id),['bear','squirrel']);
+  color(p,'bear');color(p,'squirrel');assert.deepEqual(pendingWords(p).map(w=>w.id),['hedgehog','deer']);
+  assert.deepEqual(parseProgress(serializeProgress(p)),p);
+});
+
+test('Sauvegarde à 38 mots : les trois anciens packs et leur progression sont préservés',()=>{
+  const p=emptyProgress();finishCore(p);
+  for(const pack of EXTRA_PACKS.filter(pack=>pack.id!=='forest')){
+    assert.equal(openPack(p,pack.id),true);pack.words.forEach(w=>color(p,w.id));
+  }
+  Object.assign(p.words.acorn,{flash:3,once:3,selected:'art'});p.completedSessions=94;
+  const raw=JSON.parse(serializeProgress(p));
+  EXTRA_PACKS.find(pack=>pack.id==='forest').words.forEach(w=>delete raw.words[w.id]);
+  const loaded=parseProgress(JSON.stringify(raw));assert.deepEqual(loaded,p);
+  assert.equal(loaded.activePack,'autumn');assert.equal(packAvailable(loaded,'forest'),true);
+  assert.ok(!learningCardsMarkup(loaded,'',true).includes('fox.png'));
 });

@@ -1,0 +1,131 @@
+{
+  "tool": "image_gen intégré",
+  "assets": [
+    {
+      "id": "fox",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image owl is ONLY a STYLE reference, not the subject to copy. Subject: one friendly young FOX sitting upright, front paws neatly together, large triangular ears, gently pointed muzzle, bright large expressive eyes, a broad fluffy tail curled around its side with a clearly separated pale tip, simple cheek tufts and chest bib. Entire animal three-quarter front view. Immediately recognizable fox, not a cat or wolf.. Match the reference's friendly expressive face, smooth bold rounded black contours and clear child-friendly anatomy. Pure black outlines and solid black pupils/nose with WHITE empty interiors, no grey fill, shading, hatching or sketch strokes. Entire single animal centered on pure white square background, generous margins, fills about 80% of frame. Gentle enchanted forest mood, reassuring for young children. No clothing, costume, accessories, additional animals, objects, scenery, ground, text, frame, shadow, watermark, dust or jagged pixels.",
+      "file": "public/images/fox.png",
+      "generatedFile": "exec-e5598224-c871-4798-a45f-4a100a6a15f5.png"
+    },
+    {
+      "id": "rabbit",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image owl is ONLY a STYLE reference, not the subject to copy. Subject: one cute woodland RABBIT sitting upright, two very long ears (one slightly bent at the tip), short rounded muzzle, tiny triangular nose, long strong hind feet, small front paws, large expressive eyes and a little round cotton tail peeking out on one side. Entire animal, three-quarter front view. Clearly a rabbit, no Easter objects.. Match the reference's friendly expressive face, smooth bold rounded black contours and clear child-friendly anatomy. Pure black outlines and solid black pupils/nose with WHITE empty interiors, no grey fill, shading, hatching or sketch strokes. Entire single animal centered on pure white square background, generous margins, fills about 80% of frame. Gentle enchanted forest mood, reassuring for young children. No clothing, costume, accessories, additional animals, objects, scenery, ground, text, frame, shadow, watermark, dust or jagged pixels.",
+      "file": "public/images/rabbit.png",
+      "generatedFile": "exec-544664ea-7e82-4ce0-bf23-eafdddbde2a8.png"
+    },
+    {
+      "id": "bear",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image owl is ONLY a STYLE reference, not the subject to copy. Subject: one friendly woodland BEAR cub sitting, stout round body, two small rounded ears, broad short oval muzzle, little round nose, big expressive eyes, two thick front legs and two round hind paws with simple visible paw pads. Entire animal three-quarter front view. Natural live bear cub, not a stitched teddy bear.. Match the reference's friendly expressive face, smooth bold rounded black contours and clear child-friendly anatomy. Pure black outlines and solid black pupils/nose with WHITE empty interiors, no grey fill, shading, hatching or sketch strokes. Entire single animal centered on pure white square background, generous margins, fills about 80% of frame. Gentle enchanted forest mood, reassuring for young children. No clothing, costume, accessories, additional animals, objects, scenery, ground, text, frame, shadow, watermark, dust or jagged pixels.",
+      "file": "public/images/bear.png",
+      "generatedFile": "exec-e5372707-c31a-41c3-b43f-390b479b8fdf.png"
+    },
+    {
+      "id": "squirrel",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image owl is ONLY a STYLE reference, not the subject to copy. Subject: one cute woodland SQUIRREL sitting on its hind legs, very large bushy tail curving upward and curling behind its body, small rounded triangular ears with short tufts, short muzzle, large expressive eyes, small front paws held together EMPTY at chest height and two small hind feet. Entire animal three-quarter front view. Clear squirrel silhouette, no acorn or other carried object.. Match the reference's friendly expressive face, smooth bold rounded black contours and clear child-friendly anatomy. Pure black outlines and solid black pupils/nose with WHITE empty interiors, no grey fill, shading, hatching or sketch strokes. Entire single animal centered on pure white square background, generous margins, fills about 80% of frame. Gentle enchanted forest mood, reassuring for young children. No clothing, costume, accessories, additional animals, objects, scenery, ground, text, frame, shadow, watermark, dust or jagged pixels.",
+      "file": "public/images/squirrel.png",
+      "generatedFile": "exec-50d053cf-05b2-403a-b687-4f12b4a31189.png"
+    },
+    {
+      "id": "hedgehog",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image owl is ONLY a STYLE reference, not the subject to copy. Subject: one small cute woodland HEDGEHOG standing on four short feet, plump rounded back covered in several broad smooth pointed spine tufts, little gently tapered face, tiny round ears, round black nose and large friendly expressive eyes. Entire animal three-quarter front view showing its spiny back and face clearly. Not a porcupine; short compact spines.. Match the reference's friendly expressive face, smooth bold rounded black contours and clear child-friendly anatomy. Pure black outlines and solid black pupils/nose with WHITE empty interiors, no grey fill, shading, hatching or sketch strokes. Entire single animal centered on pure white square background, generous margins, fills about 80% of frame. Gentle enchanted forest mood, reassuring for young children. No clothing, costume, accessories, additional animals, objects, scenery, ground, text, frame, shadow, watermark, dust or jagged pixels.",
+      "file": "public/images/hedgehog.png",
+      "generatedFile": "exec-d8e61388-f324-4bab-847f-ee61353fee17.png"
+    },
+    {
+      "id": "deer",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image owl is ONLY a STYLE reference, not the subject to copy. Subject: one friendly small woodland DEER standing on four slender legs with simple cloven hooves, rounded body, long gentle muzzle, large leaf-shaped ears, large expressive eyes, short tail and two small branched antlers with two rounded tines each. Entire animal three-quarter front view, face turned slightly toward viewer. No red nose, Christmas items, reins or other objects.. Match the reference's friendly expressive face, smooth bold rounded black contours and clear child-friendly anatomy. Pure black outlines and solid black pupils/nose with WHITE empty interiors, no grey fill, shading, hatching or sketch strokes. Entire single animal centered on pure white square background, generous margins, fills about 80% of frame. Gentle enchanted forest mood, reassuring for young children. No clothing, costume, accessories, additional animals, objects, scenery, ground, text, frame, shadow, watermark, dust or jagged pixels.",
+      "file": "public/images/deer.png",
+      "generatedFile": "exec-25ddc4a6-45be-4433-9cdf-7f50745595a7.png"
+    },
+    {
+      "id": "fox",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, a black and white a fox. Input 2 wolf is ONLY a reference for the clean bold-outlined flat-colour style. Colour input 1 with warm rusty orange fur, cream muzzle cheeks chest and tail tip, dark brown paws and ear tips, amber eyes. Keep exactly its silhouette, anatomy, pose, perspective, expression, facial features, all limbs, ears and tail, proportions, outlines and generous white margins. Broad clean flat fills with very restrained gentle shading; expressive eyes as in the reference. Keep pure white background. No additional objects, clothing, accessories, scenery, text, frame, watermark or dust.",
+      "file": "public/images/color/fox.png",
+      "generatedFile": "exec-0567809d-0262-4802-9103-0aba7e77af65.png"
+    },
+    {
+      "id": "fox",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card for a children's Halloween English game. Input 1 is the flat-colour a fox to transform. Input 2 owl is ONLY a reference for beautiful polished painterly children's storybook finish. Create an artist version of input 1 with soft natural fur or spine detail, refined smooth shading, gentle warm light, believable volume and jewel-like expressive eyes. Preserve exactly the animal's silhouette, anatomy, pose, perspective, proportions, ears, all limbs, tail, antlers if present, expression and palette: warm rusty orange fur, cream muzzle cheeks chest and tail tip, dark brown paws and ear tips, amber eyes. Entire single animal isolated on pure white background with the same generous margins. Gentle enchanted woodland mood. No new objects, scenery, ground, clothes, accessories, text, frame, watermark, photorealism, grit or pixel dust. Readable at small card size.",
+      "file": "public/images/art/fox.png",
+      "generatedFile": "exec-686113f1-284c-469a-a128-19cdf03a5dc9.png"
+    },
+    {
+      "id": "rabbit",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, a black and white a rabbit. Input 2 wolf is ONLY a reference for the clean bold-outlined flat-colour style. Colour input 1 with soft warm grey fur with light cream belly and muzzle, dusty pink inner ears and nose, warm brown eyes. Keep exactly its silhouette, anatomy, pose, perspective, expression, facial features, all limbs, ears and tail, proportions, outlines and generous white margins. Broad clean flat fills with very restrained gentle shading; expressive eyes as in the reference. Keep pure white background. No additional objects, clothing, accessories, scenery, text, frame, watermark or dust.",
+      "file": "public/images/color/rabbit.png",
+      "generatedFile": "exec-c5867110-1bc2-4a63-b234-c683555ab77c.png"
+    },
+    {
+      "id": "rabbit",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card for a children's Halloween English game. Input 1 is the flat-colour a rabbit to transform. Input 2 owl is ONLY a reference for beautiful polished painterly children's storybook finish. Create an artist version of input 1 with soft natural fur or spine detail, refined smooth shading, gentle warm light, believable volume and jewel-like expressive eyes. Preserve exactly the animal's silhouette, anatomy, pose, perspective, proportions, ears, all limbs, tail, antlers if present, expression and palette: soft warm grey fur with light cream belly and muzzle, dusty pink inner ears and nose, warm brown eyes. Entire single animal isolated on pure white background with the same generous margins. Gentle enchanted woodland mood. No new objects, scenery, ground, clothes, accessories, text, frame, watermark, photorealism, grit or pixel dust. Readable at small card size.",
+      "file": "public/images/art/rabbit.png",
+      "generatedFile": "exec-e1dff962-f7e1-41f5-969b-bbe784a88339.png"
+    },
+    {
+      "id": "bear",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, a black and white a bear. Input 2 wolf is ONLY a reference for the clean bold-outlined flat-colour style. Colour input 1 with warm chestnut brown fur, honey tan muzzle and belly, dark cocoa nose and paw pads, amber brown eyes. Keep exactly its silhouette, anatomy, pose, perspective, expression, facial features, all limbs, ears and tail, proportions, outlines and generous white margins. Broad clean flat fills with very restrained gentle shading; expressive eyes as in the reference. Keep pure white background. No additional objects, clothing, accessories, scenery, text, frame, watermark or dust.",
+      "file": "public/images/color/bear.png",
+      "generatedFile": "exec-4032511a-8083-4d5e-8c20-34d47defb8b9.png"
+    },
+    {
+      "id": "bear",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card for a children's Halloween English game. Input 1 is the flat-colour a bear to transform. Input 2 owl is ONLY a reference for beautiful polished painterly children's storybook finish. Create an artist version of input 1 with soft natural fur or spine detail, refined smooth shading, gentle warm light, believable volume and jewel-like expressive eyes. Preserve exactly the animal's silhouette, anatomy, pose, perspective, proportions, ears, all limbs, tail, antlers if present, expression and palette: warm chestnut brown fur, honey tan muzzle and belly, dark cocoa nose and paw pads, amber brown eyes. Entire single animal isolated on pure white background with the same generous margins. Gentle enchanted woodland mood. No new objects, scenery, ground, clothes, accessories, text, frame, watermark, photorealism, grit or pixel dust. Readable at small card size.",
+      "file": "public/images/art/bear.png",
+      "generatedFile": "exec-95baa199-dd50-4f31-8717-28f4c0e1ff90.png"
+    },
+    {
+      "id": "squirrel",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, a black and white a squirrel. Input 2 wolf is ONLY a reference for the clean bold-outlined flat-colour style. Colour input 1 with warm reddish russet fur, creamy pale belly muzzle and cheek patches, rich copper bushy tail with a light golden rim, brown eyes. Keep exactly its silhouette, anatomy, pose, perspective, expression, facial features, all limbs, ears and tail, proportions, outlines and generous white margins. Broad clean flat fills with very restrained gentle shading; expressive eyes as in the reference. Keep pure white background. No additional objects, clothing, accessories, scenery, text, frame, watermark or dust.",
+      "file": "public/images/color/squirrel.png",
+      "generatedFile": "exec-da899242-5d33-44df-8137-5591245c8a29.png"
+    },
+    {
+      "id": "squirrel",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card for a children's Halloween English game. Input 1 is the flat-colour a squirrel to transform. Input 2 owl is ONLY a reference for beautiful polished painterly children's storybook finish. Create an artist version of input 1 with soft natural fur or spine detail, refined smooth shading, gentle warm light, believable volume and jewel-like expressive eyes. Preserve exactly the animal's silhouette, anatomy, pose, perspective, proportions, ears, all limbs, tail, antlers if present, expression and palette: warm reddish russet fur, creamy pale belly muzzle and cheek patches, rich copper bushy tail with a light golden rim, brown eyes. Entire single animal isolated on pure white background with the same generous margins. Gentle enchanted woodland mood. No new objects, scenery, ground, clothes, accessories, text, frame, watermark, photorealism, grit or pixel dust. Readable at small card size.",
+      "file": "public/images/art/squirrel.png",
+      "generatedFile": "exec-f2356823-4f86-4608-8fbe-3713d35771f3.png"
+    },
+    {
+      "id": "hedgehog",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, a black and white a hedgehog. Input 2 wolf is ONLY a reference for the clean bold-outlined flat-colour style. Colour input 1 with cocoa and chestnut brown spines with warm caramel tips, creamy beige face and underside, dark brown nose and feet, warm brown eyes. Keep exactly its silhouette, anatomy, pose, perspective, expression, facial features, all limbs, ears and tail, proportions, outlines and generous white margins. Broad clean flat fills with very restrained gentle shading; expressive eyes as in the reference. Keep pure white background. No additional objects, clothing, accessories, scenery, text, frame, watermark or dust.",
+      "file": "public/images/color/hedgehog.png",
+      "generatedFile": "exec-6917f5f8-552d-4bfb-b162-e77ecbd415a8.png"
+    },
+    {
+      "id": "hedgehog",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card for a children's Halloween English game. Input 1 is the flat-colour a hedgehog to transform. Input 2 owl is ONLY a reference for beautiful polished painterly children's storybook finish. Create an artist version of input 1 with soft natural fur or spine detail, refined smooth shading, gentle warm light, believable volume and jewel-like expressive eyes. Preserve exactly the animal's silhouette, anatomy, pose, perspective, proportions, ears, all limbs, tail, antlers if present, expression and palette: cocoa and chestnut brown spines with warm caramel tips, creamy beige face and underside, dark brown nose and feet, warm brown eyes. Entire single animal isolated on pure white background with the same generous margins. Gentle enchanted woodland mood. No new objects, scenery, ground, clothes, accessories, text, frame, watermark, photorealism, grit or pixel dust. Readable at small card size.",
+      "file": "public/images/art/hedgehog.png",
+      "generatedFile": "exec-11f51c03-5a1b-4ccb-a584-4a11ebb2d361.png"
+    },
+    {
+      "id": "deer",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, a black and white a deer. Input 2 wolf is ONLY a reference for the clean bold-outlined flat-colour style. Colour input 1 with warm tawny brown coat, cream muzzle chest belly and inner ears, dark brown hooves and nose, warm brown short antlers, amber eyes. Keep exactly its silhouette, anatomy, pose, perspective, expression, facial features, all limbs, ears and tail, proportions, outlines and generous white margins. Broad clean flat fills with very restrained gentle shading; expressive eyes as in the reference. Keep pure white background. No additional objects, clothing, accessories, scenery, text, frame, watermark or dust.",
+      "file": "public/images/color/deer.png",
+      "generatedFile": "exec-b7aecb97-690c-4c24-b8fa-41b4a333a535.png"
+    },
+    {
+      "id": "deer",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card for a children's Halloween English game. Input 1 is the flat-colour a deer to transform. Input 2 owl is ONLY a reference for beautiful polished painterly children's storybook finish. Create an artist version of input 1 with soft natural fur or spine detail, refined smooth shading, gentle warm light, believable volume and jewel-like expressive eyes. Preserve exactly the animal's silhouette, anatomy, pose, perspective, proportions, ears, all limbs, tail, antlers if present, expression and palette: warm tawny brown coat, cream muzzle chest belly and inner ears, dark brown hooves and nose, warm brown short antlers, amber eyes. Entire single animal isolated on pure white background with the same generous margins. Gentle enchanted woodland mood. No new objects, scenery, ground, clothes, accessories, text, frame, watermark, photorealism, grit or pixel dust. Readable at small card size.",
+      "file": "public/images/art/deer.png",
+      "generatedFile": "exec-7510d185-236d-44f0-89c4-e64f4671ae66.png"
+    }
+  ]
+}

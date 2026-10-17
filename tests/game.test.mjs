@@ -91,12 +91,16 @@ test('300 parties avec erreurs : jamais deux fois de suite, jamais un mot déjà
   }
 });
 test('La carte faible est privilégiée selon la compétence active', () => {
-  let weak = 0;
+  let weak = 0, uniform = 0;
   for(let seed=0;seed<400;seed++) {
-    const s=createSession('read',{targets:WORDS,pool:WORDS,random:randomSeed(seed+90),level:w=>w.id==='ghost'?0:3});
+    const sampleSeed=Math.imul(seed+90,0x9e3779b9)>>>0;
+    const s=createSession('read',{targets:WORDS,pool:WORDS,random:randomSeed(sampleSeed),level:w=>w.id==='ghost'?0:3});
+    const baseline=createSession('read',{targets:WORDS,pool:WORDS,random:randomSeed(sampleSeed),level:()=>3});
     if(s.questions.some(q=>q.target.id==='ghost')) weak++;
+    if(baseline.questions.some(q=>q.target.id==='ghost')) uniform++;
   }
-  assert.ok(weak > 300, `${weak}/400`);
+  // Compare to the same collection without a weak card, independently of its size.
+  assert.ok(uniform > 0 && weak > uniform * 4, `${weak} weak versus ${uniform} uniform /400`);
 });
 test('Difficulté individuelle, trous mémo et articles', () => {
   assert.deepEqual([0,1,2,3].map(progressiveCount),[2,3,4,4]);
