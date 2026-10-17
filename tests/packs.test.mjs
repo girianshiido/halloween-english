@@ -8,7 +8,7 @@ const pack=EXTRA_PACKS[0];
 function finishCore(p){for(const w of CORE_PACK.words)Object.assign(p.words[w.id],{listen:3,read:3,introduced:true});}
 function color(p,id){Object.assign(p.words[id],{listen:3,read:3,introduced:true});}
 test('Pack Petite sorcellerie : six noms illustrables, uniques et prononcés avec leur article',()=>{
-  assert.equal(WORDS.length,32);assert.equal(new Set(WORDS.map(w=>w.id)).size,32);
+  assert.equal(WORDS.length,38);assert.equal(new Set(WORDS.map(w=>w.id)).size,38);
   assert.deepEqual(pack.words.map(w=>spokenWord(w)),['a black cat','a broom','a cauldron','a wand','a potion','a spellbook']);
   assert.ok(pack.words.every(w=>!CORE_PACK.words.includes(w)));
 });
@@ -66,7 +66,7 @@ test('La maison mystérieuse utilise six mots anglais et peut être choisie en p
   const house=EXTRA_PACKS.find(pack=>pack.id==='mystery-house');
   assert.deepEqual(house.words.map(w=>spokenWord(w)),['a haunted house','a door','a key','a chest','a lantern','a bell']);
   const p=emptyProgress();finishCore(p);
-  assert.deepEqual(availablePacks(p).map(p=>p.id),['sorcery','mystery-house']);
+  assert.deepEqual(availablePacks(p).map(p=>p.id),EXTRA_PACKS.map(pack=>pack.id));
   assert.equal(openPack(p,'mystery-house'),true);assert.equal(openPack(p,'sorcery'),false);
   assert.deepEqual(pendingWords(p).map(w=>w.id),['house','door']);
   assert.equal(discoveredWords(p).length,22);assert.equal(p.activePack,'mystery-house');
@@ -105,4 +105,46 @@ test('Reprendre un pack conserve le choix après rechargement et privilégie ses
   introduceWord(p,'lantern');p.completedSessions=0;
   assert.equal(recommend(p).target,'lantern');
   assert.deepEqual(parseProgress(serializeProgress(p)),p);
+});
+
+test('Les trésors d’automne : articles, première paire et découverte progressive',()=>{
+  const autumn=EXTRA_PACKS.find(pack=>pack.id==='autumn');
+  assert.deepEqual(autumn.words.map(w=>spokenWord(w)),['a leaf','an acorn','a mushroom','an apple','a basket','an umbrella']);
+  const p=emptyProgress();finishCore(p);assert.equal(openPack(p,'autumn'),true);
+  assert.deepEqual(pendingWords(p).map(w=>w.id),['leaf','acorn']);
+  assert.ok(!knownWords(p).some(w=>autumn.words.includes(w)));
+  color(p,'leaf');color(p,'acorn');
+  assert.deepEqual(pendingWords(p).map(w=>w.id),['mushroom','apple']);
+  color(p,'mushroom');color(p,'apple');
+  assert.deepEqual(pendingWords(p).map(w=>w.id),['basket','umbrella']);
+  assert.deepEqual(parseProgress(serializeProgress(p)),p);
+});
+
+test('Trois packs dans tous les ordres : un seul nouveau choix par pack à quatre couleurs',()=>{
+  for(const first of EXTRA_PACKS)for(const second of EXTRA_PACKS.filter(pack=>pack!==first)){
+    const third=EXTRA_PACKS.find(pack=>pack!==first&&pack!==second);
+    const p=emptyProgress();finishCore(p);openPack(p,first.id);
+    first.words.slice(0,4).forEach(w=>color(p,w.id));assert.equal(openPack(p,second.id),true);
+    assert.equal(packAvailable(p,third.id),false);assert.equal(openPack(p,third.id),false);
+    assert.match(packsMarkup(p),/0 \/ 4 couleurs/);
+    first.words.slice(4).forEach(w=>color(p,w.id));
+    second.words.slice(0,3).forEach(w=>color(p,w.id));
+    assert.equal(packAvailable(p,third.id),false);assert.match(packsMarkup(p),/3 \/ 4 couleurs/);
+    color(p,second.words[3].id);assert.equal(openPack(p,third.id),true);
+    assert.deepEqual(p.openedPacks,[first.id,second.id,third.id]);
+    assert.deepEqual(parseProgress(serializeProgress(p)),p);
+    assert.ok(WORDS.every(w=>p.words[w.id].flash===0&&p.words[w.id].once===0));
+  }
+});
+
+test('Sauvegarde précédente à 32 mots : les acquis et le pack actif restent intacts',()=>{
+  const p=emptyProgress();finishCore(p);openPack(p,'mystery-house');
+  EXTRA_PACKS.find(pack=>pack.id==='mystery-house').words.forEach(w=>color(p,w.id));
+  openPack(p,'sorcery');EXTRA_PACKS[0].words.forEach(w=>color(p,w.id));
+  Object.assign(p.words.house,{flash:3,once:3,selected:'art'});p.completedSessions=87;
+  const raw=JSON.parse(serializeProgress(p));
+  EXTRA_PACKS.find(pack=>pack.id==='autumn').words.forEach(w=>delete raw.words[w.id]);
+  const loaded=parseProgress(JSON.stringify(raw));
+  assert.deepEqual(loaded,p);assert.equal(packAvailable(loaded,'autumn'),true);
+  assert.ok(!learningCardsMarkup(loaded,'',true).includes('leaf.png'));
 });

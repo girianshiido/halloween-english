@@ -1,0 +1,131 @@
+{
+  "tool": "image_gen intégré",
+  "assets": [
+    {
+      "id": "leaf",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image 1 is ONLY a STYLE reference, not the subject to copy. Subject: one single broad maple leaf with five gently pointed lobes, clear simple branching veins and a short curved stalk, tilted slightly diagonally. Immediately recognizable as one leaf, no other leaves.. Match the reference's smooth bold rounded black contours and clear child-friendly forms, simplified and polished, no jagged pixels. Pure black outlines with WHITE empty interiors, no shading, no grey fills, no hatch marks. Entire single subject centered on pure white square background with generous margins, occupying about 75-85% of frame. Autumn enchanted woodland mood suitable for young children. No anthropomorphic face, additional characters, separate objects, scenery, text, frame, shadow, watermark or dust. Recognizable as the named English noun.",
+      "file": "public/images/leaf.png",
+      "generatedFile": "exec-b205d048-2022-45a6-8725-5695def99929.png"
+    },
+    {
+      "id": "acorn",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image 1 is ONLY a STYLE reference, not the subject to copy. Subject: one large oak acorn, round smooth oval nut with a gently pointed tip and a chunky textured cup covering its upper third, a short crooked woody stalk. Acorn cup has just a few large scalloped scale shapes, clearly not a pine cone. Single acorn tilted slightly.. Match the reference's smooth bold rounded black contours and clear child-friendly forms, simplified and polished, no jagged pixels. Pure black outlines with WHITE empty interiors, no shading, no grey fills, no hatch marks. Entire single subject centered on pure white square background with generous margins, occupying about 75-85% of frame. Autumn enchanted woodland mood suitable for young children. No anthropomorphic face, additional characters, separate objects, scenery, text, frame, shadow, watermark or dust. Recognizable as the named English noun.",
+      "file": "public/images/acorn.png",
+      "generatedFile": "exec-ba8a9dac-651c-4eb7-bb08-17fb0cdbb43c.png"
+    },
+    {
+      "id": "mushroom",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image 1 is ONLY a STYLE reference, not the subject to copy. Subject: one single charming woodland mushroom with a wide gently crooked domed cap, several large rounded spots, a thick short stem and a small simple ring around the stem. Slight three-quarter view, one recognizable mushroom with a storybook enchanted-forest feeling. No grass, moss, face or separate object.. Match the reference's smooth bold rounded black contours and clear child-friendly forms, simplified and polished, no jagged pixels. Pure black outlines with WHITE empty interiors, no shading, no grey fills, no hatch marks. Entire single subject centered on pure white square background with generous margins, occupying about 75-85% of frame. Autumn enchanted woodland mood suitable for young children. No anthropomorphic face, additional characters, separate objects, scenery, text, frame, shadow, watermark or dust. Recognizable as the named English noun.",
+      "file": "public/images/mushroom.png",
+      "generatedFile": "exec-9272b12f-cc9b-486f-87f8-815d96ba8714.png"
+    },
+    {
+      "id": "apple",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image 1 is ONLY a STYLE reference, not the subject to copy. Subject: one plump fresh apple with a little dimple at the top, one short bent woody stalk and one small leaf attached to the stalk. Child-friendly gently lopsided apple silhouette, intact skin without any cut or bite. No face, carved pumpkin markings or separate object.. Match the reference's smooth bold rounded black contours and clear child-friendly forms, simplified and polished, no jagged pixels. Pure black outlines with WHITE empty interiors, no shading, no grey fills, no hatch marks. Entire single subject centered on pure white square background with generous margins, occupying about 75-85% of frame. Autumn enchanted woodland mood suitable for young children. No anthropomorphic face, additional characters, separate objects, scenery, text, frame, shadow, watermark or dust. Recognizable as the named English noun.",
+      "file": "public/images/apple.png",
+      "generatedFile": "exec-a6ab115d-6fef-45fb-94f8-55bc451f798e.png"
+    },
+    {
+      "id": "basket",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image 1 is ONLY a STYLE reference, not the subject to copy. Subject: one small EMPTY round rustic wicker gathering basket, oval rim, stout rounded body with a few large simple woven bands, one curved arched handle rising above the open top. Slight three-quarter view showing its empty dark opening. Old-fashioned autumn forest-gathering basket, readable bold silhouette. No contents, fruit, leaves, fabric or face.. Match the reference's smooth bold rounded black contours and clear child-friendly forms, simplified and polished, no jagged pixels. Pure black outlines with WHITE empty interiors, no shading, no grey fills, no hatch marks. Entire single subject centered on pure white square background with generous margins, occupying about 75-85% of frame. Autumn enchanted woodland mood suitable for young children. No anthropomorphic face, additional characters, separate objects, scenery, text, frame, shadow, watermark or dust. Recognizable as the named English noun.",
+      "file": "public/images/basket.png",
+      "generatedFile": "exec-1e1a8907-19d1-4fca-8e38-c9b48ed1ca20.png"
+    },
+    {
+      "id": "umbrella",
+      "variant": "original",
+      "prompt": "Use case: illustration-story. Asset type: black and white vocabulary flashcard in a children's Halloween English game. Reference image 1 is ONLY a STYLE reference, not the subject to copy. Subject: one OPEN old-fashioned umbrella with a broad scalloped canopy, visible simple ribs, one central slender shaft and curved J-shaped handle. Slightly crooked friendly storybook form tilted diagonally, entire umbrella and handle visible. Gentle autumn Halloween mood. No face, eyes, rain, cloud or extra objects.. Match the reference's smooth bold rounded black contours and clear child-friendly forms, simplified and polished, no jagged pixels. Pure black outlines with WHITE empty interiors, no shading, no grey fills, no hatch marks. Entire single subject centered on pure white square background with generous margins, occupying about 75-85% of frame. Autumn enchanted woodland mood suitable for young children. No anthropomorphic face, additional characters, separate objects, scenery, text, frame, shadow, watermark or dust. Recognizable as the named English noun.",
+      "file": "public/images/umbrella.png",
+      "generatedFile": "exec-5ed2d5d0-6516-4662-8736-33f2d01722e8.png"
+    },
+    {
+      "id": "leaf",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, the black and white a leaf. Input 2 key is ONLY a reference for clean bold-outlined flat-colour card style. Colour input 1 with warm burnt orange and amber golden lobe edges, deep rust-red veins, brown stalk. Keep exactly the target's silhouette, perspective, pose, proportions, every part and line, generous white margins and pure white background. Clean broad flat fills, very restrained smooth shading. No added face, objects, decoration, scenery, labels, frame, watermark or dust. White negative spaces outside the subject remain white.",
+      "file": "public/images/color/leaf.png",
+      "generatedFile": "exec-a5f3e9f5-a186-4e29-bf57-9172d7e4f54f.png"
+    },
+    {
+      "id": "leaf",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card in a children's Halloween English game. Input 1 is the edit target, a flat-coloured a leaf. Input 2 lantern is ONLY a reference for polished painterly storybook finish, not its shape or subject. Make input 1 a beautiful artist version with refined smooth shading, delicate natural material details, gentle light and believable volume. Preserve exactly the silhouette, pose, perspective, all parts, motifs, proportions and recognizable palette: warm burnt orange and amber golden lobe edges, deep rust-red veins, brown stalk. Entire isolated single subject on pure white background with the same generous margins. Friendly enchanted autumn mood, readable at small card size. No extra face, objects, scenery, text, frame, watermark, photorealism, grit or pixel dust.",
+      "file": "public/images/art/leaf.png",
+      "generatedFile": "exec-9ef29970-3691-4492-a568-343c2749961e.png"
+    },
+    {
+      "id": "acorn",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, the black and white an acorn. Input 2 key is ONLY a reference for clean bold-outlined flat-colour card style. Colour input 1 with warm chestnut-brown glossy nut, deep cocoa brown cup with caramel scales, dark brown woody stalk. Keep exactly the target's silhouette, perspective, pose, proportions, every part and line, generous white margins and pure white background. Clean broad flat fills, very restrained smooth shading. No added face, objects, decoration, scenery, labels, frame, watermark or dust. White negative spaces outside the subject remain white.",
+      "file": "public/images/color/acorn.png",
+      "generatedFile": "exec-ce327a52-9640-4047-bc50-964c05570cd9.png"
+    },
+    {
+      "id": "acorn",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card in a children's Halloween English game. Input 1 is the edit target, a flat-coloured an acorn. Input 2 lantern is ONLY a reference for polished painterly storybook finish, not its shape or subject. Make input 1 a beautiful artist version with refined smooth shading, delicate natural material details, gentle light and believable volume. Preserve exactly the silhouette, pose, perspective, all parts, motifs, proportions and recognizable palette: warm chestnut-brown glossy nut, deep cocoa brown cup with caramel scales, dark brown woody stalk. Entire isolated single subject on pure white background with the same generous margins. Friendly enchanted autumn mood, readable at small card size. No extra face, objects, scenery, text, frame, watermark, photorealism, grit or pixel dust.",
+      "file": "public/images/art/acorn.png",
+      "generatedFile": "exec-48a96cf2-40ef-45a6-a410-45d5bf1cd3d9.png"
+    },
+    {
+      "id": "mushroom",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, the black and white a mushroom. Input 2 key is ONLY a reference for clean bold-outlined flat-colour card style. Colour input 1 with rich warm red-orange cap with cream spots, ivory stem and ring, muted golden brown gills. Keep exactly the target's silhouette, perspective, pose, proportions, every part and line, generous white margins and pure white background. Clean broad flat fills, very restrained smooth shading. No added face, objects, decoration, scenery, labels, frame, watermark or dust. White negative spaces outside the subject remain white.",
+      "file": "public/images/color/mushroom.png",
+      "generatedFile": "exec-60891b6d-13d3-4cd7-b53c-83f446130736.png"
+    },
+    {
+      "id": "mushroom",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card in a children's Halloween English game. Input 1 is the edit target, a flat-coloured a mushroom. Input 2 lantern is ONLY a reference for polished painterly storybook finish, not its shape or subject. Make input 1 a beautiful artist version with refined smooth shading, delicate natural material details, gentle light and believable volume. Preserve exactly the silhouette, pose, perspective, all parts, motifs, proportions and recognizable palette: rich warm red-orange cap with cream spots, ivory stem and ring, muted golden brown gills. Entire isolated single subject on pure white background with the same generous margins. Friendly enchanted autumn mood, readable at small card size. No extra face, objects, scenery, text, frame, watermark, photorealism, grit or pixel dust.",
+      "file": "public/images/art/mushroom.png",
+      "generatedFile": "exec-84dc0530-d5aa-4014-9a43-f184592c101e.png"
+    },
+    {
+      "id": "apple",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, the black and white an apple. Input 2 key is ONLY a reference for clean bold-outlined flat-colour card style. Colour input 1 with deep red skin with warm golden red highlights, brown woody stalk and muted green small leaf. Keep exactly the target's silhouette, perspective, pose, proportions, every part and line, generous white margins and pure white background. Clean broad flat fills, very restrained smooth shading. No added face, objects, decoration, scenery, labels, frame, watermark or dust. White negative spaces outside the subject remain white.",
+      "file": "public/images/color/apple.png",
+      "generatedFile": "exec-f99265fd-5657-4b4d-9fce-5e0bc0a864e8.png"
+    },
+    {
+      "id": "apple",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card in a children's Halloween English game. Input 1 is the edit target, a flat-coloured an apple. Input 2 lantern is ONLY a reference for polished painterly storybook finish, not its shape or subject. Make input 1 a beautiful artist version with refined smooth shading, delicate natural material details, gentle light and believable volume. Preserve exactly the silhouette, pose, perspective, all parts, motifs, proportions and recognizable palette: deep red skin with warm golden red highlights, brown woody stalk and muted green small leaf. Entire isolated single subject on pure white background with the same generous margins. Friendly enchanted autumn mood, readable at small card size. No extra face, objects, scenery, text, frame, watermark, photorealism, grit or pixel dust.",
+      "file": "public/images/art/apple.png",
+      "generatedFile": "exec-4df3230c-33ed-4266-bbe1-e3ed9549ff18.png"
+    },
+    {
+      "id": "basket",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, the black and white a basket. Input 2 key is ONLY a reference for clean bold-outlined flat-colour card style. Colour input 1 with honey-brown wicker and handle, warm ochre woven bands, deep brown empty inside. Keep exactly the target's silhouette, perspective, pose, proportions, every part and line, generous white margins and pure white background. Clean broad flat fills, very restrained smooth shading. No added face, objects, decoration, scenery, labels, frame, watermark or dust. White negative spaces outside the subject remain white.",
+      "file": "public/images/color/basket.png",
+      "generatedFile": "exec-73c1fcca-bfe3-4fe8-9f72-1e15c3559299.png"
+    },
+    {
+      "id": "basket",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card in a children's Halloween English game. Input 1 is the edit target, a flat-coloured a basket. Input 2 lantern is ONLY a reference for polished painterly storybook finish, not its shape or subject. Make input 1 a beautiful artist version with refined smooth shading, delicate natural material details, gentle light and believable volume. Preserve exactly the silhouette, pose, perspective, all parts, motifs, proportions and recognizable palette: honey-brown wicker and handle, warm ochre woven bands, deep brown empty inside. Entire isolated single subject on pure white background with the same generous margins. Friendly enchanted autumn mood, readable at small card size. No extra face, objects, scenery, text, frame, watermark, photorealism, grit or pixel dust.",
+      "file": "public/images/art/basket.png",
+      "generatedFile": "exec-0666c5b2-1b53-40fb-a907-0c203a24248d.png"
+    },
+    {
+      "id": "umbrella",
+      "variant": "color",
+      "prompt": "Use case: style-transfer. Asset type: colour reward card in a children's Halloween English game. Input 1 is the edit target, the black and white an umbrella. Input 2 key is ONLY a reference for clean bold-outlined flat-colour card style. Colour input 1 with alternating muted plum-purple and pumpkin-orange canopy panels, dark charcoal shaft and deep brown curved handle. Keep exactly the target's silhouette, perspective, pose, proportions, every part and line, generous white margins and pure white background. Clean broad flat fills, very restrained smooth shading. No added face, objects, decoration, scenery, labels, frame, watermark or dust. White negative spaces outside the subject remain white.\nFinal cleanup: Use case: precise-object-edit. Edit target: this flat-colour umbrella flashcard. Clean ONLY the stray orange paint slivers in the purple panels: the narrow orange sliver at the upper left edge, and the tiny orange stripe near the upper right scalloped panel, and any comparable stray spots. Each canopy panel must have a continuous clean single purple or orange fill, with its existing subtle shading. Preserve the exact silhouette, every black outline, alternate orange-purple arrangement, handle, shaft, white background, margins and all other colours. No new marks, objects, text or border.",
+      "file": "public/images/color/umbrella.png",
+      "generatedFile": "exec-dc578590-0d8c-4010-ad20-df79b72b5a40.png"
+    },
+    {
+      "id": "umbrella",
+      "variant": "art",
+      "prompt": "Use case: style-transfer. Asset type: premium artist reward card in a children's Halloween English game. Input 1 is the edit target, a flat-coloured an umbrella. Input 2 lantern is ONLY a reference for polished painterly storybook finish, not its shape or subject. Make input 1 a beautiful artist version with refined smooth shading, delicate natural material details, gentle light and believable volume. Preserve exactly the silhouette, pose, perspective, all parts, motifs, proportions and recognizable palette: alternating muted plum-purple and pumpkin-orange canopy panels, dark charcoal shaft and deep brown curved handle. Entire isolated single subject on pure white background with the same generous margins. Friendly enchanted autumn mood, readable at small card size. No extra face, objects, scenery, text, frame, watermark, photorealism, grit or pixel dust.",
+      "file": "public/images/art/umbrella.png",
+      "generatedFile": "exec-43bfa38d-42a2-4311-858b-5698920bd08b.png"
+    }
+  ]
+}

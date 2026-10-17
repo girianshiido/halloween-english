@@ -35,3 +35,7 @@ Six nouveaux sujets, chacun en noir et blanc, couleur et artiste : cat, broom, c
 ## La maison mystérieuse — 15 octobre 2026
 
 Dix-huit nouvelles illustrations créées avec image_gen intégré : maison hantée, porte, clé, coffre, lanterne et cloche, chacune en noir et blanc, couleur et artiste. Silhouettes cohérentes, fond blanc, objets anciens et détails Halloween adaptés aux enfants. Consignes exactes et chemins : `mystery-house-prompts.json`. Les fichiers sont dans `public/images/`, `public/images/color/` et `public/images/art/`, puis copiés dans `docs/images/`.
+
+## Les trésors d’automne — 17 octobre 2026
+
+Dix-huit illustrations créées avec image_gen intégré : feuille d’érable, gland, champignon, pomme, panier vide et parapluie, en noir et blanc, couleur et artiste. Références de style : cartes existantes ; silhouettes, pose et détails conservés dans les variantes. Le parapluie couleur a reçu une retouche des petits débordements orange. Consignes exactes et chemins des fichiers finaux : `autumn-prompts.json`. Images livrées dans `public/images/`, `public/images/color/` et `public/images/art/`, copiées dans `docs/images/`.

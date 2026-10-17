@@ -1,3 +1,11 @@
+# Validation — Les trésors d’automne
+
+17 octobre 2026. TypeScript strict, construction et 48 tests réussis. Les trois packs sont testés dans tous les ordres : quatre couleurs dans un pack donnent un seul choix supplémentaire ; six couleurs dans ce même pack ne permettent pas de sauter la condition du suivant. L’écran indique le progrès du pack encore en dessous de quatre couleurs. Anciennes sauvegardes à 32 mots, ordre des packs et aventure active conservés. Parcours complet jusqu’aux 38 cartes artiste simulé ; 114 illustrations dans le cache hors ligne.
+
+Contrôle navigateur sur sauvegardes isolées : troisième pack fermé à trois couleurs de La maison mystérieuse, ouvert après la quatrième ; présentation et écoute de « a leaf », défi initial à deux choix, réussite conservée après rechargement ; découverte suivante « an acorn ». Synthèse vocale journalisée : « an acorn » puis « acorn » sans articles. Collection : 114 images chargées sans erreur, zoom du parapluie artiste. Aucun débordement de l’écran des packs ni bouton tronqué à 320, 390, 768 et 1024 px. Les totaux restent masqués dans l’interface. Pas de test physique iPhone/Android de cette mise à jour.
+
+---
+
 # Validation — La maison mystérieuse et choix des packs
 
 15 octobre 2026. TypeScript strict et construction réussis ; 45 tests passent. Simulation des parcours complets jusqu’aux 32 versions artiste, 96 images en cache, tests hors ligne, ancienne sauvegarde à 26 mots préservée. Premier pack au choix après vingt couleurs ; second après quatre couleurs dans le premier, dans les deux ordres, sans artiste obligatoire. Pack actif conservé après rechargement.

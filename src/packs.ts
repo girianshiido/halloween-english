@@ -3,10 +3,10 @@ import { packAvailable, packColors, discoveredWords, isUnlocked, type Progress }
 
 export function packsMarkup(progress: Progress): string {
   const coreColors = CORE_PACK.words.filter(word => isUnlocked(progress, word.id, 'color')).length;
-  return `<section class="packs-area"><div class="game-top"><button type="button" class="quiet" id="packs-back">← Accueil</button><span class="mode-label">✧ Mes prochaines aventures</span></div><div class="question-head"><span class="eyebrow">ENCORE UN PEU DE MAGIE</span><h1 data-focus tabindex="-1">Choisis la suite de ton aventure.</h1><p>Vingt premières couleurs : choisis ton premier pack. Quatre couleurs dans ce pack : ouvre le suivant. Tes réussites restent avec toi !</p></div><div class="pack-grid">${EXTRA_PACKS.map(pack => {
+  return `<section class="packs-area"><div class="game-top"><button type="button" class="quiet" id="packs-back">← Accueil</button><span class="mode-label">✧ Mes prochaines aventures</span></div><div class="question-head"><span class="eyebrow">ENCORE UN PEU DE MAGIE</span><h1 data-focus tabindex="-1">Choisis la suite de ton aventure.</h1><p>Vingt premières couleurs : choisis ton premier pack. Chaque pack où tu gagnes quatre couleurs te permet d’en choisir un autre. Tes réussites restent avec toi !</p></div><div class="pack-grid">${EXTRA_PACKS.map(pack => {
     const opened = progress.openedPacks.includes(pack.id);
     const available = packAvailable(progress, pack.id);
-    const bestOpened = Math.max(0, ...progress.openedPacks.map(id => packColors(progress, id)));
+    const bestOpened = Math.max(0, ...progress.openedPacks.map(id => packColors(progress, id)).filter(colors => colors < 4));
     const current = progress.activePack === pack.id;
     const revealed = discoveredWords(progress).filter(word => pack.words.includes(word)).length;
     const colors = pack.words.filter(word => isUnlocked(progress, word.id, 'color')).length;
